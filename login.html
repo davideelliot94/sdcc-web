@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+
+    <div class="middle-box text-center loginscreen animated fadeInDown">
+        <div>
+            <h3>Benvenuto</h3>
+            <p>Inserire i propri dati per accedere al servizio.</p>
+            <form class="m-t" onsubmit="return API.logUser()" role="form">
+                <div class="form-group">
+                    <input type="email" id="email" class="form-control" placeholder="Username" required="">
+                </div>
+                <div class="form-group">
+                    <input type="password" id="psw" class="form-control" placeholder="Password" required="">
+                </div>
+                <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
+
+                <a href="#"><small>Password dimenticata?</small></a>
+                <p class="text-muted text-center"><small>Non sei ancora registrato?</small></p>
+                <a class="btn btn-sm btn-white btn-block" href="register.html">Crea un account</a>
+            </form>
+        </div>
+    </div>
+
+    <!-- Mainly scripts -->
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <script>
+            const API = (() => {
+            const makeSaveFunc = (selectorEmail,selectorPass, postNameFunc) => () => {
+                try {
+                const val1 = document.querySelector(selectorEmail).value;
+                const val2 = document.querySelector(selectorPass).value;
+                postNameFunc(val1,val2);
+                } catch (e) {
+                console.log(e);
+                console.log('--------------------------');
+                }
+                return false;
+            };
+
+            const makePostNameFunc = uri => (val1,val2) => {
+                fetch(uri, {
+                method: 'POST',
+                body: JSON.stringify({ em: val1, pass: val2 }),
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+                }).then( resp => resp.json())
+                    .then(results => {
+                        console.log(results);
+                        if(results.ans == "ok"){
+                            console.log("daje")
+                        }
+                        else{
+                            console.log("non daje");
+                        }
+                    });
+
+            };
+
+            const logUserFunc = makePostNameFunc("http://localhost:8080/login");
+            
+            return {
+                logUser: makeSaveFunc("#email","#psw", logUserFunc),
+                }
+            })();
+    
+    </script>
+
+</body>
+
+</html>
