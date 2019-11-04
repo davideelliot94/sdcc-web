@@ -18,41 +18,94 @@
 
 <body class="gray-bg">
 
-    <div class="middle-box text-center loginscreen   animated fadeInDown">
-        <div>
-            <h3>Registrati al servizio</h3>
-            <p>Inserire tutti i dati richisti.</p>
-            <form class="m-t" role="form" action="login.html">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Username" required="">
-                </div>
-                <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Email" required="">
-                </div>
-                <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Password" required="">
-                </div>
-                <button type="submit" class="btn btn-primary block full-width m-b">Completa la registrazione</button>
+<div class="middle-box text-center loginscreen   animated fadeInDown">
+    <div>
+        <h3>Registrati al servizio</h3>
+        <p>Inserire tutti i dati richiesti.</p>
+        <form onsubmit="return API.saveUser()" class="m-t" role="form" action="login.html">
+            <div class="form-group">
+                <input id="username" type="text" class="form-control" placeholder="Username" required="">
+            </div>
+            <div class="form-group">
+                <input id="email" type="email" class="form-control" placeholder="Email" required="">
+            </div>
+            <div class="form-group">
+                <input id="psw" type="password" class="form-control" placeholder="Password" required="">
+            </div>
+            <button type="submit" class="btn btn-primary block full-width m-b">Completa la registrazione</button>
 
-                <p class="text-muted text-center"><small>Sei già in possesso di un account?</small></p>
-                <a class="btn btn-sm btn-white btn-block" href="login.html">Login</a>
-            </form>
-        </div>
+            <p class="text-muted text-center"><small>Sei già in possesso di un account?</small></p>
+            <a class="btn btn-sm btn-white btn-block" href="login.html">Login</a>
+        </form>
     </div>
+</div>
 
-    <!-- Mainly scripts -->
-    <script src="js/jquery-3.1.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <!-- iCheck -->
-    <script src="js/plugins/iCheck/icheck.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $('.i-checks').iCheck({
-                checkboxClass: 'icheckbox_square-green',
-                radioClass: 'iradio_square-green',
-            });
+<!-- Mainly scripts -->
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<!-- iCheck -->
+<script src="js/plugins/iCheck/icheck.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square-green',
         });
-    </script>
+    });
+</script>
+
+<script>
+    const API = (() => {
+        console.log('scripting');
+    const makeSaveFunc = (selectorUser,selectorEmail,selectorPsw, postNameFunc) => () => {
+        console.log('makeSaveFunc');
+        try {
+            //console.log('selector is: ' + JSON.stringify(selector));
+            const userVal = document.querySelector(selectorUser).value;
+            const emailVal = document.querySelector(selectorEmail).value;
+            const pswVal = document.querySelector(selectorPsw).value;
+            //console.log('val is: ' + JSON.stringify(val));
+            postNameFunc(userVal,emailVal,pswVal);
+        } catch (e) {
+            console.log(e);
+            console.log('--------------------------');
+        }
+        return false;
+    };
+
+    const makePostNameFunc = uri => (userVal,emailVal,pswVal) => {
+        console.log("makePostNameFunc; uri: " + JSON.stringify(uri));
+        console.log("params: " + JSON.stringify(userVal)+ "  " + JSON.stringify(emailVal) + "   " + JSON.stringify(pswVal));
+        fetch(uri, {
+            method: 'POST',
+            body: JSON.stringify({
+                name: userVal,
+                email: emailVal,
+                psw: pswVal}),
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        }).then(function (response) {
+            console.log('RES: ' + JSON.stringify(response));
+        });
+    };
+
+
+    //MODIFICATO PER AWS
+    const postUser = makePostNameFunc("http://localhost:3000/registration/users");
+
+    return {
+        saveUser: makeSaveFunc("#username","#email","#psw", postUser),
+        //saveBook: makeSaveFunc("#bookname", postBookName),
+        //search
+    }
+    })();
+</script>
+
+
+
 </body>
 
 </html>
