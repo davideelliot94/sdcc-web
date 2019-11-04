@@ -24,10 +24,10 @@
             <p>Inserire i propri dati per accedere al servizio.</p>
             <form class="m-t" onsubmit="return API.logUser()" role="form">
                 <div class="form-group">
-                    <input type="email" id="email" class="form-control" placeholder="Username" required="">
+                    <input id="email" type="email" class="form-control" placeholder="Username" required="">
                 </div>
                 <div class="form-group">
-                    <input type="password" id="psw" class="form-control" placeholder="Password" required="">
+                    <input id="psw" type="password" class="form-control" placeholder="Password" required="">
                 </div>
                 <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
 
@@ -48,6 +48,7 @@
                 try {
                 const val1 = document.querySelector(selectorEmail).value;
                 const val2 = document.querySelector(selectorPass).value;
+                console.log("form values: " + JSON.stringify(val1) + "  " + JSON.stringify(val2));
                 postNameFunc(val1,val2);
                 } catch (e) {
                 console.log(e);
@@ -56,29 +57,27 @@
                 return false;
             };
 
+            
             const makePostNameFunc = uri => (val1,val2) => {
+                console.log("makePostNameFunc; uri: " + JSON.stringify(uri));
                 fetch(uri, {
-                method: 'POST',
-                body: JSON.stringify({ em: val1, pass: val2 }),
-                headers: {
-                    'Access-Control-Allow-Origin': '*',
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                }
-                }).then( resp => resp.json())
-                    .then(results => {
-                        console.log(results);
-                        if(results.ans == "ok"){
-                            console.log("daje")
-                        }
-                        else{
-                            console.log("non daje");
-                        }
-                    });
-
+                    method: 'POST',
+                    body: JSON.stringify({
+                        em: val1,
+                        pass: val2
+                    }),
+                    headers: {
+                        'Access-Control-Allow-Origin': '*',
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    }
+                }).then(function (response) {
+                    console.log('RES: ' + JSON.stringify(response));
+                });
             };
 
-            const logUserFunc = makePostNameFunc("http://localhost:8080/login");
+            //MODIFICARE PER AWS
+            const logUserFunc = makePostNameFunc("http://localhost:8080/users/login");
             
             return {
                 logUser: makeSaveFunc("#email","#psw", logUserFunc)

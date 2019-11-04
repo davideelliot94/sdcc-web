@@ -93,8 +93,8 @@
     };
 
 
-    //MODIFICATO PER AWS
-    const postUser = makePostNameFunc("http://localhost:3000/registration/users");
+    //MODIFICARE PER AWS
+    const postUser = makePostNameFunc("http://localhost:8080/users/registration");
 
     return {
         saveUser: makeSaveFunc("#username","#email","#psw", postUser)
