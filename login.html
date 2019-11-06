@@ -57,7 +57,7 @@
                 return false;
             };
 
-            
+
             const makePostNameFunc = uri => (val1,val2) => {
                 console.log("makePostNameFunc; uri: " + JSON.stringify(uri));
                 fetch(uri, {
@@ -72,7 +72,11 @@
                         'Content-Type': 'application/json'
                     }
                 }).then(function (response) {
-                    console.log('RES: ' + JSON.stringify(response));
+                    console.log("getting response");
+                    console.log('RES status: ' + JSON.stringify(response.statusCode));
+                    if(response.status == 200){
+                        console.log('status is 200!');
+                    }
                 });
             };
 
