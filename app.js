@@ -48,7 +48,7 @@ function css(request, response) {
 */
 
 router.get('/login.html',function(req,res){
-    console.log('dirname is:  ' + __dirname);
+    console.log('dirname is: ' + __dirname);
     res.sendFile(path.join(__dirname + '/login.html'));
 });
 
