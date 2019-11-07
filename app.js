@@ -89,7 +89,14 @@ router.get('/mail_compose.html',function(req,res){
 app.get('/dashboard_2.html',function(req,res){
     console.log('called dashboard');
     console.log('full url: ' + req.url + '/dashboard_2.html');
-    res.sendFile(path.join(__dirname + '/index.html'));
+    //res.sendFile(path.join(__dirname + '/dashboard_2.html'));
+
+    res.sendFile(__dirname + '/dashboard_2.html', function(err) {
+        if (err) {
+            console.log('There was an error: ' + err);
+            res.status(err.status).end();
+        }
+    });
 
 });
 
