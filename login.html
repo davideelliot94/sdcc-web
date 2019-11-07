@@ -22,7 +22,7 @@
         <div>
             <h3>Benvenuto</h3>
             <p>Inserire i propri dati per accedere al servizio.</p>
-            <form class="m-t" onsubmit="return API.logUser()" role="form" action="dashboard_2.html">
+            <form class="m-t" onsubmit="return API.logUser()" role="form">
                 <div class="form-group">
                     <input id="email" type="email" class="form-control" placeholder="Username" required="">
                 </div>
@@ -71,13 +71,19 @@
                         'Content-Type': 'application/json'
                     }
                 }).then(function (response) {
-                    console.log("getting response");
-                    console.log('RES status: ' + JSON.stringify(response.statusCode));
-                    if(response.status == 200){
-                        console.log('status is 200!');
-                        return true;
+                    console.log("getting response: " +JSON.stringify(response));
+                    console.log('RES status: ' + JSON.stringify(response.status));
+                    if(response.status === 200){
+
+                        response.text().then(function (text) {
+                            console.log('text is: ' + text);
+
+                            window.location='/dashboard_2.html?email='+text;
+
+                        });
+                        window.location='/login.html';
+
                     }
-                    return false;
                 });
             };
 
