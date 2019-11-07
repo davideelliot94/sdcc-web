@@ -208,55 +208,8 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <th>8.15-9.15</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                </tr>
-                                <tr>
-                                    <th>9.30-11</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                </tr>
-                                <tr>
-                                    <th>11-12.30</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                </tr>                                
-                                <tr>
-                                    <th>14-15.30</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                </tr>                                
-                                <tr>
-                                    <th>16-17.30</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                </tr> 
-                                <tr>
-                                    <th>18-19.30</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                </tr>
-                                </tbody>
+                               	
+                               	</tbody>
                             </table>
 
                         </div>
@@ -290,13 +243,28 @@
 
     <!-- Peity -->
     <script src="js/demo/peity-demo.js"></script>
-
+	<script type="js/query-mongo.js"></script>
+	
     <script>
         $(document).ready(function(){
             $('.i-checks').iCheck({
                 checkboxClass: 'icheckbox_square-green',
                 radioClass: 'iradio_square-green',
             });
+            
+            var hours = ["8.15-9.15","9.30-11","11-12.30","14-15.30","16-17.30","18-19.30"];
+            var country = ["Norway", "Sweden", "Denmark"];
+            var capital = ["Oslo", "Stockholm" , "Copenhagen"]
+
+            var bodyString = '';
+            $.each(hours, function(indexHour, hour) {
+                bodyString += ('<tr><th>'+hour+'</th>')
+                $.each(totalBooking[indexHour], function(indexDayBooking, bookingPerDay){ //totalBooking = [[pren.leundi],[pren.mart],[pren.merc],...]
+                	bodyString += ('<td>'+bookingPerDay+'</td>');
+                }
+                bodyString += ('</tr>');
+            });
+            $('.table table-bordered').html(bodyString);
         });
     </script>
 
