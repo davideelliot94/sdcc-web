@@ -13,6 +13,24 @@
     <link href="css/animate.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
+    <script>
+        var getUrlParameter = function getUrlParameter(sParam) {
+            var sPageURL = window.location.search.substring(1),
+                sURLVariables = sPageURL.split('&'),
+                sParameterName,
+                i;
+
+            for (i = 0; i < sURLVariables.length; i++) {
+                sParameterName = sURLVariables[i].split('=');
+                console.log('sParameter:  ' + sParameterName);
+                if (sParameterName[0] === sParam) {
+                    return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+                }
+            }
+        };
+    </script>
+
+
 </head>
 
 <body>
@@ -25,7 +43,10 @@
                             <img alt="image" class="img-circle" src="img/cesati.jpg" />
                              </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">Cesati</strong>
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold"><script>
+                                document.write(getUrlParameter('email'));
+                            </script>
+                            </strong>
                              </span> <span class="text-muted text-xs block">Prof <b class="caret"></b></span> </span> </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
                             <li><a href="profile.html">Profile</a></li>
@@ -862,5 +883,8 @@
             });
         });
     </script>
+
+
+
 </body>
 </html>

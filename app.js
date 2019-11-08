@@ -6,7 +6,13 @@ var app = express();
 var router = express.Router();
 var mime = require('mime');
 var path = require('path');
-
+var cors = require('cors');
+app.use(cors());
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/font-awesome'));
@@ -42,6 +48,7 @@ function css(request, response) {
 */
 
 router.get('/login.html',function(req,res){
+    console.log('dirname is: ' + __dirname);
     res.sendFile(path.join(__dirname + '/login.html'));
 });
 
@@ -49,9 +56,6 @@ router.get('/mailbox.html',function(req,res){
     res.sendFile(path.join(__dirname + '/mailbox.html'));
 });
 
-router.get('/login.html',function(req,res){
-    res.sendFile(path.join(__dirname + '/login.html'));
-});
 
 router.get('/room_hours.html',function(req,res){
     res.sendFile(path.join(__dirname + '/room_hours.html'));
@@ -81,6 +85,21 @@ router.get('/mail_compose.html',function(req,res){
     res.sendFile(path.join(__dirname + '/mail_compose.html'));
 });
 
+
+app.get('/dashboard_2.html',function(req,res){
+    console.log('called dashboard');
+    console.log('full url: ' + req.url + '/dashboard_2.html');
+    //res.sendFile(path.join(__dirname + '/dashboard_2.html'));
+
+    res.sendFile(__dirname + '/dashboard_2.html', function(err) {
+        if (err) {
+            console.log('There was an error: ' + err);
+            res.status(err.status).end();
+        }
+    });
+
+});
+
 router.get('/500.html',function(req,res){
     res.sendFile(path.join(__dirname + '/500.html'));
 });
@@ -107,8 +126,30 @@ router.get('/',function(req,res){
     */
 });
 
-router.get('/index.html',function(req,res){
+router.get('/a',function(req,res){
 
+    console.log('called post a');
+    //res.sendFile(path.join(__dirname + '/index.html'));
+    res.sendFile(path.join(__dirname + '/dashboard_2.html'));
+    /*
+    console.log(path.join(__dirname + '/index.html'));
+    fs.readFile(path.join(__dirname + '/index.html'),null, function(error,data){
+        if(error){
+            throw error;
+        }
+        else{
+            res.write(data);
+
+        }
+    })
+    */
+});
+
+
+
+router.post('/',function(req,res){
+
+    console.log('called post!');
     //res.sendFile(path.join(__dirname + '/index.html'));
     res.sendFile(path.join(__dirname + '/index.html'));
     /*
@@ -125,23 +166,7 @@ router.get('/index.html',function(req,res){
     */
 });
 
-router.get('/dashboard_2.html',function(req,res){
 
-    //res.sendFile(path.join(__dirname + '/index.html'));
-    res.sendFile(path.join(__dirname + '/dashboard_2.html'));
-    /*
-    console.log(path.join(__dirname + '/index.html'));
-    fs.readFile(path.join(__dirname + '/index.html'),null, function(error,data){
-        if(error){
-            throw error;
-        }
-        else{
-            res.write(data);
-            
-        }
-    })
-    */
-});
 
 /*
   var server = http.createServer(function (request, response) {
@@ -188,3 +213,4 @@ app.listen(process.env.PORT || 1337,function(){
   });
 
 
+module.exports = app

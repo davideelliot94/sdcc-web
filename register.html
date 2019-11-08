@@ -61,16 +61,15 @@
         console.log('makeSaveFunc');
         try {
             //console.log('selector is: ' + JSON.stringify(selector));
-            const userVal = document.querySelector(selectorUser).value;
-            const emailVal = document.querySelector(selectorEmail).value;
-            const pswVal = document.querySelector(selectorPsw).value;
+            var userVal = document.querySelector(selectorUser).value;
+            var emailVal = document.querySelector(selectorEmail).value;
+            var pswVal = document.querySelector(selectorPsw).value;
             //console.log('val is: ' + JSON.stringify(val));
             postNameFunc(userVal,emailVal,pswVal); //comme nto
         } catch (e) {
             console.log(e);
             console.log('--------------------------');
         }
-        return false;
     };
 
     const makePostNameFunc = uri => (userVal,emailVal,pswVal) => {
