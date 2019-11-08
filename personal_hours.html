@@ -117,7 +117,7 @@
                             </div>
                         </div>
                         <div class="ibox-content">
-                            <table class="table table-bordered">
+                            <table id="first" class="table table-bordered">
                                 <thead>
                                 <tr>
                                     <th>Ora</th>
@@ -196,22 +196,9 @@
                             </div>
                         </div>
                         <div class="ibox-content">
-                            <table class="table table-bordered">
-                                <thead>
-                                <tr>
-                                    <th>Ora</th>
-                                    <th>Lunedi</th>
-                                    <th>Martedi</th>
-                                    <th>Mercoledi</th>
-                                    <th>Giovedi</th>
-                                    <th>Venerdi</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                               	
-                               	</tbody>
-                            </table>
+                            <table  id="second" class="table table-bordered">
 
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -243,7 +230,51 @@
 
     <!-- Peity -->
     <script src="js/demo/peity-demo.js"></script>
-	<script type="js/query-mongo.js"></script>
+    
+    <script>
+    
+    const API = (() => {
+    	var uri_BookingByUser = "";        //MODIFICARE PER AWS
+    	
+    	
+        const getBooking = (id_student, postNameFunc) => () => {
+            try {
+	            const val1 = document.querySelector(id_student).value; //da vedere!
+	            console.log("form values: " + JSON.stringify(val1));
+	            postNameFunc(val1);
+	        } catch (e) {
+	            console.log(e);
+	            console.log('--------------------------');
+            }
+            return false;
+        };
+
+        
+        const makePostNameFunc = uri => (val1) => {
+            console.log("makeGetBookingFunc; uri: " + JSON.stringify(uri));
+            fetch(uri, {
+                method: 'POST',
+                body: JSON.stringify({
+                    value: val1,
+                }),
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            }).then(function (response) {
+                console.log('RES: ' + JSON.stringify(response));
+            });
+        };
+
+        const get_totalBookingByUserFunc = makePostNameFunc(uri_BookingByUser);
+        
+        return {
+            get_totalBookingByUserId: getBooking("#id_student", get_totalBookingByUserFunc);
+            }
+        })();
+    
+    </script>
 	
     <script>
         $(document).ready(function(){
@@ -252,19 +283,63 @@
                 radioClass: 'iradio_square-green',
             });
             
-            var hours = ["8.15-9.15","9.30-11","11-12.30","14-15.30","16-17.30","18-19.30"];
-            var country = ["Norway", "Sweden", "Denmark"];
-            var capital = ["Oslo", "Stockholm" , "Copenhagen"]
+            var uri_bookingService = ""; //modificare con AWS
+            
+            var days = ["Ora","Lunedi","Martedi","Mercoledi","Gioevdi","Venerdi"];
+            var hours = ["8.15-9.15","9.30-11.00","11.30-13.00","14.00-15.30","16.00-17.30","18.00-19.30"];
+            var totalBooking = [[[" "],[" "],[" "],[" "],[" "],[" "]],
+            					[[" "],[" "],[" "],[" "],[" "],[" "]],
+            					[[" "],[" "],[" "],[" "],[" "],[" "]],
+            					[[" "],[" "],[" "],[" "],[" "],[" "]],
+            					[[" "],[" "],[" "],[" "],[" "],[" "]],
+            					[[" "],[" "],[" "],[" "],[" "],[" "]]];
+            
 
-            var bodyString = '';
-            $.each(hours, function(indexHour, hour) {
-                bodyString += ('<tr><th>'+hour+'</th>')
-                $.each(totalBooking[indexHour], function(indexDayBooking, bookingPerDay){ //totalBooking = [[pren.leundi],[pren.mart],[pren.merc],...]
-                	bodyString += ('<td>'+bookingPerDay+'</td>');
-                }
-                bodyString += ('</tr>');
+            var totalBooking = API.get_totalBookingByUserID();            
+       
+            try{
+            	console.log('Res:' + totalBooking)
+            } catch(e){
+	            console.log(e);
+	            console.log('--------------------------');
+            }
+            
+//             var bookInd;
+//             var dayInd;
+//             var hourInd;
+            
+//             for(bookInd = 0;  bookInd < totalBooking.length; bookInd++){
+//                 for(dayInd = 0;  dayInd < days.length; dayInd++){
+//                     for(hourInd = 0;  hourInd < hours.length; hourInd++){
+//                     	var book = totalBooking[bookInd];
+//                     	var day = days[dayInd];
+//                     	var hour = hours[hourInd];
+//                     	if(bookCheckTable(book,day,hour)){
+//                     		totalBooking[hourInd][dayInd] += book.teaching
+//                     		continue;
+//                     	}
+                    	
+//                     }
+//                 }
+//             }            
+            
+            var tableString = '';
+            tableString += ('<thead>');
+            $.each(days, function(indexDay, day) {
+            	tableString += ('<th>'+day+'</th>')
             });
-            $('.table table-bordered').html(bodyString);
+            tableString +=('</thead>');
+            tableString += ('<tbody>');
+            $.each(hours, function(indexHour, hour) {
+            	tableString += ('<tr><th>'+hour+'</th>');
+                $.each(totalBooking[indexHour], function(indexDayBooking, bookingPerDay){ //totalBooking = [[pren.leundi],[pren.mart],[pren.merc],...]
+                	tableString += ('<td>'+bookingPerDay+'</td>');
+                });
+                tableString += ('</tr>');
+            });
+            tableString += ('</tbody>');
+            $("#first").html(tableString);
+            $("#second").html(tableString);
         });
     </script>
 
