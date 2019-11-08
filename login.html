@@ -44,6 +44,8 @@
 
     <script>
             const API = (() => {
+            	
+            var uri_userLogin = "http://localhost:8080/users/login";
             const makeSaveFunc = (selectorEmail,selectorPass, postNameFunc) => () => {
                 try {
                 const val1 = document.querySelector(selectorEmail).value;
@@ -77,7 +79,7 @@
             };
 
             //MODIFICARE PER AWS
-            const logUserFunc = makePostNameFunc("http://localhost:8080/users/login");
+            const logUserFunc = makePostNameFunc(uri_userLogin );
             
             return {
                 logUser: makeSaveFunc("#email","#psw", logUserFunc)
