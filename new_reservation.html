@@ -3,412 +3,385 @@
 
 <head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Nuova prenotazioni</title>
+<title>Nuova prenotazioni</title>
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="font-awesome/css/font-awesome.css" rel="stylesheet">
 
-    <link href="css/plugins/iCheck/custom.css" rel="stylesheet">
+<link href="css/plugins/iCheck/custom.css" rel="stylesheet">
 
-    <link href="css/plugins/chosen/bootstrap-chosen.css" rel="stylesheet">
+<link href="css/plugins/chosen/bootstrap-chosen.css" rel="stylesheet">
 
-    <link href="css/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet">
+<link href="css/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css"
+	rel="stylesheet">
 
-    <link href="css/plugins/colorpicker/bootstrap-colorpicker.min.css" rel="stylesheet">
+<link href="css/plugins/colorpicker/bootstrap-colorpicker.min.css"
+	rel="stylesheet">
 
-    <link href="css/plugins/cropper/cropper.min.css" rel="stylesheet">
+<link href="css/plugins/switchery/switchery.css" rel="stylesheet">
 
-    <link href="css/plugins/switchery/switchery.css" rel="stylesheet">
+<link href="css/plugins/jasny/jasny-bootstrap.min.css" rel="stylesheet">
 
-    <link href="css/plugins/jasny/jasny-bootstrap.min.css" rel="stylesheet">
+<link href="css/plugins/nouslider/jquery.nouislider.css"
+	rel="stylesheet">
 
-    <link href="css/plugins/nouslider/jquery.nouislider.css" rel="stylesheet">
+<link href="css/plugins/datapicker/datepicker3.css" rel="stylesheet">
 
-    <link href="css/plugins/datapicker/datepicker3.css" rel="stylesheet">
+<link href="css/plugins/ionRangeSlider/ion.rangeSlider.css"
+	rel="stylesheet">
+<link href="css/plugins/ionRangeSlider/ion.rangeSlider.skinFlat.css"
+	rel="stylesheet">
 
-    <link href="css/plugins/ionRangeSlider/ion.rangeSlider.css" rel="stylesheet">
-    <link href="css/plugins/ionRangeSlider/ion.rangeSlider.skinFlat.css" rel="stylesheet">
+<link
+	href="css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css"
+	rel="stylesheet">
 
-    <link href="css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
+<link href="css/plugins/clockpicker/clockpicker.css" rel="stylesheet">
 
-    <link href="css/plugins/clockpicker/clockpicker.css" rel="stylesheet">
+<link href="css/plugins/daterangepicker/daterangepicker-bs3.css"
+	rel="stylesheet">
 
-    <link href="css/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet">
+<link href="css/plugins/select2/select2.min.css" rel="stylesheet">
 
-    <link href="css/plugins/select2/select2.min.css" rel="stylesheet">
+<link href="css/plugins/dualListbox/bootstrap-duallistbox.min.css"
+	rel="stylesheet">
 
-    <link href="css/plugins/touchspin/jquery.bootstrap-touchspin.min.css" rel="stylesheet">
-
-    <link href="css/plugins/dualListbox/bootstrap-duallistbox.min.css" rel="stylesheet">
-
-    <link href="css/animate.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+<link href="css/animate.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
 
 
 </head>
 
 <body>
 
-    <div id="wrapper">
+	<div id="wrapper">
 
-        <nav class="navbar-default navbar-static-side" role="navigation">
-        <div class="sidebar-collapse">
-            <ul class="nav metismenu" id="side-menu">
-                <li class="nav-header">
-                    <div class="dropdown profile-element"> <span>
-                            <img alt="image" class="img-circle" src="img/cesati.jpg" />
-                             </span>
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">Cesati</strong>
-                             </span> <span class="text-muted text-xs block">Prof <b class="caret"></b></span> </span> </a>
-                        <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                            <li><a href="profile.html">Profile</a></li>
-                            <li><a href="mailbox.html">Notifiche</a></li>
-                            <li class="divider"></li>
-                            <li><a href="login.html">Logout</a></li>
-                        </ul>
-                    </div>
-                    <div class="logo-element">
-                        IN+
-                    </div>
-                </li>
-                <li>
-                    <a href="dashboard_2.html"><i class="fa fa-th-large"></i> <span class="nav-label">Home page</span></a>
-                </li>
-                <li>
-                    <a href="mailbox.html"><i class="fa fa-envelope"></i> <span class="nav-label">Mailbox </span><span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level collapse">
-                        <li><a href="mailbox.html">Inbox</a></li>
-                        <li><a href="mail_detail.html">Email view</a></li>
-                        <li><a href="mail_compose.html">Compose email</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="new_reservation.html"><i class="fa fa-edit"></i> <span class="nav-label">Nuova prenotazione</span></a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-table"></i> <span class="nav-label">Orari</span><span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level collapse">
-                        <li><a href="personal_hours.html">Orario personale</a></li>
-                        <li><a href="room_hours.html">Orario aula</a></li>
-                    </ul>
-                </li>
-            </ul>
+		<nav class="navbar-default navbar-static-side" role="navigation">
+			<div class="sidebar-collapse">
+				<ul class="nav metismenu" id="side-menu">
+					<li class="nav-header">
+						<div class="dropdown profile-element">
+							<span> <img alt="image" class="img-circle"
+								src="img/cesati.jpg" />
+							</span> <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+								<span class="clear"> <span class="block m-t-xs"> <strong
+										class="font-bold">Cesati</strong>
+								</span> <span class="text-muted text-xs block">Prof <b
+										class="caret"></b></span>
+							</span>
+							</a>
+							<ul class="dropdown-menu animated fadeInRight m-t-xs">
+								<li><a href="profile.html">Profile</a></li>
+								<li><a href="mailbox.html">Notifiche</a></li>
+								<li class="divider"></li>
+								<li><a href="login.html">Logout</a></li>
+							</ul>
+						</div>
+						<div class="logo-element">IN+</div>
+					</li>
+					<li><a href="dashboard_2.html"><i class="fa fa-th-large"></i>
+							<span class="nav-label">Home page</span></a></li>
+					<li><a href="mailbox.html"><i class="fa fa-envelope"></i>
+							<span class="nav-label">Mailbox </span><span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level collapse">
+							<li><a href="mailbox.html">Inbox</a></li>
+							<li><a href="mail_detail.html">Email view</a></li>
+							<li><a href="mail_compose.html">Compose email</a></li>
+						</ul></li>
+					<li><a href="new_reservation.html"><i class="fa fa-edit"></i>
+							<span class="nav-label">Nuova prenotazione</span></a></li>
+					<li><a href="#"><i class="fa fa-table"></i> <span
+							class="nav-label">Orari</span><span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level collapse">
+							<li><a href="personal_hours.html">Orario personale</a></li>
+							<li><a href="room_hours.html">Orario aula</a></li>
+						</ul></li>
+				</ul>
 
-        </div>
-    </nav>
-    
-    <div id="page-wrapper" class="gray-bg">
-        <div class="row border-bottom">
-        <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <ul class="nav navbar-top-links navbar-right">
+			</div>
+		</nav>
 
-                <li>
-					<a  href="mailbox.html">
-						<i class="fa fa-envelope"></i>Mailbox
-					</a>
-                </li>
-                
-                <li>
-                    <a href="login.html">
-                        <i class="fa fa-sign-out"></i> Log out
-                    </a>
-                </li>
-            </ul>
+		<div id="page-wrapper" class="gray-bg">
+			<div class="row border-bottom">
+				<nav class="navbar navbar-static-top" role="navigation"
+					style="margin-bottom: 0">
+					<ul class="nav navbar-top-links navbar-right">
 
-        </nav>
-        </div>
-            <div class="row wrapper border-bottom white-bg page-heading">
-                <div class="col-lg-10">
-                    <h2>Nuova prenotazione</h2>
-                    <ol class="breadcrumb">
-                        <li>
-                            <a href="index.html">Home</a>
-                        </li>
-                        <li class="active">
-                            <a href="new_reservation.html"></a><strong>Nuova prenotazione</strong></a>
-                        </li>
-                    </ol>
-                </div>
-                <div class="col-lg-2">
+						<li><a href="mailbox.html"> <i class="fa fa-envelope"></i>Mailbox
+						</a></li>
 
-                </div>
-            </div>
-        <div class="wrapper wrapper-content animated fadeInRight">
-          <div class="row">
-                <div class="col-lg-12">
+						<li><a href="login.html"> <i class="fa fa-sign-out"></i>
+								Log out
+						</a></li>
+					</ul>
 
-                    <div class="ibox">
-                        <div class="ibox-title">
-                            <h5>Edificio <small>Scegliere l'edificio</small></h5>
-                        </div>
-                        <div class="ibox-content">
+				</nav>
+			</div>
+			<div class="row wrapper border-bottom white-bg page-heading">
+				<div class="col-lg-10">
+					<h2>Nuova prenotazione</h2>
+					<ol class="breadcrumb">
+						<li><a href="index.html">Home</a></li>
+						<li class="active"><a href="new_reservation.html"><strong>Nuova
+									prenotazione</strong></a></li>
+					</ol>
+				</div>
+				<div class="col-lg-2"></div>
+			</div>
 
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <p>
-                                      Scegliere la facoltà:
-                                    </p>
-                                    <select class="select2_demo_1 form-control">
-                                        <option value="1">Ingegneria</option>
-                                        <option value="2">Meidicina</option>
-                                        <option value="3">Casa mia</option>
-                                        <option value="4">Option 4</option>
-                                        <option value="5">Option 5</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-4 mt-2">
-                                    <p>
-                                        Selezionare l'aula desiderata, all'interno dell'edificio scelto
-                                    </p>
-                                    <select class="select2_demo_2 form-control" multiple="multiple">
-                                        <option value="Mayotte">Mayotte</option>
-                                        <option value="Mexico">Mexico</option>
-                                        <option value="Micronesia, Federated States of">Micronesia, Federated States of</option>
-                                        <option value="Moldova, Republic of">Moldova, Republic of</option>
-                                        <option value="Monaco">Monaco</option>
-                                        <option value="Mongolia">Mongolia</option>
-                                        <option value="Montenegro">Montenegro</option>
-                                        <option value="Montserrat">Montserrat</option>
-                                        <option value="Morocco">Morocco</option>
-                                        <option value="Mozambique">Mozambique</option>
-                                        <option value="Myanmar">Myanmar</option>
-                                        <option value="Namibia">Namibia</option>
-                                        <option value="Nauru">Nauru</option>
-                                        <option value="Nepal">Nepal</option>
-                                        <option value="Netherlands">Netherlands</option>
-                                        <option value="New Caledonia">New Caledonia</option>
-                                        <option value="New Zealand">New Zealand</option>
-                                        <option value="Nicaragua">Nicaragua</option>
-                                    </select>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="ibox float-e-margins">
+						<div class="ibox-title">
+							<h5>
+								Form nuova prenotazione <small>Compilare tutti i campi.</small>
+							</h5>
+							<div class="ibox-tools">
+								<a class="close-link"> <i class="fa fa-times"></i>
+								</a>
+							</div>
+						</div>
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+						<div class="ibox-content">
+							<form method="get" class="form-horizontal" onsubmit="submitNewReservtion()">
+								<div class="form-group">
+									<div class="col-sm-10">
+										<p>Scegliere la facoltà:</p>
+										<select id="selectCollege" class="select2_demo_1 form-control">
+											<option value="1">Ingegneria</option>
+											<option value="2">Medicina</option>
+											<option value="3">Casa mia</option>
+										</select>
+									</div>
+								</div>
+								<div class="hr-line-dashed"></div>
+								<div class="form-group">
+									<div class="col-sm-10">
+										<p>Selezionare l'aula desiderata, all'interno
+											dell'edificio scelto</p>
+										<select id="selectRoom" class="select2_demo_2 form-control"
+											multiple="multiple">
+											<option value="A1">A1</option>
+											<option value="A2">A2</option>
+											<option value="A3">A3</option>
+											<option value="A4">A4</option>
+											<option value="A5">A5</option>
+											<option value="A6">A6</option>
+											<option value="A7">A7</option>
+											<option value="A8">A8</option>
+											<option value="A9">A9</option>
+											<option value="A10">A10</option>
+											<option value="A11">A11</option>
+											<option value="A12">A12</option>
+											<option value="A13">A13</option>
+											<option value="B1">B1</option>
+											<option value="B2">B2</option>
+											<option value="B3">B3</option>
+											<option value="B4">B4</option>
+											<option value="B5">B5</option>
+											<option value="B6">B6</option>
+											<option value="B7">B7</option>
+											<option value="B8">B8</option>
+											<option value="B9">B9</option>
+											<option value="B10">B10</option>
+											<option value="B11">B11</option>
+											<option value="B12">B12</option>
+											<option value="B13">B13</option>
+										</select>
+									</div>
+								</div>
+								<div class="hr-line-dashed"></div>
+								<div class="form-group">
+									<div class="col-sm-10">
+										<p>Scegliere la data</p>
+										<div class="input-group date" id="datetimepicker">
+											<span class="input-group-addon"><i
+												class="fa fa-calendar"></i></span><input type="text"
+												class="form-control" value="03/04/2014">
+										</div>
+									</div>
+								</div>
+								<div class="hr-line-dashed"></div>
+								<div class="form-group">
+									<div class="col-sm-10">
+										<p>
+											Orario <small>Seleziona l'orario della prenotazione</small>
+										</p>
+										<div class="input-group clockpicker" id="clockpickerStart"
+											data-autoclose="true">
+											<input type="text" class="form-control" value="09:30">
+											<span class="input-group-addon"> <span
+												class="fa fa-clock-o"></span>
+											</span>
+										</div>
+									</div>
+								</div>
+								<div class="hr-line-dashed"></div>
+								<div class="form-group">
+									<div class="col-sm-10">
+										<p>
+											Corso <small>Selezionare il corso della prenotazione</small>
+										</p>
+										<select id="selectCourse" class="select2_demo_2 form-control"
+											multiple="multiple">
+											<option value="sdcc">sdcc</option>
+											<option value="mobd">mobd</option>
+										</select>
+									</div>
+								</div>
+								<div class="hr-line-dashed"></div>
 
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-5">
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <h5>Scegliere la data <small>Selezionare il periodo di prenotazione</small></h5>
-                            <div class="ibox-tools">
-                                <a class="collapse-link">
-                                    <i class="fa fa-chevron-up"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="ibox-content">
-                            <div class="form-group" id="data_1">
-                                <div class="input-group date">
-                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="03/04/2014">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ibox">
-                        <div class="ibox-title">
-                            <h5>Orario <small>Seleziona l'orario della prenotazione</small></h5>
-                            <div class="ibox-tools">
-                                <a class="collapse-link">
-                                    <i class="fa fa-chevron-up"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="ibox-content">
-                            <div class="input-group clockpicker" data-autoclose="true">
-                                <input type="text" class="form-control" value="09:30" >
-                                <span class="input-group-addon">
-                                    <span class="fa fa-clock-o"></span>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
+								<div class="form-group">
+									<div class="col-sm-10">
+										<p>
+											Strumenti richiesti <small>Strumentazione richiesta</small>
+										</p>
+										<h3>Proiettore</h3>
+										<input type="checkbox" class="js-switch" checked />
 
-                </div>
-                <div class="col-lg-7">
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <h5>Selezionare il corso <small>Ovviamente tra quelli insegnati</small></h5>
-                            <div class="ibox-tools">
-                                <a class="collapse-link">
-                                    <i class="fa fa-chevron-up"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="ibox-content">
-                            <form class="form-horizontal m-t-md" action="#">
-                                <div class="form-group">
-                                    <label class="col-sm-2 col-sm-2 control-label">Corso</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" data-mask="999-99-999-9999-9" placeholder="">
-                                        <span class="help-block">999-99-999-9999-9</span>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+										<h3>Microfono</h3>
+										<input type="checkbox" class="js-switch_2" checked />
 
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <h5>Strumenti richiesti <small>Srtumentazione richiesta</small></h5>
-                            <div class="ibox-tools">
-                                <a class="collapse-link">
-                                    <i class="fa fa-chevron-up"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="ibox-content">
-                            <h3>
-                                Proiettore
-                            </h3>
-                            <input type="checkbox" class="js-switch" checked />
-                        </div>
-                        <div class="ibox-content">
-                            <h3>
-                                Microfono
-                            </h3>
-                            <input type="checkbox" class="js-switch_2" checked />
-                        </div>
-                        <div class="ibox-content">
-                            <h3>
-                                Piú  di 200 persone
-                            </h3>
-                            <input type="checkbox" class="js-switch_3" checked />
-                        </div>
-                    </div>
+										<h3>Piú di 200 persone</h3>
+										<input type="checkbox" class="js-switch_3" checked />
+									</div>
+								</div>
 
-                    </div>
-               </div>
+								<div class="hr-line-dashed"></div>
+								<div class="row">
+									<div class="form-group">
+										<div class="col-sm-4 col-sm-offset-2">
+											<button class="btn btn-white" type="submit">Cancel</button>
+											<button class="btn btn-primary" type="submit">Save
+												changes</button>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+
 		</div>
+	</div>
 
-        </div>
-     </div>
+	<!-- Mainly scripts -->
+	<script src="js/jquery-3.1.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 
-    <!-- Mainly scripts -->
-    <script src="js/jquery-3.1.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+	<!-- Custom and plugin javascript -->
+	<script src="js/inspinia.js"></script>
+	<script src="js/plugins/pace/pace.min.js"></script>
+	<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
-    <!-- Custom and plugin javascript -->
-    <script src="js/inspinia.js"></script>
-    <script src="js/plugins/pace/pace.min.js"></script>
-    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<!-- Chosen -->
+	<script src="js/plugins/chosen/chosen.jquery.js"></script>
 
-    <!-- Chosen -->
-    <script src="js/plugins/chosen/chosen.jquery.js"></script>
+	<!-- Input Mask-->
+	<script src="js/plugins/jasny/jasny-bootstrap.min.js"></script>
 
-   <!-- JSKnob -->
-   <script src="js/plugins/jsKnob/jquery.knob.js"></script>
+	<!-- Data picker -->
+	<script src="js/plugins/datapicker/bootstrap-datepicker.js"></script>
 
-   <!-- Input Mask-->
-    <script src="js/plugins/jasny/jasny-bootstrap.min.js"></script>
+	<!-- Switchery -->
+	<script src="js/plugins/switchery/switchery.js"></script>
 
-   <!-- Data picker -->
-   <script src="js/plugins/datapicker/bootstrap-datepicker.js"></script>
+	<!-- iCheck -->
+	<script src="js/plugins/iCheck/icheck.min.js"></script>
 
-   <!-- Switchery -->
-   <script src="js/plugins/switchery/switchery.js"></script>
+	<!-- MENU -->
+	<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
 
-    <!-- iCheck -->
-    <script src="js/plugins/iCheck/icheck.min.js"></script>
+	<!-- Color picker -->
+	<script src="js/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
 
-    <!-- MENU -->
-    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+	<!-- Clock picker -->
+	<script src="js/plugins/clockpicker/clockpicker.js"></script>
 
-    <!-- Color picker -->
-    <script src="js/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
+	<!-- Date range use moment.js same as full calendar plugin -->
+	<script src="js/plugins/fullcalendar/moment.min.js"></script>
 
-    <!-- Clock picker -->
-    <script src="js/plugins/clockpicker/clockpicker.js"></script>
+	<!-- Select2 -->
+	<script src="js/plugins/select2/select2.full.min.js"></script>
 
-    <!-- Image cropper -->
-    <script src="js/plugins/cropper/cropper.min.js"></script>
+	<!-- Tags Input -->
+	<script src="js/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
 
-    <!-- Date range use moment.js same as full calendar plugin -->
-    <script src="js/plugins/fullcalendar/moment.min.js"></script>
+	<!-- Dual Listbox -->
+	<script src="js/plugins/dualListbox/jquery.bootstrap-duallistbox.js"></script>
 
-    <!-- Select2 -->
-    <script src="js/plugins/select2/select2.full.min.js"></script>
+	<script>
+    const API = (() => {
+    	var uri_postNewBooking = "";        //MODIFICARE PER AWS
+    	
+        const postBooking = (id_student, postNameFunc) => () => {
+            try {
+	            const val1 = document.querySelector(id_student).value; //da vedere!
+	            console.log("form values: " + JSON.stringify(val1));
+	            postNameFunc(val1);
+	        } catch (e) {
+	            console.log(e);
+	            console.log('--------------------------');
+            }
+            return false;// window.location.pathname = '/dashboard_2.html';
+        };
 
-    <!-- TouchSpin -->
-    <script src="js/plugins/touchspin/jquery.bootstrap-touchspin.min.js"></script>
+        
+        const makePostNameFunc = uri => (val1) => {
+            console.log("makeGetBookingFunc; uri: " + JSON.stringify(uri));
+            fetch(uri, {
+                method: 'POST',
+                body: JSON.stringify({
+                    value: val1,
+                }),
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            }).then(function (response) {
+                console.log('RES: ' + JSON.stringify(response));
+            });
+        };
 
-    <!-- Tags Input -->
-    <script src="js/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
+        const post_newBookingFunc = makePostNameFunc(uri_postNewBooking);
+        
+        return {
+            post_newBooking: postBooking("#id", post_newBookingFunc)
+            }
+        })();
+    
+    </script>
 
-    <!-- Dual Listbox -->
-    <script src="js/plugins/dualListbox/jquery.bootstrap-duallistbox.js"></script>
+	<script>
+    function  submitNewReservtion() {
+    	
+    	var collegeSelector = document.getElementById("selectCollege");
+    	var roomSelector = document.getElementById("selectRoom");
+    	var courseSelector = document.getElementById("selectCourse");
+    	
+    	var date = $("#datetimepicker").datepicker('getDate');
+    	var clockTime = $("#clockpickerStart").clockpicker().find('input');
+    	var college = collegeSelector.options[collegeSelector.selectedIndex].text;
+    	var room = roomSelector.options[roomSelector.selectedIndex].text;
+    	var course = courseSelector.options[courseSelector.selectedIndex].text;
+    	
+		console.log("college :" +college+", room :"+room+",date :"+date+",course :"+course);
+		console.log("time :"+clockTime);
+//         window.location.pathname = '/dashboard_2.html';
+        alert("Form submitted Successfully"); 
+    }
+    </script>
 
-    <script>
+	<script>
         $(document).ready(function(){
 
             $('.tagsinput').tagsinput({
                 tagClass: 'label label-primary'
-            });
-
-            var $image = $(".image-crop > img")
-            $($image).cropper({
-                aspectRatio: 1.618,
-                preview: ".img-preview",
-                done: function(data) {
-                    // Output the result data for cropping image.
-                }
-            });
-
-            var $inputImage = $("#inputImage");
-            if (window.FileReader) {
-                $inputImage.change(function() {
-                    var fileReader = new FileReader(),
-                            files = this.files,
-                            file;
-
-                    if (!files.length) {
-                        return;
-                    }
-
-                    file = files[0];
-
-                    if (/^image\/\w+$/.test(file.type)) {
-                        fileReader.readAsDataURL(file);
-                        fileReader.onload = function () {
-                            $inputImage.val("");
-                            $image.cropper("reset", true).cropper("replace", this.result);
-                        };
-                    } else {
-                        showMessage("Please choose an image file.");
-                    }
-                });
-            } else {
-                $inputImage.addClass("hide");
-            }
-
-            $("#download").click(function() {
-                window.open($image.cropper("getDataURL"));
-            });
-
-            $("#zoomIn").click(function() {
-                $image.cropper("zoom", 0.1);
-            });
-
-            $("#zoomOut").click(function() {
-                $image.cropper("zoom", -0.1);
-            });
-
-            $("#rotateLeft").click(function() {
-                $image.cropper("rotate", 45);
-            });
-
-            $("#rotateRight").click(function() {
-                $image.cropper("rotate", -45);
-            });
-
-            $("#setDrag").click(function() {
-                $image.cropper("setDragMode", "crop");
             });
 
             $('#data_1 .input-group.date').datepicker({
@@ -478,34 +451,13 @@
                 allowClear: true
             });
 
-
-            $(".touchspin1").TouchSpin({
-                buttondown_class: 'btn btn-white',
-                buttonup_class: 'btn btn-white'
-            });
-
-            $(".touchspin2").TouchSpin({
-                min: 0,
-                max: 100,
-                step: 0.1,
-                decimals: 2,
-                boostat: 5,
-                maxboostedstep: 10,
-                postfix: '%',
-                buttondown_class: 'btn btn-white',
-                buttonup_class: 'btn btn-white'
-            });
-
-            $(".touchspin3").TouchSpin({
-                verticalbuttons: true,
-                buttondown_class: 'btn btn-white',
-                buttonup_class: 'btn btn-white'
-            });
-
             $('.dual_select').bootstrapDualListbox({
                 selectorMinimalHeight: 160
             });
-
+            
+            //query inoltro prenotazione
+            
+            
 
         });
 
