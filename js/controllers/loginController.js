@@ -37,7 +37,7 @@ function postNameFunc(val1,val2){
                     console.log('token is: ' + sessionStorage.getItem(name));
 
 
-                    window.location='/dashboard_2.html?email='+text;
+                    window.location='/dashboard_2.html?email='+name;
 
                 });
                 console.log('not 200');
