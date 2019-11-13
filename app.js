@@ -7,6 +7,13 @@ var router = express.Router();
 var mime = require('mime');
 var path = require('path');
 var cors = require('cors');
+var jwt = require('jsonwebtoken');
+var JWTHelper = require('jwthelper');
+var helper = JWTHelper.createJWTHelper();
+var jwtDecode = require('jwt-decode');
+var session = require('express-session');
+
+
 app.use(cors());
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -21,6 +28,9 @@ app.use(express.static(__dirname + '/fonts'));
 app.use(express.static(__dirname + '/js'));
 app.use(express.static(__dirname + '/css'));
 app.use(express.static(__dirname + '/img'));
+
+
+
 
 /*function css(response) {
     var cssFile = fs.readFileSync("./public/css/style.css", {encoding: "utf8"});
@@ -47,12 +57,37 @@ function css(request, response) {
 }
 */
 
+
+
+function expiredToken(session){
+
+    console.log('called expired token');
+    /*console.log('localstorage is: ' + JSON.stringify(localStorage));
+    var accessToken = localStorage.getItem('accessToken');
+    console.log('access token is: ' + JSON.stringify(accessToken));*/
+    //var helper = new JwtHelperService();
+    console.log('trying decode token');
+    var decodedToken = jwtDecode(session.token);
+    console.log('decodedToken is: ' + JSON.stringify(decodedToken));
+    var expirationDate = helper.getTokenExpirationDate(accessToken);
+    var isExpired = helper.isTokenExpired(accessToken);
+    if(helper.isTokenExpired(accessToken)){
+        console.log('Login session expired');
+    }
+    else {
+        console.log('not expired');
+    }
+}
+
+
 router.get('/login.html',function(req,res){
     console.log('dirname is: ' + __dirname);
     res.sendFile(path.join(__dirname + '/login.html'));
 });
 
 router.get('/mailbox.html',function(req,res){
+    console.log('request is: ' + JSON.stringify(req.body));
+    //expiredToken(req.session);
     res.sendFile(path.join(__dirname + '/mailbox.html'));
 });
 
@@ -77,6 +112,7 @@ router.get('/personal_hours.html',function(req,res){
 });
 
 router.get('/new_reservation.html',function(req,res){
+    console.log('this is a new reservation!');
     res.sendFile(path.join(__dirname + '/new_reservation.html'));
 });
 
@@ -91,7 +127,7 @@ router.get('/mail_compose.html',function(req,res){
 
 app.get('/dashboard_2.html',function(req,res){
     console.log('called dashboard');
-    console.log('full url: ' + req.url + '/dashboard_2.html');
+    //console.log('full url: ' + req.url + '/dashboard_2.html');
     //res.sendFile(path.join(__dirname + '/dashboard_2.html'));
 
     res.sendFile(__dirname + '/dashboard_2.html', function(err) {
