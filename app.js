@@ -56,6 +56,9 @@ router.get('/mailbox.html',function(req,res){
     res.sendFile(path.join(__dirname + '/mailbox.html'));
 });
 
+router.get('/trashbox.html',function(req,res){
+    res.sendFile(path.join(__dirname + '/trashbox.html'));
+});
 
 router.get('/room_hours.html',function(req,res){
     res.sendFile(path.join(__dirname + '/room_hours.html'));
