@@ -75,17 +75,40 @@
                 }).then(function (response) {
                     console.log("getting response:  " +JSON.stringify(response));
                     console.log('RES status: ' + JSON.stringify(response.status));
+                    console.log('status:' + response.status);
+                    //var start = new Date().getTime();
+                    //while (new Date().getTime() < start + 3000);
+
+
+                   /* var string = JSON.stringify(response.name);
+                    var objectValue = JSON.parse(string);
+                    console.log('name is: ' + objectValue['name']);*/
+
+
                     if(response.status === 200){
 
                         response.text().then(function (text) {
                             console.log('text is: ' + text);
+                            console.log(typeof text);
+                            var nweText = text;
+                            var name = JSON.parse(nweText).name;
+                            var jwtToken = JSON.parse(nweText).token;
+
+                            /****************setting authinfo************/
+                            sessionStorage.setItem('logged',name);
+                            sessionStorage.setItem(name,jwtToken);
+                            /********************************************/
+
+                            console.log('token is: ' + sessionStorage.getItem(name));
+
 
                             window.location='/dashboard_2.html?email='+text;
 
                         });
+                        console.log('not 200');
                         window.location='/login.html';
 
-                    }
+                    }console.log('not 200');
                 });
             };
 
