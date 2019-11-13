@@ -327,6 +327,7 @@
 	            console.log(e);
 	            console.log('--------------------------');
             }
+
             return false;// window.location.pathname = '/dashboard_2.html';
         };
 
@@ -363,7 +364,12 @@
     	var collegeSelector = document.getElementById("selectCollege");
     	var roomSelector = document.getElementById("selectRoom");
     	var courseSelector = document.getElementById("selectCourse");
-    	
+
+    	var username = sessionStorage.getItem('logged');
+    	var accessToken = sessionStorage.getItem(username);
+    	console.log('username is: ' + username);
+    	console.log('user token is: ' + JSON.stringify(accessToken));
+
     	var date = $("#datetimepicker").datepicker('getDate');
     	var clockTime = $("#clockpickerStart").clockpicker().find('input');
     	var college = collegeSelector.options[collegeSelector.selectedIndex].text;
@@ -373,6 +379,13 @@
 		console.log("college :" +college+", room :"+room+",date :"+date+",course :"+course);
 		console.log("time :"+clockTime);
 //         window.location.pathname = '/dashboard_2.html';
+		jwt.verify(accessToken, function(err, decoded) {
+			if (err) {
+				console.log('got error: ' + JSON.stringify(err));
+			}
+		});
+		var start = new Date().getTime();
+		while (new Date().getTime() < start + 3000);
         alert("Form submitted Successfully"); 
     }
     </script>

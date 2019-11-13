@@ -28,13 +28,7 @@ app.use(express.static(__dirname + '/fonts'));
 app.use(express.static(__dirname + '/js'));
 app.use(express.static(__dirname + '/css'));
 app.use(express.static(__dirname + '/img'));
-app.use(session({secret: 'sdcc'}));
 
-
-if (typeof localStorage === "undefined" || localStorage === null) {
-    var LocalStorage = require('node-localstorage').LocalStorage;
-    localStorage = new LocalStorage('./scratch');
-}
 
 
 
@@ -63,6 +57,8 @@ function css(request, response) {
 }
 */
 
+
+
 function expiredToken(session){
 
     console.log('called expired token');
@@ -90,8 +86,8 @@ router.get('/login.html',function(req,res){
 });
 
 router.get('/mailbox.html',function(req,res){
-    console.log('mailbox.html');
-    expiredToken(req.session);
+    console.log('request is: ' + JSON.stringify(req.body));
+    //expiredToken(req.session);
     res.sendFile(path.join(__dirname + '/mailbox.html'));
 });
 
@@ -113,6 +109,7 @@ router.get('/personal_hours.html',function(req,res){
 });
 
 router.get('/new_reservation.html',function(req,res){
+    console.log('this is a new reservation!');
     res.sendFile(path.join(__dirname + '/new_reservation.html'));
 });
 
@@ -127,7 +124,7 @@ router.get('/mail_compose.html',function(req,res){
 
 app.get('/dashboard_2.html',function(req,res){
     console.log('called dashboard');
-    console.log('full url: ' + req.url + '/dashboard_2.html');
+    //console.log('full url: ' + req.url + '/dashboard_2.html');
     //res.sendFile(path.join(__dirname + '/dashboard_2.html'));
 
     res.sendFile(__dirname + '/dashboard_2.html', function(err) {
