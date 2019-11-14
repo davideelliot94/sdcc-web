@@ -1,8 +1,13 @@
 console.log('trying prova');
 //prova();
+
 var uri_userLogin = "http://localhost:8080/users/login";
+
 function postNameFunc(val1,val2){
-        console.log('inside postNameFunc; uri is:' + uri_userLogin);
+
+
+
+    console.log('inside postNameFunc; uri is:' + uri_userLogin);
         //console.log("makePostNameFunc; uri: " + JSON.stringify(uri));
         fetch(uri_userLogin, {
             method: 'POST',
@@ -33,6 +38,7 @@ function postNameFunc(val1,val2){
                     sessionStorage.setItem('logged',name);
                     sessionStorage.setItem(name,jwtToken);
                     /********************************************/
+
 
                     console.log('token is: ' + sessionStorage.getItem(name));
 

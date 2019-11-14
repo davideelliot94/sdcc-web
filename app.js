@@ -12,7 +12,10 @@ var JWTHelper = require('jwthelper');
 var helper = JWTHelper.createJWTHelper();
 var jwtDecode = require('jwt-decode');
 var session = require('express-session');
-
+var jwt   = require('jsonwebtoken');
+//var cheerio     = require('cheerio');
+var interceptor = require('express-interceptor');
+var jwtToken;
 
 app.use(cors());
 app.use(function(req, res, next) {
@@ -31,11 +34,23 @@ app.use(express.static(__dirname + '/img'));
 
 
 
+app.use(function (req, res, next) {
+    // do something with the request
+    var jwtToken;
+    console.log('testing');
+    var nweText = req.body;
+    console.log('body is: ' + JSON.stringify(nweText));
 
-/*function css(response) {
-    var cssFile = fs.readFileSync("./public/css/style.css", {encoding: "utf8"});
-    response.write(cssFile);
-}*/
+    if(nweText !== null && nweText !== undefined) {
+        jwtToken = JSON.parse(nweText).token;
+        console.log('token is: ' + JSON.stringify(jwtToken));
+    }
+
+    //console.log('nwe is: ' + nwe);
+    next(); // MUST call this or the routes will not be hit
+});
+
+
 
 
 
@@ -45,17 +60,6 @@ app.use(express.static(__dirname + '/img'));
   router.user(request, response);
 });*/
 
-
-//var router = require('./router.js');
-/*
-function css(request, response) {
-    if (request.url === '/styles.css') {
-        response.writeHead(200, {'Content-type' : 'text/css'});
-        var fileContents = fs.readFileSync('./public/css/styles.css', {encoding: 'utf8'});
-        response.write(fileContents);
-    }
-}
-*/
 
 
 
@@ -80,14 +84,39 @@ function expiredToken(session){
 }
 
 
+var finalParagraphInterceptor = interceptor(function(req, res){
+    return {
+        // Only HTML responses will be intercepted
+        isInterceptable: function(){
+            return /text\/html/.test(res.get('Content-Type'));
+        },
+        // Appends a paragraph at the end of the response body
+        intercept: function(body, send) {
+            var $document = cheerio.load(body);
+            $document('body').append('<p>From interceptor!</p>');
+
+            send($document.html());
+        }
+    };
+})
+
+
+
+
+
+
 router.get('/login.html',function(req,res){
     console.log('dirname is: ' + __dirname);
+    //nwe = 'aaaa';
     res.sendFile(path.join(__dirname + '/login.html'));
 });
 
+
 router.get('/mailbox.html',function(req,res){
-    console.log('request is: ' + JSON.stringify(req.body));
-    //expiredToken(req.session);
+    //console.log('request is: ' + JSON.stringify(req.headers));
+    //var res = jwt.decode(jwtToken,{complete:true});
+    //console.log('res is: ' + JSON.stringify(res));
+
     res.sendFile(path.join(__dirname + '/mailbox.html'));
 });
 
