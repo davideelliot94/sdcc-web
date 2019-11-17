@@ -122,9 +122,9 @@
                                     CesatiCesatiCesatiCesatiCesatiCesatiCesatiCesatiCesati.
                                 </small>
                             </div>
-                            <h2>Nome</h2>
-                            <h2>Cognome</h2>
-                            <h2>email</h2>
+                            <h2 id="name">Name:</h2>
+                            <h2 id="surname">Surname:</h2>
+                            <h2 id="email">Email:</h2>
                         </div>
                     </div>
                 </div>
@@ -153,6 +153,15 @@
     <script>
         function profileUser(){
             loadUser(sessionStorage.getItem('logged'));
+            //var myArray = getArray();
+            document.getElementById("name").innerHTML = getName();
+            document.getElementById("email").innerHTML = getEmail();
+            document.getElementById("surname").innerHTML = getSurname();
+
+
+
+            //document.getElementById("surname").value = myArray[1];
+            //document.getElementById("email").value = myArray[2];
         }
 
     </script>
