@@ -313,6 +313,10 @@
 <!-- Dual Listbox -->
 <script src="js/plugins/dualListbox/jquery.bootstrap-duallistbox.js"></script>
 
+<script type="text/javascript" src="/controllers/reservationController.js"></script>
+
+
+
 <script>
 	const API = (() => {
 		var uri_postNewBooking = "";        //MODIFICARE PER AWS
@@ -372,6 +376,10 @@
 		console.log("college :" +college+", room :"+room+",date :"+date+",course :"+course);
 		console.log("time :"+clockTime);
 //         window.location.pathname = '/dashboard_2.html';
+
+		var name = sessionStorage.getItem('logged');
+		var jwtToken = sessionStorage.getItem(name);
+		submitReservation(jwtToken,date,clockTime,college,room,course);
 
 		alert("Form submitted Successfully");
 	}

@@ -66,10 +66,7 @@ app.use(function (req, res, next) {
 function expiredToken(session){
 
     console.log('called expired token');
-    /*console.log('localstorage is: ' + JSON.stringify(localStorage));
-    var accessToken = localStorage.getItem('accessToken');
-    console.log('access token is: ' + JSON.stringify(accessToken));*/
-    //var helper = new JwtHelperService();
+
     console.log('trying decode token');
     var decodedToken = jwtDecode(session.token);
     console.log('decodedToken is: ' + JSON.stringify(decodedToken));

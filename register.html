@@ -22,15 +22,21 @@
     <div>
         <h3>Registrati al servizio</h3>
         <p>Inserire tutti i dati richiesti.</p>
-        <form onsubmit="return API.saveUser()" class="m-t" role="form" action="login.html">
-            <div class="form-group">
-                <input id="username" type="text" class="form-control" placeholder="Username" required="">
-            </div>
+        <form onsubmit="return saveUser()" class="m-t" role="form" action="login.html">
             <div class="form-group">
                 <input id="email" type="email" class="form-control" placeholder="Email" required="">
             </div>
             <div class="form-group">
                 <input id="psw" type="password" class="form-control" placeholder="Password" required="">
+            </div>
+            <div class="form-group">
+                <input id="username" type="text" class="form-control" placeholder="Username" required="">
+            </div>
+            <div class="form-group">
+                <input id="name" type="text" class="form-control" placeholder="Name" required="">
+            </div>
+            <div class="form-group">
+                <input id="surname" type="text" class="form-control" placeholder="Surname" required="">
             </div>
             <button type="submit" class="btn btn-primary block full-width m-b">Completa la registrazione</button>
 
@@ -45,6 +51,8 @@
 <script src="js/bootstrap.min.js"></script>
 <!-- iCheck -->
 <script src="js/plugins/iCheck/icheck.min.js"></script>
+<script type="text/javascript" src="/controllers/registrationController.js"></script>
+
 <script>
     $(document).ready(function(){
         $('.i-checks').iCheck({
@@ -55,52 +63,22 @@
 </script>
 
 <script>
-    const API = (() => {
-        console.log('scripting');
-    const makeSaveFunc = (selectorUser,selectorEmail,selectorPsw, postNameFunc) => () => {
+    function saveUser() {
         console.log('makeSaveFunc');
         try {
             //console.log('selector is: ' + JSON.stringify(selector));
-            var userVal = document.querySelector(selectorUser).value;
-            var emailVal = document.querySelector(selectorEmail).value;
-            var pswVal = document.querySelector(selectorPsw).value;
-            //console.log('val is: ' + JSON.stringify(val));
-            postNameFunc(userVal,emailVal,pswVal); //comme nto
+            var userVal = document.getElementById('username').value;
+            var emailVal = document.getElementById('email').value;
+            var pswVal = document.getElementById('psw').value;
+            var nameVal = document.getElementById('name').value;
+            var surnameVal = document.getElementById('surname').value;
+
+            signUpUser(userVal,emailVal,pswVal,nameVal,surnameVal); //comme nto
         } catch (e) {
             console.log(e);
             console.log('--------------------------');
         }
     };
-
-    const makePostNameFunc = uri => (userVal,emailVal,pswVal) => {
-        console.log("makePostNameFunc; uri: " + JSON.stringify(uri));
-        console.log("params: " + JSON.stringify(userVal)+ "  " + JSON.stringify(emailVal) + "   " + JSON.stringify(pswVal));
-        fetch(uri, {
-            method: 'POST',
-            body: JSON.stringify({
-                name: userVal,
-                email: emailVal,
-                psw: pswVal}),
-            headers: {
-                'Access-Control-Allow-Origin': '*',
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        }).then(function (response) {
-            console.log('RES: ' + JSON.stringify(response));
-        });
-    };
-
-
-    //MODIFICARE PER AWS
-    const postUser = makePostNameFunc("http://localhost:8080/users/registration");
-
-    return {
-        saveUser: makeSaveFunc("#username","#email","#psw", postUser)
-        //saveBook: makeSaveFunc("#bookname", postBookName),
-        //search
-    }
-    })();
 </script>
 
 
