@@ -234,8 +234,8 @@
 				<script>
         $(document).ready(function() {
         	var registredUser = getNumberUsers();
-        	var totalTeacher = 1;
-        	var totalStudent = 2;
+        	var totalTeacher = getTotalTeachers();
+        	var totalStudent = registredUser-totalTeacher;
         	var activeUser = 3;
 
         	$("#regUserVal").html(registredUser);
