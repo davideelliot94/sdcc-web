@@ -131,6 +131,27 @@
             </div>
         </div>
 
+            <form method="post" class="form-horizontal" onsubmit="return submitNewData();">
+                <div class="form-group">
+                    <input id="newpsw" type="password" class="form-control" placeholder="Newpassword" required="">
+                </div>
+                <div class="form-group">
+                    <input id="newname" type="text" class="form-control" placeholder="Newname" required="">
+                </div>
+                <div class="form-group">
+                    <input id="newsurname" type="text" class="form-control" placeholder="Newsurname" required="">
+                </div>
+
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-sm-4 col-sm-offset-2">
+                        <button class="btn btn-white" type="submit">Cancel</button>
+                        <button class="btn btn-primary" type="submit">Save
+                            changes</button>
+                    </div>
+                </div>
+            </div>
+            </form>
         </div>
         </div>
 
@@ -154,10 +175,30 @@
         function profileUser(){
             loadUser(sessionStorage.getItem('logged'));
             //var myArray = getArray();
-            document.getElementById("name").innerHTML = getName();
             document.getElementById("email").innerHTML = getEmail();
+            document.getElementById("name").innerHTML = getName();
             document.getElementById("surname").innerHTML = getSurname();
 
+        }
+
+    </script>
+
+    <script>
+        function submitNewData(){
+
+            var email = sessionStorage.getItem('logged');
+            var newPsw = document.getElementById('newpsw').value;
+
+            var newName = document.getElementById('newname').value;
+            if(newName === null || newName === undefined)
+                newName = document.getElementById("name").value;
+
+            var newSurname = document.getElementById('newsurname').value;
+            if(newSurname === null || newSurname === undefined)
+                newSurname = document.getElementById("surname").value;
+
+
+            submitData(email,newPsw,newName,newSurname);
 
 
             //document.getElementById("surname").value = myArray[1];

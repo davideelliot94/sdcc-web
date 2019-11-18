@@ -228,9 +228,12 @@
 				<!-- Sparkline demo data  -->
 				<script src="js/demo/sparkline-demo.js"></script>
 
+				<script type="text/javascript" src="/controllers/dashboardController.js"></script>
+
+
 				<script>
         $(document).ready(function() {
-        	var registredUser = 10;
+        	var registredUser = getNumberUsers();
         	var totalTeacher = 1;
         	var totalStudent = 2;
         	var activeUser = 3;

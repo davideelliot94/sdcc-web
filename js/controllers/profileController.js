@@ -65,3 +65,29 @@ function getUsername(){
 function getEmail(){
     return this.email;
 }
+
+function submitData(email,newpsw,newname,newsurname){
+
+    console.log('submitting');
+    var uri = "http://localhost:8080/users/profile/save";
+
+
+    fetch(uri, {
+        method: 'POST',
+        body: JSON.stringify({
+            email: email,
+            psw: newpsw,
+            name: newname,
+            surname: newsurname}),
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    }).then(function (response) {
+        if(response.status == 200) {
+            console.log('RES: ' + JSON.stringify(response));
+            window.location = '/dashboard_2.html?email=' + email;
+        }
+    });
+}

@@ -39,7 +39,6 @@ app.use(function (req, res, next) {
     var jwtToken;
     console.log('testing');
     var nweText = req.body;
-    console.log('body is: ' + JSON.stringify(nweText));
 
     if(nweText !== null && nweText !== undefined) {
         jwtToken = JSON.parse(nweText).token;
