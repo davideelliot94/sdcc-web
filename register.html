@@ -38,6 +38,9 @@
             <div class="form-group">
                 <input id="surname" type="text" class="form-control" placeholder="Surname" required="">
             </div>
+            <div><input id="teacher" type="checkbox" name="Teacher"> Register as teacher<br>
+            </div>
+
             <button type="submit" class="btn btn-primary block full-width m-b">Completa la registrazione</button>
 
             <p class="text-muted text-center"><small>Sei già in possesso di un account?</small></p>
@@ -73,7 +76,15 @@
             var nameVal = document.getElementById('name').value;
             var surnameVal = document.getElementById('surname').value;
 
-            signUpUser(userVal,emailVal,pswVal,nameVal,surnameVal); //comme nto
+            var role;
+            var checkbox= document.getElementById("teacher");
+            if (checkbox.checked == true){
+                role = 0;                   //role 0: teacher
+            } else {
+               role = 1;                    //role 1: student
+            }
+
+            signUpUser(userVal,emailVal,pswVal,nameVal,surnameVal,role); //comme nto
         } catch (e) {
             console.log(e);
             console.log('--------------------------');

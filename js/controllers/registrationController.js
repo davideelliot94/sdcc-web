@@ -1,4 +1,4 @@
-function signUpUser(userVal,emailVal,pswVal,nameVal,surnameVal) {
+function signUpUser(userVal,emailVal,pswVal,nameVal,surnameVal,roleVal) {
 
     console.log('called sign up user');
 
@@ -7,7 +7,7 @@ function signUpUser(userVal,emailVal,pswVal,nameVal,surnameVal) {
 
     //console.log("makePostNameFunc; uri: " + JSON.stringify(uri));
     console.log("params: " + JSON.stringify(userVal)+ "  " + JSON.stringify(emailVal) + "   " + JSON.stringify(pswVal)+
-        "   " + JSON.stringify(nameVal) + "   " + JSON.stringify(surnameVal));
+        "   " + JSON.stringify(nameVal) + "   " + JSON.stringify(surnameVal)+ "   " + JSON.stringify(roleVal));
     fetch(uri, {
         method: 'POST',
         body: JSON.stringify({
@@ -15,7 +15,8 @@ function signUpUser(userVal,emailVal,pswVal,nameVal,surnameVal) {
             email: emailVal,
             psw: pswVal,
             name: nameVal,
-            surname: surnameVal}),
+            surname: surnameVal,
+            role: roleVal}),
         headers: {
             'Access-Control-Allow-Origin': '*',
             'Accept': 'application/json',
