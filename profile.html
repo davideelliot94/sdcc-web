@@ -152,6 +152,9 @@
                 </div>
             </div>
             </form>
+            <form method="post" class="form-horizontal" onsubmit="return deleteAccount();">
+                <button class="btn btn-white" type="submit">Delete account</button>
+            </form>
         </div>
         </div>
 
@@ -206,6 +209,15 @@
         }
 
     </script>
+
+
+    <script>
+        function deleteAccount(){
+            return deleteUserAccount(sessionStorage.getItem('logged'));
+        }
+
+    </script>
+
 
     <script>
         $(document).ready(function() {

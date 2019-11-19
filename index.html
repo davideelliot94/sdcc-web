@@ -15,7 +15,7 @@
 
 </head>
 
-<body>
+<body onload="checkLogged()">
     <div id="wrapper">
     <nav class="navbar-default navbar-static-side" role="navigation">
         <div class="sidebar-collapse">
@@ -101,7 +101,19 @@
     <!-- Sparkline demo data  -->
     <script src="js/demo/sparkline-demo.js"></script>
 
-    <script>
+    <script type="text/javascript" src="/controllers/indexController.js"></script>
+
+
+        <script>
+            function checkLogged(){
+                checkUserLogged(sessionStorage.getItem('logged'));
+
+            }
+
+        </script>
+
+
+        <script>
         $(document).ready(function() {
             $('.chart').easyPieChart({
                 barColor: '#f8ac59',

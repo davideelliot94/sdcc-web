@@ -91,3 +91,26 @@ function submitData(email,newpsw,newname,newsurname){
         }
     });
 }
+
+
+function deleteUserAccount(email){
+    var uri = "http://localhost:8080/users/delete";
+
+    fetch(uri, {
+        method: 'POST',
+        body: JSON.stringify({
+            email: email
+        }),
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    }).then(function (response) {
+        if(response.status == 200) {
+            console.log('RES: ' + JSON.stringify(response));
+            window.location = '/login.html';
+        }
+    });
+
+}
