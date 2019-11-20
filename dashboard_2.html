@@ -33,7 +33,7 @@
 
 </head>
 
-<body><!--onload="checkPermissions();"-->
+<body onload="checkPermissions();">
 	<div id="wrapper">
 		<nav class="navbar-default navbar-static-side" role="navigation">
 			<div class="sidebar-collapse">
@@ -240,7 +240,7 @@
 						console.log('role is: ' + role);
 
 						if(role == 0){
-							document.getElementById("booking").display = "none"
+							document.getElementById("booking").style.display = "none";
 
 						}
 					}
@@ -266,15 +266,6 @@
         	var totalTeacher = getTotalTeachers();
         	var totalStudent = registredUser-totalTeacher;
         	var activeUser = 3;
-
-			var role = sessionStorage.getItem('role');
-			console.log('role is: ' + role);
-
-			if(role == 0){
-				document.getElementById("booking").display = "none"
-
-			}
-
 
         	$("#regUserVal").html(registredUser);
         	$("#totTeacherVal").html(totalTeacher);
