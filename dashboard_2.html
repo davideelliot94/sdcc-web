@@ -33,7 +33,7 @@
 
 </head>
 
-<body>
+<body><!--onload="checkPermissions();"-->
 	<div id="wrapper">
 		<nav class="navbar-default navbar-static-side" role="navigation">
 			<div class="sidebar-collapse">
@@ -55,7 +55,9 @@
 								<li><a href="profile.html">Profile</a></li>
 								<li><a href="mailbox.html">Notifiche</a></li>
 								<li class="divider"></li>
-								<li><a href="login.html">Logout</a></li>
+								<form id="logout" class="form-horizontal" onsubmit="doLogout()">
+									<li><button type="submit">Logout</button></li>
+								</form>
 							</ul>
 						</div>
 						<div class="logo-element">IN+</div>
@@ -69,7 +71,7 @@
 							<li><a href="mail_detail.html">Email view</a></li>
 							<li><a href="mail_compose.html">Compose email</a></li>
 						</ul></li>
-					<li><a href="new_reservation.html"><i class="fa fa-edit"></i>
+					<li id="booking"><a href="new_reservation.html"><i class="fa fa-edit"></i>
 							<span class="nav-label">Nuova prenotazione</span></a></li>
 					<li><a href="#"><i class="fa fa-table"></i> <span
 							class="nav-label">Orari</span><span class="fa arrow"></span></a>
@@ -232,11 +234,47 @@
 
 
 				<script>
+					function checkPermissions(){
+						console.log('called check permissions');
+						var role = sessionStorage.getItem('role');
+						console.log('role is: ' + role);
+
+						if(role == 0){
+							document.getElementById("booking").display = "none"
+
+						}
+					}
+				</script>
+
+				<script>
+					function doLogout(){
+						console.log('doing logout');
+						sessionStorage.removeItem('logged');
+						sessionStorage.removeItem('email');
+						sessionStorage.removeItem('name');
+						sessionStorage.removeItem('surname');
+						sessionStorage.removeItem('role');
+						window.location='/login.html';
+
+					}
+				</script>
+
+
+				<script>
         $(document).ready(function() {
         	var registredUser = getNumberUsers();
         	var totalTeacher = getTotalTeachers();
         	var totalStudent = registredUser-totalTeacher;
         	var activeUser = 3;
+
+			var role = sessionStorage.getItem('role');
+			console.log('role is: ' + role);
+
+			if(role == 0){
+				document.getElementById("booking").display = "none"
+
+			}
+
 
         	$("#regUserVal").html(registredUser);
         	$("#totTeacherVal").html(totalTeacher);

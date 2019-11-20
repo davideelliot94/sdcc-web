@@ -23,7 +23,7 @@
         <div>
             <h3>Benvenuto</h3>
             <p>Inserire i propri dati per accedere al servizio.</p>
-            <form class="m-t" onsubmit="return makeSaveFunc()" role="form">
+            <form class="m-t" role="form" onsubmit="return makeSaveFunc()">
                 <div class="form-group">
                     <input id="email" type="email" class="form-control" placeholder="Username" required="">
                 </div>
@@ -42,7 +42,9 @@
     <!-- Mainly scripts -->
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/controllers/loginController.js"></script>
+    <!--<script type="text/javascript" src="/controllers/loginController.js"></script>-->
+    <script type="text/javascript" src="/controllers/logiController.js"></script>
+
 
 
     <script>
@@ -50,21 +52,17 @@
          function makeSaveFunc() {
 
              let result;
-             console.log('called');
+             console.log('called login makesavefunc');
              var uri_userLogin = "http://localhost:8080/users/login";
              var val1 = document.getElementById('email').value;
              var val2 = document.getElementById('psw').value;
              console.log("form values: " + JSON.stringify(val1) + "  " + JSON.stringify(val2));
 
-             try {
-                 result = postNameFunc(val1,val2);
-             } catch (e) {
-                console.log(e);
-                console.log('--------------------------');
-             }
-             console.log('got result: ' + JSON.stringify(result));
-             //var start = new Date().getTime();
-             //while (new Date().getTime() < start + 5000);
+             console.log("")
+
+             nameFunc(val1,val2);
+
+             return false;
 
          };
     </script>
