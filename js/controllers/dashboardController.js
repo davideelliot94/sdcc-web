@@ -28,10 +28,10 @@ function getNumberUsers() {
         });
     }).catch(function(error) {
         console.log("error is: " + error);
-        var date = new Date();
-        var curDate = null;
-        do { curDate = new Date(); }
-        while(curDate-date < 5000)
+        //var date = new Date();
+        //var curDate = null;
+        //do { curDate = new Date(); }
+        //while(curDate-date < 5000)
         return error;
     });
 
@@ -73,10 +73,10 @@ function getTotalTeachers() {
         });
     }).catch(function(error) {
         console.log("error is: " + error);
-        var date = new Date();
-        var curDate = null;
-        do { curDate = new Date(); }
-        while(curDate-date < 5000)
+        //var date = new Date();
+        //var curDate = null;
+        //do { curDate = new Date(); }
+        //while(curDate-date < 5000)
         return error;
     });
 

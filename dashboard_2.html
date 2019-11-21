@@ -55,9 +55,7 @@
 								<li><a href="profile.html">Profile</a></li>
 								<li><a href="mailbox.html">Notifiche</a></li>
 								<li class="divider"></li>
-								<form id="logout" class="form-horizontal" onsubmit="doLogout()">
-									<li><button type="submit">Logout</button></li>
-								</form>
+								<li><a onClick="doLogout(); return false;" href="login.html">Logout</a></li>
 							</ul>
 						</div>
 						<div class="logo-element">IN+</div>
@@ -93,7 +91,7 @@
 						<li><a href="mailbox.html"> <i class="fa fa-envelope"></i>Mailbox
 						</a></li>
 
-						<li><a href="login.html"> <i class="fa fa-sign-out"></i>
+						<li><a onClick="doLogout(); return false;" href="login.html"> <i class="fa fa-sign-out"></i>
 								Log out
 						</a></li>
 					</ul>
@@ -235,6 +233,14 @@
 
 				<script>
 					function checkPermissions(){
+
+						var logged = sessionStorage.getItem('logged');
+						if(logged === null || logged === undefined){
+							console.log('not permissions');
+							window.location='/login.html';
+							return false;
+						}
+
 						console.log('called check permissions');
 						var role = sessionStorage.getItem('role');
 						console.log('role is: ' + role);
