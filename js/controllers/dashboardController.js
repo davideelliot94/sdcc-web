@@ -1,4 +1,5 @@
-function getNumberUsers() {
+
+function getNumberUsers(jwtToken) {
     console.log('called number users');
 
     //MODIFICARE PER AWS
@@ -6,9 +7,11 @@ function getNumberUsers() {
     var results;
     var count;
 
+    console.log('jwtToken is: ' + JSON.stringify(jwtToken));
     fetch(uri, {
         method: 'GET',
         headers: {
+            //'Authorization': jwtToken,
             'Access-Control-Allow-Origin': '*',
             'Accept': 'application/json',
             'Content-Type': 'application/json'

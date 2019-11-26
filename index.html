@@ -107,8 +107,7 @@
         <script>
             function checkLogged(){
                 console.log('user logged is: ' + JSON.stringify(sessionStorage.getItem('logged')));
-                var start = new Date().getTime();
-                while (new Date().getTime() < start + 3000);
+
                 checkUserLogged(sessionStorage.getItem('logged'));
 
             }

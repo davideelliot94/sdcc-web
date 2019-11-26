@@ -14,6 +14,7 @@ function nameFunc(val1,val2){
     var username;
     var surname;
     var role;
+    var jwtToken;
 
 
    // var x = 0;
@@ -52,12 +53,14 @@ function nameFunc(val1,val2){
             username = JSON.parse(nweText).username;
             surname = JSON.parse(nweText).surname;
             role = JSON.parse(nweText).role;
+            jwtToken = JSON.parse(nweText).token;
 
             console.log('got name: ' + name);
             console.log('username: ' + username);
             console.log('email:' + email);
             console.log('surname: ' + surname);
             console.log('role: ' + role);
+            console.log('token: ' + jwtToken);
 
 
             //SETTING AUTHINFO
@@ -69,6 +72,7 @@ function nameFunc(val1,val2){
             sessionStorage.setItem('name',name);
             sessionStorage.setItem('surname',surname);
             sessionStorage.setItem('role',role);
+            sessionStorage.setItem('token',jwtToken);
             /***********************************************************************/
 
             //var start = new Date().getTime();

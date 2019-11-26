@@ -176,7 +176,8 @@
 
     <script>
         function profileUser(){
-            loadUser(sessionStorage.getItem('logged'));
+            console.log('token is: ' + sessionStorage.getItem('token'));
+            loadUser(sessionStorage.getItem('logged'),sessionStorage.getItem('token'));
             //var myArray = getArray();
             document.getElementById("email").innerHTML = getEmail();
             document.getElementById("name").innerHTML = getName();
