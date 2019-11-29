@@ -13,7 +13,7 @@ function loadUser(emailVal,jwtToken) {
 
 
     //MODIFICARE PER AWS
-    var uri = "http://localhost:8080/users/profile/"+emailVal;
+    var uri = "http://54.175.201.140:8080/users/profile/"+emailVal;
     var results;
 
     fetch(uri, {
@@ -79,7 +79,7 @@ function getEmail(){
 function submitData(email,newpsw,newname,newsurname){
 
     console.log('submitting');
-    var uri = "http://localhost:8080/users/profile/save";
+    var uri = "http://54.175.201.140:8080/users/profile/save";
 
 
     fetch(uri, {
@@ -104,7 +104,7 @@ function submitData(email,newpsw,newname,newsurname){
 
 
 function deleteUserAccount(email){
-    var uri = "http://localhost:8080/users/delete";
+    var uri = "http://54.175.201.140:8080/users/delete";
 
     fetch(uri, {
         method: 'POST',

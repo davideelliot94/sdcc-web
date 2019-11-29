@@ -3,7 +3,7 @@ function getNumberUsers(jwtToken) {
     console.log('called number users');
 
     //MODIFICARE PER AWS
-    var uri = "http://localhost:8080/users/all/";
+    var uri = "http://54.175.201.140:8080/users/all/";
     var results;
     var count;
 
@@ -50,7 +50,7 @@ function getTotalTeachers() {
     console.log('called number users');
 
     //MODIFICARE PER AWS
-    var uri = "http://localhost:8080/users/teachers/";
+    var uri = "http://54.175.201.140:8080/users/teachers/";
     var results;
     var count;
 
