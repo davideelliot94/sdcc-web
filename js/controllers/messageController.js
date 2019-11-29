@@ -1,5 +1,5 @@
 //var uri = "http://54.175.201.140:8080/msgs/send";
-var uri = "http://localhost:3000/msgs/send/";
+var uri = "http://3.84.38.91:8080/msgs/send/";
 //var uri = "http://ec2-54-175-201-140.compute-1.amazonaws.com:3000/msgs/send";
 
 
@@ -20,13 +20,20 @@ function sendToQueue(msgTxt) {
             'Content-Type': 'application/json'
         }
     }).then(function (response) {
-        console.log('RES: ' + JSON.stringify(response));
-    }).catch(function(error) {
-        console.log("error is: " + error);
+        console.log("getting response:  " +JSON.stringify(response));
+        console.log('RES status: ' + JSON.stringify(response.status));
+        console.log('status:' + response.status);
 
-        return error;
+//            if(response.status === 200)
+
+            window.location='/dashboard_2.html?email=';
+    }).catch(function (e) {
+        window.location='/dashboard_2.html?email=';
+
+        console.log('There was an error');
     });
-    ;
+
+
 
 
 }

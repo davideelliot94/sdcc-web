@@ -208,7 +208,7 @@
             var start = new Date().getTime();
             while (new Date().getTime() < start + 3000);
             sendToQueue(msgTxt);
-
+            return false;
         }
     </script>
 
