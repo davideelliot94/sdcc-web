@@ -13,7 +13,7 @@ var helper = JWTHelper.createJWTHelper();
 var jwtDecode = require('jwt-decode');
 var session = require('express-session');
 var jwt   = require('jsonwebtoken');
-//var cheerio     = require('cheerio');
+//var cheerio = require('cheerio');
 var interceptor = require('express-interceptor');
 var jwtToken;
 

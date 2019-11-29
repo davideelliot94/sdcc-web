@@ -33,7 +33,7 @@
 
 </head>
 
-<body onload="checkPermissions();">
+<!-- <body onload="checkPermissions();"> -->
 <div id="wrapper">
     <nav class="navbar-default navbar-static-side" role="navigation">
         <div class="sidebar-collapse">
@@ -45,9 +45,10 @@
 							</span> <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 								<span class="clear"> <span class="block m-t-xs"> <strong
                                         class="font-bold"><script>
-                                document.write(getUrlParameter('email'));
+                                document.write(getUrlParameter('name'));
                             </script> </strong>
-								</span> <span class="text-muted text-xs block">Prof <b
+								</span> <span class="text-muted text-xs block"><script>
+                                document.write(getUrlParameter('role'));</script> <b
                                         class="caret"></b></span>
 							</span>
                     </a>
