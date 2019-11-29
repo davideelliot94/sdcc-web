@@ -1,7 +1,8 @@
 console.log('trying prova');
 
 //prova();
-var uri_userLogin = "http://localhost:8080/users/login";
+//var uri_userLogin = "http://localhost:8080/users/login";
+var uri_userLogin = "http://54.175.201.140:8080/users/login";
 
 function nameFunc(val1,val2){
 
