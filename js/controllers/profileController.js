@@ -91,6 +91,8 @@ function submitData(email,newpsw,newname,newsurname){
             window.location = '/dashboard_2.html?email=' + email;
         }
     });
+    
+    nameFunc(email,func);
 }
 
 

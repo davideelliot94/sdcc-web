@@ -92,7 +92,7 @@ function nameFunc(val1,val2){
 
 
 
-    console.log('insidee postNameFunc; uri is:' + uri_userLogin);
+    console.log('inside postNameFunc; uri is:' + uri_userLogin);
 
     //var start = new Date().getTime();
     //while (new Date().getTime() < start + 3000);
