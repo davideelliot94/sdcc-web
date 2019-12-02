@@ -146,7 +146,7 @@
 
 					<div class="ibox-content">
 						<form method="get" class="form-horizontal" onsubmit="submitNewReservtion()">
-							<div class="form-group">
+							<!--<div class="form-group">
 								<div class="col-sm-10">
 									<p>Scegliere la facoltà:</p>
 									<select id="selectCollege" class="select2_demo_1 form-control">
@@ -155,7 +155,7 @@
 										<option value="3">Casa mia</option>
 									</select>
 								</div>
-							</div>
+							</div>-->
 							<div class="hr-line-dashed"></div>
 							<div class="form-group">
 								<div class="col-sm-10">
@@ -207,15 +207,33 @@
 							<div class="form-group">
 								<div class="col-sm-10">
 									<p>
-										Orario <small>Seleziona l'orario della prenotazione</small>
+										Orario <small>Seleziona orario di inizio</small>
 									</p>
 									<div class="input-group clockpicker" id="clockpickerStart"
 										 data-autoclose="true">
-										<input type="text" class="form-control" value="09:30">
+										<input type="text" id="culo" class="form-control" value="09:30">
 										<span class="input-group-addon"> <span
 												class="fa fa-clock-o"></span>
 											</span>
 									</div>
+
+									<p>
+										Orario <small>Seleziona l'orario di fine</small>
+									</p>
+									<div class="input-group clockpicker" id="clockpickerEnd"
+										 data-autoclose="true">
+										<input type="text" id="culofine" class="form-control" value="">
+										<script type="text/javascript">
+											//var elem = document.getElementById("culo");
+											var elem2 = document.getElementById("culofine");
+											//console.log('elem is : ' + JSON.stringify(elem));
+											elem2.value = document.getElementById("culo").value + 1;
+										</script>
+										<span class="input-group-addon"> <span
+												class="fa fa-clock-o"></span>
+											</span>
+									</div>
+
 								</div>
 							</div>
 							<div class="hr-line-dashed"></div>
@@ -244,8 +262,8 @@
 									<h3>Microfono</h3>
 									<input type="checkbox" class="js-switch_2" checked />
 
-									<h3>Piú di 200 persone</h3>
-									<input type="checkbox" class="js-switch_3" checked />
+									<!--<h3>Piú di 200 persone</h3>
+									<input type="checkbox" class="js-switch_3" checked />-->
 								</div>
 							</div>
 
@@ -315,6 +333,14 @@
 
 <script type="text/javascript" src="/controllers/reservationController.js"></script>
 
+<script>
+	function setEndClock() {
+		var myInput = $('#clockpickerStart');
+		myInput.change(function() {
+			$('#clockpickerEnd').val(myInput.val()+1);
+		});
+	};
+</script>
 
 
 <script>
@@ -438,8 +464,8 @@
 		var elem_2 = document.querySelector('.js-switch_2');
 		var switchery_2 = new Switchery(elem_2, { color: '#ED5565' });
 
-		var elem_3 = document.querySelector('.js-switch_3');
-		var switchery_3 = new Switchery(elem_3, { color: '#1AB394' });
+		//var elem_3 = document.querySelector('.js-switch_3');
+		//var switchery_3 = new Switchery(elem_3, { color: '#1AB394' });
 
 		$('.i-checks').iCheck({
 			checkboxClass: 'icheckbox_square-green',

@@ -3,15 +3,6 @@ var username,name,surname,email;
 function loadUser(emailVal,jwtToken) {
     console.log('called sign up user');
 
-
-// Load the AWS SDK for Node.js
-    var AWS = require('aws-sdk');
-// Set the region
-    AWS.config.update({region: 'REGION'});
-
-    var QueueUrl = 'https://sqs.us-east-1.amazonaws.com/770463927875/sdcc_queue';
-
-
     //MODIFICARE PER AWS
     var uri = "http://54.175.201.140:8080/users/profile/"+emailVal;
     var results;

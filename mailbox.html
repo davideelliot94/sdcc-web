@@ -16,7 +16,7 @@
 
 </head>
 
-<body>
+<body onload="getAllNotifications()">
 
 	<div id="wrapper">
 
@@ -164,16 +164,35 @@
 
 	<!-- iCheck -->
 	<script src="js/plugins/iCheck/icheck.min.js"></script>
-	<script>
-        $(document).ready(function(){
-            $('.i-checks').iCheck({
-                checkboxClass: 'icheckbox_square-green',
-                radioClass: 'iradio_square-green',
-            });
-            
-            var listNotString = '';
-            var totalNotification = [["Jack","tanto va la gatta al lardo...","Yesterday 8:48 pm - 10.06.2014"],
-            						 ["Bill","e se poi te ne penti?","Yesterday 8:48 pm - 10.06.2014"]];
+
+	<script src="/controllers/mailboxController.js"></script>
+
+   <script>
+        async function getAllNotifications(){
+        	var r;
+            console.log('executed');
+            //window.totN = await loadFromQueue();
+			loadFromQueue().then(function(res){
+
+				//r = JSON.stringify(res);
+				//var r2 = r.text;
+				console.log("Loaded Notifications : " + res[0]);
+				console.log('type is: ' + typeof res);
+
+				$(document).ready(function(){
+					$('.i-checks').iCheck({
+						checkboxClass: 'icheckbox_square-green',
+						radioClass: 'iradio_square-green',
+					});
+
+					var listNotString = '';
+					//var totalNotification = [["Jack","tanto va la gatta al lardo...","Yesterday 8:48 pm - 10.06.2014"],
+					//						 ["Bill","e se poi te ne penti?","Yesterday 8:48 pm - 10.06.2014"]];
+
+					var totalNotification2 = res;//loadFromQueue();
+					console.log('totN2 = ' + totalNotification2);
+					console.log('typeof2: ' + typeof totalNotification2);
+					//console.log('not2: ' + JSON.stringify(window.totalNotification));
 //             <tr class="unread">
 // 	            <td class="check-mail">
 // 	                <input type="checkbox" class="i-checks" checked>
@@ -183,21 +202,37 @@
 // 	            <td class=""></td>
 // 	            <td class="text-right mail-date">8.22 PM</td>
 //         	</tr>
-            listNotString += ('<tbody>');
-            $.each(totalNotification, function(indexNotification, notification) {
-            	listNotString += ('<tr class="read">');
-            	listNotString += ('<td class="check-mail"><input type="checkbox" class="i-checks" checked></td>');
-        		listNotString += ('<td class="mail-ontact"><a href="mail_detail.html">'+ notification[0]+'</a></td>');
-				listNotString += ('<td class="mail-subject"><a href="mail_detail.html">'+notification[1]+'</a></td><td class=""></td>');
-				listNotString += ('<td class="text-right mail-date">'+notification[2]+'</td></tr>');
+					listNotString += ('<tbody>');
+					$.each(totalNotification2, function(indexNotification, notification) {
+						listNotString += ('<tr class="read">');
+						listNotString += ('<td class="check-mail"><input type="checkbox" class="i-checks" checked></td>');
+						listNotString += ('<td class="mail-ontact"><a href="mail_detail.html">'+ notification+'</a></td>');
+						listNotString += ('<td class="mail-subject"><a href="mail_detail.html">'+notification+'</a></td><td class=""></td>');
+						listNotString += ('<td class="text-right mail-date">'+notification+'</td></tr>');
 
-            });
-            listNotString += ('</tbody>');
-            console.log(listNotString);
-            $(".table").html(listNotString);
-            
-        });
+					});
+					listNotString += ('</tbody>');
+					//console.log(listNotString);
+					$(".table").html(listNotString);
+
+				});
+
+
+
+
+
+
+
+			});
+            console.log("loaded totalNotifications: " + window.totN);
+            return r; //console.log('type: ' + typeof totN);
+        }
     </script>
+
+
+
+
+
 </body>
 
 </html>
