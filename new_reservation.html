@@ -163,6 +163,8 @@
 										dell'edificio scelto</p>
 									<select id="selectRoom" class="select2_demo_2 form-control"
 											multiple="multiple">
+
+										<!--
 										<option value="A1">A1</option>
 										<option value="A2">A2</option>
 										<option value="A3">A3</option>
@@ -189,6 +191,7 @@
 										<option value="B11">B11</option>
 										<option value="B12">B12</option>
 										<option value="B13">B13</option>
+										-->
 									</select>
 								</div>
 							</div>
@@ -224,10 +227,11 @@
 										 data-autoclose="true">
 										<input type="text" id="culofine" class="form-control" value="">
 										<script type="text/javascript">
+											var moment = require('moment');
 											//var elem = document.getElementById("culo");
 											var elem2 = document.getElementById("culofine");
 											//console.log('elem is : ' + JSON.stringify(elem));
-											elem2.value = document.getElementById("culo").value + 1;
+											elem2.value = moment(document.getElementById("culo").value,'HH:mm:ss') + (60*60*1000);
 										</script>
 										<span class="input-group-addon"> <span
 												class="fa fa-clock-o"></span>
@@ -244,8 +248,8 @@
 									</p>
 									<select id="selectCourse" class="select2_demo_2 form-control"
 											multiple="multiple">
-										<option value="sdcc">sdcc</option>
-										<option value="mobd">mobd</option>
+										<!--<option value="sdcc">sdcc</option>
+										<option value="mobd">mobd</option>-->
 									</select>
 								</div>
 							</div>
@@ -341,6 +345,50 @@
 		});
 	};
 </script>
+
+<script>
+	
+	fetch("http://107.22.75.13:3002/api/v1/rooms",{
+        method: 'GET',
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+
+	}).then(res => res.json())
+	.then(function(myobject){
+		
+		var select = document.getElementById("selectRoom");
+		for(index in myobject) {
+			console.log("teachings " + myobject[index].name);
+    		select.options[select.options.length] = new Option(myobject[index].name, index);
+		};
+	});
+	
+</script>
+<script>
+	
+		fetch("http://107.22.75.13:3003/api/v1/teachings",{
+			method: 'GET',
+			headers: {
+				'Access-Control-Allow-Origin': '*',
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+			}
+	
+		}).then(res => res.json())
+		.then(function(myobject){
+			
+			var select = document.getElementById("selectCourse");
+			for(index in myobject) {
+				console.log("rooms; " + myobject[index].name);
+				select.options[select.options.length] = new Option(myobject[index].name, index);
+			};
+		});
+		
+</script>
+	
 
 
 <script>
