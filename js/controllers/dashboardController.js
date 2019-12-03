@@ -61,7 +61,7 @@ function getTotalTeachers() {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         }
-    }).function (response) {
+    }).then(function (response) {
         console.log('RES: ' + JSON.stringify(response));
 
 

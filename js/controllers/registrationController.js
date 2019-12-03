@@ -3,7 +3,10 @@ function signUpUser(userVal,emailVal,pswVal,nameVal,surnameVal,roleVal) {
     console.log('called sign up user');
 
     //MODIFICARE PER AWS
-    const uri = "http://54.175.201.140:8080/users/registration";
+    //var uri = "http://localhost:8080/users/registration";
+    var uri = "http://54.175.201.140:8080/users/registration";
+
+
 
     //console.log("makePostNameFunc; uri: " + JSON.stringify(uri));
     console.log("params: " + JSON.stringify(userVal)+ "  " + JSON.stringify(emailVal) + "   " + JSON.stringify(pswVal)+
@@ -24,5 +27,9 @@ function signUpUser(userVal,emailVal,pswVal,nameVal,surnameVal,roleVal) {
         }
     }).then(function (response) {
         console.log('RES: ' + JSON.stringify(response));
-    });
+        window.location='/login.html'
+    }).catch(function(error) {
+        console.log("error is: " + error);
+        throw error;
+    });;
 };

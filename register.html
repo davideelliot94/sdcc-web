@@ -68,7 +68,7 @@
 <script>
     function saveUser() {
         console.log('makeSaveFunc');
-        try {
+  //      try {
             //console.log('selector is: ' + JSON.stringify(selector));
             var userVal = document.getElementById('username').value;
             var emailVal = document.getElementById('email').value;
@@ -85,10 +85,11 @@
             }
 
             signUpUser(userVal,emailVal,pswVal,nameVal,surnameVal,role); //comme nto
-        } catch (e) {
+            return false;
+    /*    } catch (e) {
             console.log(e);
             console.log('--------------------------');
-        }
+        }*/
     };
 </script>
 

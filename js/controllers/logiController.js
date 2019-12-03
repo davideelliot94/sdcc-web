@@ -10,7 +10,6 @@ function nameFunc(val1,val2){
 
     var nweText;
     var name;
-    var jwtToken;
     var email;
     var username;
     var surname;
