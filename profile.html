@@ -106,11 +106,12 @@
 					<div class="profile-info">
 						<div class="">
 							<div>
-								<h4 id="role">Fondatore</h4>
+								<h2 id="role">Fondatore</h2>
 							</div>
-							<h2 id="name">Name:</h2>
-							<h2 id="surname">Surname:</h2>
-							<h2 id="email">Email:</h2>
+							<h3>Name:</h3><h3 id="name"></h3>
+							<h3>Surname:   </h3><h3 id="surname"></h3>
+							<h3>Username:   </h3><h3 id="username"></h3>
+							<h3>Email:   </h3><h3 id="email"></h3>
 						</div>
 					</div>
 				</div>
@@ -204,14 +205,26 @@
 <script>
 	function profileUser() {
 		console.log('token is: ' + sessionStorage.getItem('token'));
-		loadUser(sessionStorage.getItem('logged'), sessionStorage
-				.getItem('token'));
+		loadUser(sessionStorage.getItem('email'), sessionStorage.getItem('token')).then(function(res){
+			console.log('got data: ' + res);
+			document.getElementById("name").innerHTML = res[0];
+			document.getElementById("surname").innerHTML = res[1];
+			document.getElementById("username").innerHTML = res[2];
+			document.getElementById("email").innerHTML = res[3];
+
+
+
+			//sessionStorage.setItem('teachers',res);
+		});
+
+
+
 		//var myArray = getArray();
-		document.getElementById("email").innerHTML = getEmail();
-		document.getElementById("name").innerHTML = getName();
-		document.getElementById("surname").innerHTML = getSurname();
-		document.getElementById("role").innerHTML = "<script>document.write(getUrlParameter("
-				+ "'role'));<"+"/script>";
+		//document.getElementById("email").innerHTML = getEmail();
+		//document.getElementById("name").innerHTML = getName();
+		//document.getElementById("surname").innerHTML = getSurname();
+		//document.getElementById("role").innerHTML = "<script>document.write(getUrlParameter("
+		//		+ "'role'));<"+"/script>";
 	}
 </script>
 

@@ -22,7 +22,7 @@
 
             for (i = 0; i < sURLVariables.length; i++) {
                 sParameterName = sURLVariables[i].split('=');
-                console.log('sParameter:  ' + sParameterName);
+               // console.log('sParameter:  ' + sParameterName);
                 if (sParameterName[0] === sParam) {
                     return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
                 }
@@ -116,7 +116,7 @@
                             <h5>Totale professori</h5>
                         </div>
                         <div class="ibox-content">
-                            <h1 id="totTeacherVal" class="no-margins">0</h1>
+                            <h1 id="totTeacherVal" class="no-margins"></h1>
                         </div>
                     </div>
                 </div>
@@ -126,7 +126,7 @@
                             <h5>Totale studenti</h5>
                         </div>
                         <div class="ibox-content">
-                            <h1 id="totStudVal" class="no-margins">1,0</h1>
+                            <h1 id="totStudVal" class="no-margins"></h1>
                         </div>
                     </div>
                 </div>
@@ -233,10 +233,7 @@
 
             <script>
                 function checkPermissions(){
-                    console.log('called check permissions');
                     var role = sessionStorage.getItem('role');
-                    console.log('role is: ' + role);
-                    console.log('token is: ' + sessionStorage.getItem('token'));
 
                     var log = sessionStorage.getItem('logged');
                     if(log === null || log === undefined){
@@ -249,6 +246,21 @@
                         document.getElementById("booking").style.display = "none";
 
                     }
+                    var totalTeachers;
+                    getTotalTeachers().then(function(res){
+                        console.log('got res: ' + res);
+                        document.getElementById("totTeacherVal").innerHTML = res;
+                        totalTeachers = res;
+                        //sessionStorage.setItem('teachers',res);
+                    });
+                    getNumberUsers().then(function(res){
+                        console.log('got res: ' + res);
+                        document.getElementById("regUserVal").innerHTML = res;
+                        document.getElementById("totStudVal").innerHTML = JSON.stringify(res - totalTeachers);
+                        //sessionStorage.setItem('users',res);
+                    });
+
+
                 }
             </script>
 
@@ -268,14 +280,7 @@
 
             <script>
                 $(document).ready(function() {
-                    var registredUser = getNumberUsers(sessionStorage.getItem('token'));
-                    var totalTeacher = getTotalTeachers();
-                    var totalStudent = registredUser-totalTeacher;
-                    var activeUser = 3;
 
-                    $("#regUserVal").html(registredUser);
-                    $("#totTeacherVal").html(totalTeacher);
-                    $("#totStudVal").html(totalStudent);
                     $("#actUserVal").html(activeUser);
 
                     var head = ["Ora","Corso","Aula"];

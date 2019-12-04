@@ -5,9 +5,10 @@ function loadUser(emailVal,jwtToken) {
 
     //MODIFICARE PER AWS
     var uri = "http://54.175.201.140:8080/users/profile/"+emailVal;
+    //var uri = "http://localhost:8080/users/profile/"+emailVal;
     var results;
 
-    fetch(uri, {
+    return fetch(uri, {
         method: 'GET',
         headers: {
             'Authorization': jwtToken,
@@ -15,32 +16,21 @@ function loadUser(emailVal,jwtToken) {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         }
-    }).then(function (response) {
+    }).then(res => res.text().then(function (response) {
         console.log('RES: ' + JSON.stringify(response));
 
+        var nweText = response;
+        this.name = JSON.parse(nweText).name;
+        console.log('text is: ' + name);
+        this.username = JSON.parse(nweText).username;
+        console.log('username is: ' + username);
+        this.surname = JSON.parse(nweText).surname;
+        console.log('surame is:' + surname);
+        this.email = JSON.parse(nweText).email;
+        var logData = [name,surname,username,email];
+        return logData;
 
-        response.text().then(function (text) {
-
-
-            var nweText = text;
-            this.name = JSON.parse(nweText).name;
-            console.log('text is: ' + name);
-            this.username = JSON.parse(nweText).username;
-            console.log('username is: ' + username);
-            this.surname = JSON.parse(nweText).surname;
-            console.log('surame is:' + surname);
-            this.email = JSON.parse(nweText).email;
-
-
-        });
-    }).catch(function(error) {
-        console.log("error is: " + error);
-       // var date = new Date();
-        //var curDate = null;
-        //do { curDate = new Date(); }
-        //while(curDate-date < 5000)
-        return error;
-    });
+    }));
 
     console.log('ended fetch!Results: ' + results);
 

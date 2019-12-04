@@ -4,6 +4,7 @@ console.log('trying prova');
 //var uri_userLogin = "http://localhost:8080/users/login";
 var uri_userLogin = "http://54.175.201.140:8080/users/login";
 
+
 function nameFunc(val1,val2){
 
     console.log('nameFunc!');
@@ -17,14 +18,6 @@ function nameFunc(val1,val2){
     var jwtToken;
 
 
-   // var x = 0;
-
-    //if(x === 0) {
-      //  console.log('x is 0');
-       // window.location = '/dashboard_2.html?email=';
-    //}
-
-
     fetch(uri_userLogin, {
         method: 'POST',
         body: JSON.stringify({
@@ -36,67 +29,60 @@ function nameFunc(val1,val2){
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         }
-    }).then(function (response) {
-        console.log("getting response:  " +JSON.stringify(response));
-        console.log('RES status: ' + JSON.stringify(response.status));
-        console.log('status:' + response.status);
+    })
+        .then(
+            function(response) {
+                if (response.status !== 200) {
+                    console.log('Looks like there was a problem. Status Code: ' +
+                        response.status);
+                    return;
+                }
 
-//            if(response.status === 200){
+                // Examine the text in the response
+                response.text().then(function (text) {
+                    console.log('text is: ' + text);
 
-        response.text().then(function (text) {
-            console.log('text is: ' + text);
+                    nweText = text;
+                    name = JSON.parse(nweText).name;
+                    jwtToken = JSON.parse(nweText).token;
+                    email = JSON.parse(nweText).email;
+                    username = JSON.parse(nweText).username;
+                    surname = JSON.parse(nweText).surname;
+                    role = JSON.parse(nweText).role;
+                    jwtToken = JSON.parse(nweText).token;
 
-            nweText = text;
-            name = JSON.parse(nweText).name;
-            jwtToken = JSON.parse(nweText).token;
-            email = JSON.parse(nweText).email;
-            username = JSON.parse(nweText).username;
-            surname = JSON.parse(nweText).surname;
-            role = JSON.parse(nweText).role;
-            jwtToken = JSON.parse(nweText).token;
-
-            console.log('got name: ' + name);
-            console.log('username: ' + username);
-            console.log('email:' + email);
-            console.log('surname: ' + surname);
-            console.log('role: ' + role);
-            console.log('token: ' + jwtToken);
-
-
-            //SETTING AUTHINFO
-            /************************************************************************/
-            sessionStorage.setItem('logged', username);
-            sessionStorage.setItem(username, jwtToken);
-            sessionStorage.setItem('email',email);
-            console.log('setted email: ' + sessionStorage.getItem('email'));
-            sessionStorage.setItem('name',name);
-            sessionStorage.setItem('surname',surname);
-            sessionStorage.setItem('role',role);
-            sessionStorage.setItem('token',jwtToken);
-            /***********************************************************************/
-
-            //var start = new Date().getTime();
-            //while (new Date().getTime() < start + 3000);
+                    console.log('got name: ' + name);
+                    console.log('username: ' + username);
+                    console.log('email:' + email);
+                    console.log('surname: ' + surname);
+                    console.log('role: ' + role);
+                    console.log('token: ' + jwtToken);
 
 
-            window.location='/dashboard_2.html?email='+email;
+                    //SETTING AUTHINFO
+                    /************************************************************************/
+                    sessionStorage.setItem('logged', username);
+                    sessionStorage.setItem(username, jwtToken);
+                    sessionStorage.setItem('email',email);
+                    console.log('setted email: ' + sessionStorage.getItem('email'));
+                    sessionStorage.setItem('name',name);
+                    sessionStorage.setItem('surname',surname);
+                    sessionStorage.setItem('role',role);
+                    sessionStorage.setItem('token',jwtToken);
+                    /***********************************************************************/
+
+                    //var start = new Date().getTime();
+                    //while (new Date().getTime() < start + 3000);
 
 
+                    window.location='/dashboard_2.html?email='+email;
+
+
+                });
+            }
+        )
+        .catch(function(err) {
+            console.log('Fetch Error :-S', err);
         });
 
-
-    }).catch(function (e) {
-        console.log('There was an error');
-    });
-
-
-
-    console.log('inside postNameFunc; uri is:' + uri_userLogin);
-
-    //var start = new Date().getTime();
-    //while (new Date().getTime() < start + 3000);
-    //return false;
-};
-
-
-
+}

@@ -1,14 +1,21 @@
+function getAllData(){
+    var data = [];
+    data.push(getNumberUsers());
+    data.push(getTotalTeachers());
+    return data;
+}
 
-function getNumberUsers(jwtToken) {
+
+
+function getNumberUsers(/*jwtToken*/) {
     console.log('called number users');
 
     //MODIFICARE PER AWS
     var uri = "http://54.175.201.140:8080/users/all/";
-    var results;
-    var count;
+//    var uri = "http://localhost:8080/users/all/";
 
-    console.log('jwtToken is: ' + JSON.stringify(jwtToken));
-    fetch(uri, {
+    //console.log('jwtToken is: ' + JSON.stringify(jwtToken));
+    return fetch(uri, {
         method: 'GET',
         headers: {
             //'Authorization': jwtToken,
@@ -16,30 +23,17 @@ function getNumberUsers(jwtToken) {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         }
-    }).then(function (response) {
-        console.log('RES: ' + JSON.stringify(response));
+    }).then(res => res.text().then(function (text) {
+        console.log('text is: ' + text);
+        console.log('tyie is: ' + typeof text);
+        var nweText = text;
+        var count = 0;
+        count = JSON.parse(nweText).number;
+        console.log('number users is: ' + count);
 
+        return count;
 
-        response.text().then(function (text) {
-
-            console.log('text is: ' + text);
-
-            var nweText = text;
-            this.count = JSON.parse(nweText).number;
-            console.log('number is: ' + this.count);
-            return this.count;
-        });
-    }).catch(function(error) {
-        console.log("error is: " + error);
-        //var date = new Date();
-        //var curDate = null;
-        //do { curDate = new Date(); }
-        //while(curDate-date < 5000)
-        return error;
-    });
-
-    console.log('ended fetch!Results: ' + results);
-
+    }));
 
 };
 
@@ -47,43 +41,32 @@ function getNumberUsers(jwtToken) {
 
 
 function getTotalTeachers() {
-    console.log('called number users');
 
+    console.log('called total teachers');
     //MODIFICARE PER AWS
     var uri = "http://54.175.201.140:8080/users/teachers/";
-    var results;
-    var count;
+//    var uri = "http://localhost:8080/users/teachers/";
 
-    fetch(uri, {
+    //console.log('jwtToken is: ' + JSON.stringify(jwtToken));
+    return fetch(uri, {
         method: 'GET',
         headers: {
+            //'Authorization': jwtToken,
             'Access-Control-Allow-Origin': '*',
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         }
-    }).then(function (response) {
-        console.log('RES: ' + JSON.stringify(response));
+    }).then(res => res.text().then(function (text) {
+        console.log('text is: ' + text);
+        console.log('tyie is: ' + typeof text);
+        var nweText = text;
+        var count = 0;
+        count = JSON.parse(nweText).number;
+        console.log('number teachers is: ' + count);
 
+        return count;
 
-        response.text().then(function (text) {
-
-            console.log('text is: ' + text);
-
-            var nweText = text;
-            this.count = JSON.parse(nweText).number;
-            console.log('number teachers is: ' + this.count);
-            return this.count;
-        });
-    }).catch(function(error) {
-        console.log("error is: " + error);
-        //var date = new Date();
-        //var curDate = null;
-        //do { curDate = new Date(); }
-        //while(curDate-date < 5000)
-        return error;
-    });
-
-    console.log('ended fetch!Results: ' + results);
+    }));
 
 
 };
