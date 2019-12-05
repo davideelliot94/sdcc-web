@@ -20,10 +20,14 @@ function loadFromQueue(){
         console.log('tyie is: ' + typeof text);
         var nweText = text;
         var msg = JSON.parse(nweText).text;
+        var sender = JSON.parse(nweText).sender;
+        var timestamp = JSON.parse(nweText).timestamp;
         console.log('msg is: ' + msg);
         var messages = [];
         var listMsgs = [];
+        messages.push(sender);
         messages.push(msg);
+        messages.push(timestamp);
         listMsgs.push(messages);
         var messages2 = listMsgs;
         console.log('this.messages: ' + this.messages);

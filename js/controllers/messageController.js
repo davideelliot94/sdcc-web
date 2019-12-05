@@ -9,11 +9,13 @@ function sendToQueue(msgTxt) {
     console.log('msg text is: ' + msgTxt);
 
     var QueueUrl = 'https://sqs.us-east-1.amazonaws.com/770463927875/sdcc_queue';
+    var msgSender = sessionStorage.getItem('logged');
 
     fetch(uri, {
         method: 'POST',
         body: JSON.stringify({
-            msg: msgTxt}),
+            msg: msgTxt,
+            sender: msgSender}),
         headers: {
             'Access-Control-Allow-Origin': '*',
             'Accept': 'application/json',

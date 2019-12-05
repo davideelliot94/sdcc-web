@@ -206,9 +206,9 @@
 					$.each(totalNotification2, function(indexNotification, notification) {
 						listNotString += ('<tr class="read">');
 						listNotString += ('<td class="check-mail"><input type="checkbox" class="i-checks" checked></td>');
-						listNotString += ('<td class="mail-ontact"><a href="mail_detail.html">'+ notification+'</a></td>');
-						listNotString += ('<td class="mail-subject"><a href="mail_detail.html">'+notification+'</a></td><td class=""></td>');
-						listNotString += ('<td class="text-right mail-date">'+notification+'</td></tr>');
+						listNotString += ('<td class="mail-ontact"><a href="mail_detail.html">'+ notification[0]+'</a></td>');
+						listNotString += ('<td class="mail-subject"><a href="mail_detail.html">'+notification[1]+'</a></td><td class=""></td>');
+						listNotString += ('<td class="text-right mail-date">'+notification[2]+'</td></tr>');
 
 					});
 					listNotString += ('</tbody>');
