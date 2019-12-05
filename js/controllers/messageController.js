@@ -22,7 +22,7 @@ function sendToQueue(msgTxt) {
             'Content-Type': 'application/json'
         }
     }).then(function (response) {
-        console.log("getting response:  " +JSON.stringify(response));
+        console.log("getting response :  " +JSON.stringify(response));
         console.log('RES status: ' + JSON.stringify(response.status));
         console.log('status:' + response.status);
 

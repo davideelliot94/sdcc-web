@@ -62,7 +62,7 @@ function getTotalTeachers() {
         var nweText = text;
         var count = 0;
         count = JSON.parse(nweText).number;
-        console.log('number teachers is: ' + count);
+        console.log('number teachers is:  ' + count);
 
         return count;
 
