@@ -145,7 +145,7 @@
 					</div>
 
 					<div class="ibox-content">
-						<form method="get" class="form-horizontal" onsubmit="submitNewReservtion()">
+						<form method="get" class="form-horizontal" onsubmit="submitNewReservtion()" >
 							<!--<div class="form-group">
 								<div class="col-sm-10">
 									<p>Scegliere la facoltà:</p>
@@ -214,7 +214,7 @@
 									</p>
 									<div class="input-group clockpicker" id="clockpickerStart"
 										 data-autoclose="true">
-										<input type="text" id="culo" class="form-control" value="09:30">
+										<input type="text" id="startClock" class="form-control" value="Select start of reservation">
 										<span class="input-group-addon"> <span
 												class="fa fa-clock-o"></span>
 											</span>
@@ -225,14 +225,7 @@
 									</p>
 									<div class="input-group clockpicker" id="clockpickerEnd"
 										 data-autoclose="true">
-										<input type="text" id="culofine" class="form-control" value="">
-										<script type="text/javascript">
-											var moment = require('moment');
-											//var elem = document.getElementById("culo");
-											var elem2 = document.getElementById("culofine");
-											//console.log('elem is : ' + JSON.stringify(elem));
-											elem2.value = moment(document.getElementById("culo").value,'HH:mm:ss') + (60*60*1000);
-										</script>
+										<input type="text" id="endClock" class="form-control" value="Select end of reservation">
 										<span class="input-group-addon"> <span
 												class="fa fa-clock-o"></span>
 											</span>
@@ -339,54 +332,42 @@
 
 <script>
 	function setEndClock() {
-		var myInput = $('#clockpickerStart');
+		var myInput = $('#clockpickerStart').clockpicker();
+		var data = myInput.data();
+		var h = data.clockpicker.hours;
+		var m = data.clockpicker.minutes;
 		myInput.change(function() {
-			$('#clockpickerEnd').val(myInput.val()+1);
+			$('#clockpickerEnd').val("Il valore deve essere maggiore di: " + h+":"+m);
 		});
 	};
 </script>
 
 <script>
 	
-	fetch("http://107.22.75.13:3002/api/v1/rooms",{
-        method: 'GET',
-        headers: {
-            'Access-Control-Allow-Origin': '*',
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        }
+	window.onload = async function loadRoomsandTeachings(){
 
-	}).then(res => res.json())
-	.then(function(myobject){
-		
+		console.log("Load Called");
+
+		var rooms = await loadRoomsFunc();
+		console.log(rooms);
+	
 		var select = document.getElementById("selectRoom");
-		for(index in myobject) {
-			console.log("teachings " + myobject[index].name);
-    		select.options[select.options.length] = new Option(myobject[index].name, index);
+		for(index in rooms) {
+			console.log("rooms " + rooms[index].name);
+			select.options[select.options.length] = new Option(rooms[index].name, index);
 		};
-	});
-	
-</script>
-<script>
-	
-		fetch("http://107.22.75.13:3003/api/v1/teachings",{
-			method: 'GET',
-			headers: {
-				'Access-Control-Allow-Origin': '*',
-				'Accept': 'application/json',
-				'Content-Type': 'application/json'
-			}
-	
-		}).then(res => res.json())
-		.then(function(myobject){
-			
-			var select = document.getElementById("selectCourse");
-			for(index in myobject) {
-				console.log("rooms; " + myobject[index].name);
-				select.options[select.options.length] = new Option(myobject[index].name, index);
-			};
-		});
 		
+
+		var teachings = await loadTeachingsFunc();
+		console.log(teachings);
+
+		var select = document.getElementById("selectCourse");
+		for(index in teachings) {
+			console.log("teachings " + teachings[index].name);
+			select.options[select.options.length] = new Option(teachings[index].name, index);
+		};
+		
+	};	
 </script>
 	
 
@@ -437,23 +418,33 @@
 <script>
 	function  submitNewReservtion() {
 
-		var collegeSelector = document.getElementById("selectCollege");
 		var roomSelector = document.getElementById("selectRoom");
 		var courseSelector = document.getElementById("selectCourse");
 
 		var date = $("#datetimepicker").datepicker('getDate');
-		var clockTime = $("#clockpickerStart").clockpicker().find('input');
-		var college = collegeSelector.options[collegeSelector.selectedIndex].text;
+		var clockTimeStart = $("#clockpickerStart").clockpicker();
+		var cstart = clockTimeStart.data();
+		var shour = cstart.clockpicker.hours;
+		var sminutes = cstart.clockpicker.minutes;
+		var startTime = [shour,sminutes];
+		var clockTimeEnd = $("#clockpickerEnd").clockpicker();
+		var cend = clockTimeEnd.data();
+		var ehour = cend.clockpicker.hours;
+		var eminutes = cend.clockpicker.minutes;
+		var endTime = [ehour,eminutes];
+		
+
 		var room = roomSelector.options[roomSelector.selectedIndex].text;
 		var course = courseSelector.options[courseSelector.selectedIndex].text;
 
-		console.log("college :" +college+", room :"+room+",date :"+date+",course :"+course);
-		console.log("time :"+clockTime);
+		console.log(" room :"+room+",date :"+date+",course :"+course);
+		console.log("time :"+shour + ":" +sminutes + " end: " + ehour + ":" + eminutes);
 //         window.location.pathname = '/dashboard_2.html';
 
 		var name = sessionStorage.getItem('logged');
 		var jwtToken = sessionStorage.getItem(name);
-		submitReservation(jwtToken,date,clockTime,college,room,course);
+		
+		submitReservation(jwtToken,date,startTime,endTime,room,course);
 
 		alert("Form submitted Successfully");
 	}
