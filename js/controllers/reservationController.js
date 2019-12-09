@@ -1,22 +1,26 @@
-var uri = "http://localhost:3000/api/v1/saveBooking";
+var uri = "http://localhost:3001/api/v1/makeBooking";
+var turi = "http://localhost:3003/api/v1/teachings";
+var ruri = "http://localhost:3002/api/v1/rooms";
+//var turi = "http://107.22.75.13:3003/api/v1/teachings";
+//var ruri = "http://107.22.75.13:3002/api/v1/rooms";
 
-function submitReservation(jwtToken,date,clockTime,college,room,course) {
+function submitReservation(jwtToken,date,startTime,endTime,room,course) {
+    var dateStart = new Date(date.getFullYear(),date.getMonth(),date.getDay(),startTime[0],startTime[1]);
+    var dateEnd = new Date(date.getFullYear(),date.getMonth(),date.getDay(),endTime[0],endTime[1]);
+    console.log("Date: " + dateStart + "Date: "+dateEnd);
     console.log("makeGetBookingFunc; uri: " + JSON.stringify(uri));
     fetch(uri, {
         method: 'POST',
-        body: JSON.stringify({
-            jwtToken: jwtToken,
-            id:0,               //messo per prova
-            timestamp: 0,        //messo per prova
+        body:
+        JSON.stringify({                        //messo per prova
+            timestamp: Date.now(),        //messo per prova
             date: date,
-            start: 0,            //messo per prova
-            end: 0,
-            //clockTime: clockTime,
-            //college: college,
+            start: dateStart,            //messo per prova
+            end: dateEnd,
+            user: "Stringa Prova",
             room: room,
-            teaching: 0
-            //course: course
-        }),
+            teach: course
+        }),  
         headers: {
             'Access-Control-Allow-Origin': '*',
             'Accept': 'application/json',
@@ -27,6 +31,49 @@ function submitReservation(jwtToken,date,clockTime,college,room,course) {
     });
 };
 
+async function loadTeachingsFunc(){
+
+    console.log("LoadTeachingsCalled");
+
+    const f = fetch(turi,{
+                    method: 'GET',
+                    headers: {
+                        'Access-Control-Allow-Origin': '*',
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    }
+                
+                });
+
+    const results = await Promise.resolve(f);
+    const res = await results.json();
+    return res;
+
+};
+
+
+async function loadRoomsFunc(){
+
+    console.log("LoadRoomsCalled");
+
+
+
+    const f = fetch(ruri,{
+                    method: 'GET',
+                    headers: {
+                        'Access-Control-Allow-Origin': '*',
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    }
+                
+                });
+
+    const results = await Promise.resolve(f);
+    const res = await results.json();
+    return res;
+        
+
+};
 
 
 
