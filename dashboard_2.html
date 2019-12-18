@@ -66,8 +66,10 @@
                     <span class="nav-label">Mailbox </span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
                         <li><a href="mailbox.html">Inbox</a></li>
-                        <li><a href="mail_detail.html">Email view</a></li>
                         <li><a href="mail_compose.html">Compose email</a></li>
+                        <li><a href="list_join.html">Join mailing list</a></li>
+                        <li><a href="new_list.html">Create mailing list</a></li>
+
                     </ul></li>
                 <li id="booking"><a href="new_reservation.html"><i class="fa fa-edit"></i>
                     <span class="nav-label">Nuova prenotazione</span></a></li>
@@ -187,6 +189,8 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
             <!-- Mainly scripts -->
             <script src="js/jquery-3.1.1.min.js"></script>
@@ -229,6 +233,16 @@
             <script src="js/demo/sparkline-demo.js"></script>
 
             <script type="text/javascript" src="/controllers/dashboardController.js"></script>
+            <script type="text/javascript" src="/controllers/logoutController.js"></script>
+
+
+
+             <script>
+                function doLogout(){
+                    logoutUser();
+
+                }
+            </script>
 
 
             <script>
@@ -264,18 +278,6 @@
                 }
             </script>
 
-            <script>
-                function doLogout(){
-                    console.log('doing logout ');
-                    sessionStorage.removeItem('logged');
-                    sessionStorage.removeItem('email');
-                    sessionStorage.removeItem('name');
-                    sessionStorage.removeItem('surname');
-                    sessionStorage.removeItem('role');
-                    window.location='/login.html';
-
-                }
-            </script>
 
 
             <script>

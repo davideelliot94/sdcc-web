@@ -124,10 +124,12 @@
 									data-placement="left" title="Refresh inbox">
 									<i class="fa fa-refresh"></i> Refresh
 								</button>
-								<button class="btn btn-white btn-sm" data-toggle="tooltip"
-									data-placement="top" title="Move to trash">
-									<i class="fa fa-trash-o"></i>
-								</button>
+        							<form onsubmit="return deleteMessage()">
+									<button type="submit" class="btn btn-white btn-sm" data-toggle="tooltip"
+										data-placement="top" title="Move to trash">
+										<i class="fa fa-trash-o"></i>
+									</button>
+								</form>
 							</div>
 						</div>
 						<div class="mail-box">
@@ -166,6 +168,66 @@
 	<script src="js/plugins/iCheck/icheck.min.js"></script>
 
 	<script src="/controllers/mailboxController.js"></script>
+	<script type="text/javascript" src="/controllers/logoutController.js"></script>
+
+
+
+	<script>
+		function doLogout(){
+			logoutUser();
+
+		}
+	</script>
+
+	<script>
+		function deleteMessage(){
+
+			var sList = "";
+			$('input[type=checkbox]').each(function () {
+				var sThisVal = (this.checked ? "1" : "0");
+				sList += (sList=="" ? sThisVal : "," + sThisVal);
+			});
+			console.log ('slist is: ' + sList);
+			console.log('length is: ' + sList.length);
+
+			var x;
+			var trashMsgs = [];
+			var parseNot = JSON.parse(sessionStorage.getItem('notifications'));
+			console.log('parseNot is: ' + JSON.stringify(parseNot));
+			console.log('parseNot length is: ' + JSON.stringify(parseNot.length));
+
+
+
+			for(x = 0; x < sList.length; x++){
+				if(parseNot[x] === undefined)
+					break;
+				console.log('x is: ' + x);
+				if(sList[x] == 1){
+					var lMsg = [parseNot[x][4].S,parseNot[x][1]];
+					console.log('lMsg is: ' + JSON.stringify(lMsg));
+					trashMsgs.push(lMsg);
+				}
+			}
+			console.log('trash: ' + JSON.stringify(trashMsgs));
+			deleteFromQueue(trashMsgs);
+			return false;
+		}
+	</script>
+
+
+
+    <script type="text/javascript">
+
+        function showContent(indexNotification){
+            console.log('index Not is: ' + indexNotification);
+            var parseNot = JSON.parse(sessionStorage.getItem('notifications'));
+            console.log('parsENot: ' + JSON.stringify(parseNot));
+            var parseMsg = parseNot[indexNotification][2];
+            sessionStorage.setItem('parseMsg',parseMsg);
+            window.location='mail_detail.html';
+        };
+
+    </script>
 
    <script>
         function getAllNotifications(){
@@ -186,32 +248,36 @@
 					});
 
 					var listNotString = '';
-					//var totalNotification = [["Jack","tanto va la gatta al lardo...","Yesterday 8:48 pm - 10.06.2014"],
-					//						 ["Bill","e se poi te ne penti?","Yesterday 8:48 pm - 10.06.2014"]];
 
 					var totalNotification2 = res;//loadFromQueue();
+                    sessionStorage.setItem('notifications',JSON.stringify(totalNotification2));
 					console.log('totN2 = ' + totalNotification2);
 					console.log('typeof2: ' + typeof totalNotification2);
-					//console.log('not2: ' + JSON.stringify(window.totalNotification));
-//             <tr class="unread">
-// 	            <td class="check-mail">
-// 	                <input type="checkbox" class="i-checks" checked>
-// 	            </td>
-// 	            <td class="mail-ontact"><a href="mail_detail.html">Jack Nowak</a></td>
-// 	            <td class="mail-subject"><a href="mail_detail.html">Aldus PageMaker including versions of Lorem Ipsum.</a></td>
-// 	            <td class=""></td>
-// 	            <td class="text-right mail-date">8.22 PM</td>
-//         	</tr>
-					listNotString += ('<tbody>');
+
+
+                    listNotString += ('<tbody>');
 					$.each(totalNotification2, function(indexNotification, notification) {
+					    console.log('index: ' + indexNotification);
+
 						listNotString += ('<tr class="read">');
 						listNotString += ('<td class="check-mail"><input type="checkbox" class="i-checks" checked></td>');
-						listNotString += ('<td class="mail-ontact"><a href="mail_detail.html">'+ notification[0]+ '</a></td>');
-						listNotString += ('<td class="mail-subject"><a href="mail_detail.html">'+notification[1]+ '</a></td><td class=""></td>');
-						listNotString += ('<td class="text-right mail-date">'+notification[2]+'</td></tr>');
+						listNotString += ('<td class="mail-ontact">'+ notification[0]+ '</a></td>');
+						listNotString += ('<td class="mail-subject">'+notification[1]+ '</a></td><td class=""></td>');
+						listNotString += ('<td onclick=showContent('+indexNotification+'); class="text-right mail-date">'+notification[2].substr(0,100)+'...'+'</td>');
+                        listNotString += ('<td class="text-right mail-date">'+notification[3]+'</td></tr>');
 
-					});
+                       // document.getElementById("code")
+
+
+                        //var newStr = myStr.substr(myStr.indexOf('love'), myStr.lastIndexOf('love'));
+
+
+
+                    });
 					listNotString += ('</tbody>');
+
+
+
 					//console.log(listNotString);
 					$(".table").html(listNotString);
 

@@ -11,8 +11,8 @@ function getNumberUsers(/*jwtToken*/) {
     console.log('called number users');
 
     //MODIFICARE PER AWS
-    var uri = "http://54.175.201.140:8080/users/all/";
-//    var uri = "http://localhost:8080/users/all/";
+    //var uri = "http://54.175.201.140:8080/users/all/";
+    var uri = "http://3.94.62.61:8080/users/all/";
 
     //console.log('jwtToken is: ' + JSON.stringify(jwtToken));
     return fetch(uri, {

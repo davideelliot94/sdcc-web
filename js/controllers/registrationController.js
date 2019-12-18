@@ -3,8 +3,8 @@ function signUpUser(userVal,emailVal,pswVal,nameVal,surnameVal,roleVal) {
     console.log('called sign up user');
 
     //MODIFICARE PER AWS
-    //var uri = "http://localhost:8080/users/registration";
-    var uri = "http://54.175.201.140:8080/users/registration";
+    var uri = "http://localhost:8080/users/registration";
+    //var uri = "http://54.175.201.140:8080/users/registration";
 
 
 

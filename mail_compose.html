@@ -18,7 +18,7 @@
 
 </head>
 
-<body>
+<body onload="loadLists2();">
 
     <div id="wrapper">
           <nav class="navbar-default navbar-static-side" role="navigation">
@@ -125,7 +125,8 @@
                     <form class="form-horizontal" method="get">
                         <div class="form-group"><label class="col-sm-2 control-label">To:</label>
 
-                            <div class="col-sm-10"><input type="text" class="form-control" value="alex.smith@corporat.com"></div>
+                                        <select name="selectedList" id="selectedList">
+                                        </select>
                         </div>
                         <div class="form-group"><label class="col-sm-2 control-label">Subject:</label>
 
@@ -137,15 +138,10 @@
 
                     <div class="mail-text h-200">
 
-                        <div id="msgTxt" class="summernote">
-                            <h3>Hello Jonathan! </h3>
-                            dummy text of the printing and typesetting industry. <strong>Lorem Ipsum has been the industry's</strong> standard dummy text ever since the 1500s,
-                            when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic
-                            typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with
-                            <br/>
-                            <br/>
+                        <textarea id="msgTxt" class="summernote">
 
-                        </div>
+
+                        </textarea>
 <div class="clearfix"></div>
                         </div>
                     <div class="mail-body text-right tooltip-demo">
@@ -199,15 +195,63 @@
 
     <script type="text/javascript" src="/controllers/messageController.js"></script>
 
+    <script type="text/javascript" src="/controllers/logoutController.js"></script>
+
+    <script type="text/javascript" src="/controllers/listController.js"></script>
+
+    <script>
+        function doLogout(){
+            logoutUser();
+
+        }
+    </script>
+
+
+<script>
+    function loadLists2(){
+        loadAllLists2(sessionStorage.getItem('logged')).then(function(res){
+            //r = JSON.stringify(res);
+            //var r2 = r.text;
+            console.log("got res : " + res);
+            console.log('type is: ' + typeof res);
+
+            //listNotString += ('<tbody>');
+
+            $.each(res, function(indexNotification, notification) {
+                console.log('index: ' + indexNotification);
+                console.log('value1 is' + notification[0]);
+                console.log('value1 is' + notification[1]);
+
+                $('#selectedList').append($('<option>', {
+
+                    value: notification[1],
+                    text : notification[0]
+                }));
+
+            });
+
+
+        });
+
+    }
+</script>
+
+
+
 
     <script>
         function submitMessage(){
             console.log('submitting msg');
-            var msgTxt = document.getElementById("msgTxt").innerText;
+
+	
+            console.log('id: ' + document.getElementById("selectedList").value);		//arn
+            console.log('id2: ' + $( "#selectedList option:selected" ).text());		//name
+
+            var msgTxt = document.getElementById("msgTxt").value;
             console.log('got text: ' + msgTxt);
             var start = new Date().getTime();
             while (new Date().getTime() < start + 3000);
-            sendToQueue(msgTxt);
+            sendToQueue(msgTxt,$( "#selectedList option:selected" ).text(),document.getElementById("selectedList").value);
             return false;
         }
     </script>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nuova prenotazioni</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <link href="css/plugins/iCheck/custom.css" rel="stylesheet">
+
+    <link href="css/plugins/chosen/bootstrap-chosen.css" rel="stylesheet">
+
+    <link href="css/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css"
+          rel="stylesheet">
+
+    <link href="css/plugins/colorpicker/bootstrap-colorpicker.min.css"
+          rel="stylesheet">
+
+    <link href="css/plugins/switchery/switchery.css" rel="stylesheet">
+
+    <link href="css/plugins/jasny/jasny-bootstrap.min.css" rel="stylesheet">
+
+    <link href="css/plugins/nouslider/jquery.nouislider.css"
+          rel="stylesheet">
+
+    <link href="css/plugins/datapicker/datepicker3.css" rel="stylesheet">
+
+    <link href="css/plugins/ionRangeSlider/ion.rangeSlider.css"
+          rel="stylesheet">
+    <link href="css/plugins/ionRangeSlider/ion.rangeSlider.skinFlat.css"
+          rel="stylesheet">
+
+    <link
+            href="css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css"
+            rel="stylesheet">
+
+    <link href="css/plugins/clockpicker/clockpicker.css" rel="stylesheet">
+
+    <link href="css/plugins/daterangepicker/daterangepicker-bs3.css"
+          rel="stylesheet">
+
+    <link href="css/plugins/select2/select2.min.css" rel="stylesheet">
+
+    <link href="css/plugins/dualListbox/bootstrap-duallistbox.min.css"
+          rel="stylesheet">
+
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+
+</head>
+
+<body onload="loadLists()">
+
+<div id="wrapper">
+
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav metismenu" id="side-menu">
+                <li class="nav-header">
+                    <div class="dropdown profile-element">
+							<span> <img alt="image" class="img-circle"
+                                        src="img/cesati.jpg" />
+							</span> <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+								<span class="clear"> <span class="block m-t-xs"> <strong
+                                        class="font-bold">Cesati</strong>
+								</span> <span class="text-muted text-xs block">Prof <b
+                                        class="caret"></b></span>
+							</span>
+                    </a>
+                        <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                            <li><a href="profile.html">Profile</a></li>
+                            <li><a href="mailbox.html">Notifiche</a></li>
+                            <li class="divider"></li>
+                            <li><a href="login.html">Logout</a></li>
+                        </ul>
+                    </div>
+                    <div class="logo-element">IN+</div>
+                </li>
+                <li><a href="dashboard_2.html"><i class="fa fa-th-large"></i>
+                    <span class="nav-label">Home page</span></a></li>
+                <li><a href="mailbox.html"><i class="fa fa-envelope"></i>
+                    <span class="nav-label">Mailbox </span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="mailbox.html">Inbox</a></li>
+                        <li><a href="mail_compose.html">Compose email</a></li>
+                    </ul></li>
+                <li><a href="new_reservation.html"><i class="fa fa-edit"></i>
+                    <span class="nav-label">Nuova prenotazione</span></a></li>
+                <li><a href="#"><i class="fa fa-table"></i> <span
+                        class="nav-label">Orari</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="personal_hours.html">Orario personale</a></li>
+                        <li><a href="room_hours.html">Orario aula</a></li>
+                    </ul></li>
+            </ul>
+
+        </div>
+    </nav>
+
+    <div id="page-wrapper" class="gray-bg">
+        <div class="row border-bottom">
+            <nav class="navbar navbar-static-top" role="navigation"
+                 style="margin-bottom: 0">
+                <ul class="nav navbar-top-links navbar-right">
+
+                    <li><a href="mailbox.html"> <i class="fa fa-envelope"></i>Mailbox
+                    </a></li>
+
+                    <li><a href="login.html"> <i class="fa fa-sign-out"></i>
+                        Log out
+                    </a></li>
+                </ul>
+
+            </nav>
+        </div>
+        <div class="row wrapper border-bottom white-bg page-heading">
+            <div class="col-lg-10">
+                <h2>Nuova prenotazione</h2>
+                <ol class="breadcrumb">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active"><a href="new_reservation.html"><strong>Nuova
+                        prenotazione</strong></a></li>
+                </ol>
+            </div>
+            <div class="col-lg-2"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>
+                            Form nuova prenotazione <small>Compilare tutti i campi.</small>
+                        </h5>
+                        <div class="ibox-tools">
+                            <a class="close-link"> <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="ibox-content">
+                            <!--<div class="form-group">
+                                <div class="col-sm-10">
+                                    <p>Scegliere la facoltà:</p>
+                                    <select id="selectCollege" class="select2_demo_1 form-control">
+                                        <option value="1">Ingegneria</option>
+                                        <option value="2">Medicina</option>
+                                        <option value="3">Casa mia</option>
+                                    </select>
+                                </div>
+                            </div>-->
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                    <p>Inserire il nome della mailing list scelto</p>
+                                    <form class="form-horizontal" onsubmit="submitNewList()">
+                                        <select name="selectedList" id="selectedList">
+                                        </select>
+                                        <input class="btn btn-primary" type="submit" value="Submit">
+                                    </form>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Mainly scripts -->
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<!-- Custom and plugin javascript -->
+<script src="js/inspinia.js"></script>
+<script src="js/plugins/pace/pace.min.js"></script>
+<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<!-- Chosen -->
+<script src="js/plugins/chosen/chosen.jquery.js"></script>
+
+<!-- Input Mask-->
+<script src="js/plugins/jasny/jasny-bootstrap.min.js"></script>
+
+<!-- Data picker -->
+<script src="js/plugins/datapicker/bootstrap-datepicker.js"></script>
+
+<!-- Switchery -->
+<script src="js/plugins/switchery/switchery.js"></script>
+
+<!-- iCheck -->
+<script src="js/plugins/iCheck/icheck.min.js"></script>
+
+<!-- MENU -->
+<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+
+<!-- Color picker -->
+<script src="js/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
+
+<!-- Clock picker -->
+<script src="js/plugins/clockpicker/clockpicker.js"></script>
+
+<!-- Date range use moment.js same as full calendar plugin -->
+<script src="js/plugins/fullcalendar/moment.min.js"></script>
+
+<!-- Select2 -->
+<script src="js/plugins/select2/select2.full.min.js"></script>
+
+<!-- Tags Input -->
+<script src="js/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
+
+<!-- Dual Listbox -->
+<script src="js/plugins/dualListbox/jquery.bootstrap-duallistbox.js"></script>
+
+<script type="text/javascript" src="/controllers/listController.js"></script>
+
+<script type="text/javascript" src="/controllers/logoutController.js"></script>
+
+
+
+<script>
+    function doLogout(){
+        logoutUser();
+
+    }
+</script>
+
+
+<script>
+    function  submitNewList() {
+
+        console.log('id: ' + document.getElementById("selectedList").value);		//arn
+        console.log('id2: ' + $( "#selectedList option:selected" ).text());		//name
+
+//        createTopic(document.getElementById("selectedList").value);
+        subscribeToTopic($( "#selectedList option:selected" ).text(),sessionStorage.getItem('logged'),document.getElementById("selectedList").value);
+        alert("Form submitted Successfully");
+
+    }
+</script>
+
+
+<script>
+    function loadLists(){
+        loadAllLists(sessionStorage.getItem('logged')).then(function(res){
+            //r = JSON.stringify(res);
+            //var r2 = r.text;
+            console.log("got res : " + res);
+            console.log('type is: ' + typeof res);
+
+            //listNotString += ('<tbody>');
+
+            $.each(res, function(indexNotification, notification) {
+                console.log('index: ' + indexNotification);
+                console.log('value1 is' + notification[0]);
+                console.log('value1 is' + notification[1]);
+
+                $('#selectedList').append($('<option>', {
+                    value: notification[1],
+                    text : notification[0]
+                }));
+
+            });
+
+
+        });
+
+    }
+</script>
+
+
+
+
+
+</body>
+
+</html>

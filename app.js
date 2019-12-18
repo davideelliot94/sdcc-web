@@ -150,6 +150,16 @@ router.get('/mail_compose.html',function(req,res){
 });
 
 
+router.get('/list_join.html',function(req,res){
+    res.sendFile(path.join(__dirname + '/list_join.html'));
+});
+
+
+router.get('/new_list.html',function(req,res){
+    res.sendFile(path.join(__dirname + '/new_list.html'));
+});
+
+
 app.get('/dashboard_2.html',function(req,res){
     console.log('called dashboard');
     //console.log('full url: ' + req.url + '/dashboard_2.html');
@@ -190,11 +200,12 @@ router.get('/',function(req,res){
     */
 });
 
+
 router.get('/a',function(req,res){
 
     console.log('called post a');
     //res.sendFile(path.join(__dirname + '/index.html'));
-    res.sendFile(path.join(__dirname + '/dashboard_2.html'));
+    res.sendFile(path.join(__dirname + '/home.html'));
     /*
     console.log(path.join(__dirname + '/index.html'));
     fs.readFile(path.join(__dirname + '/index.html'),null, function(error,data){

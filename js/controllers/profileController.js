@@ -4,7 +4,7 @@ function loadUser(emailVal,jwtToken) {
     console.log('called sign up user');
 
     //MODIFICARE PER AWS
-    var uri = "http://54.175.201.140:8080/users/profile/"+emailVal;
+    var uri = "http://3.94.62.61:8080/users/profile/"+emailVal;
     //var uri = "http://localhost:8080/users/profile/"+emailVal;
     var results;
 
@@ -60,7 +60,8 @@ function getEmail(){
 function submitData(email,newpsw,newname,newsurname){
 
     console.log('submitting');
-    var uri = "http://54.175.201.140:8080/users/profile/save";
+//    var uri = "http://54.175.201.140:8080/users/profile/save";
+    var uri = "http://3.94.62.61:8080/users/profile/save";
 
 
     fetch(uri, {
