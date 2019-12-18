@@ -55,7 +55,7 @@
 
 </head>
 
-<body>
+<body onLoad="checkPermissions()">
 
 <div id="wrapper">
 
@@ -89,6 +89,8 @@
 					<ul class="nav nav-second-level collapse">
 						<li><a href="mailbox.html">Inbox</a></li>
 						<li><a href="mail_compose.html">Compose email</a></li>
+						<li><a href="list_join.html">Join mailing list</a></li>
+						<li id="createlist"><a href="new_list.html">Create mailing list</a></li>
 					</ul></li>
 				<li><a href="new_reservation.html"><i class="fa fa-edit"></i>
 					<span class="nav-label">Nuova prenotazione</span></a></li>
@@ -340,6 +342,31 @@
 
 	}
 </script>
+
+
+<script>
+	function checkPermissions(){
+		var role = sessionStorage.getItem('role');
+
+		var log = sessionStorage.getItem('logged');
+		if(log === null || log === undefined){
+			window.location='/login.html';
+			return false;
+		}
+
+
+		if(role == 0){
+			document.getElementById("booking").style.display = "none";
+			document.getElementById("createlist").style.display = "none";
+
+		}
+
+
+	}
+</script>
+
+
+
 
 <script>
 	function setEndClock() {
