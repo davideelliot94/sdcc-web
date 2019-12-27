@@ -50,7 +50,7 @@
 						<ul class="nav nav-second-level collapse">
 							<li><a href="mailbox.html">Inbox</a></li>
 							<li><a href="mail_compose.html">Compose email</a></li>
-                            <li><a href="list_join.html">Join mailing list</a></li>
+                            <li id="joinlist"><a href="list_join.html">Join mailing list</a></li>
                             <li id="createlist"><a href="new_list.html">Create mailing list</a></li>
 						</ul></li>
 					<li><a href="new_reservation.html"><i class="fa fa-edit"></i>
@@ -238,9 +238,15 @@
             //window.totN = await loadFromQueue();
 
             var role = sessionStorage.getItem('role');
-            if(role == 0){
+            console.log('role is: ' + role);
+
+            if(role === 0){
                 document.getElementById("booking").style.display = "none";
                 document.getElementById("createlist").style.display = "none";
+
+            }
+            else{
+                document.getElementById("joinlist").style.display = "none";
 
             }
 
@@ -266,6 +272,12 @@
 
 
                     listNotString += ('<tbody>');
+						listNotString += ('<tr class="read">');
+						listNotString += ('<td class="check-mail"></td>');
+						listNotString += ('<td class="mail-ontact">FROM:</a></td>');
+						listNotString += ('<td class="mail-subject">TO: </a></td><td class=""></td>');
+						listNotString += ('<td Class="text-right mail-date">MESSAGE:</td>');
+						listNotString += ('<td class="text-right mail-date">DATE:</td></tr>');
 					$.each(totalNotification2, function(indexNotification, notification) {
 					    console.log('index: ' + indexNotification);
 

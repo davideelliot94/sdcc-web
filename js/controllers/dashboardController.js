@@ -12,7 +12,7 @@ function getNumberUsers(/*jwtToken*/) {
 
     //MODIFICARE PER AWS
     //var uri = "http://54.175.201.140:8080/users/all/";
-    var uri = "http://3.94.62.61:8080/users/all/";
+    var uri = "http://54.164.38.3:8080/users/all/";
 
     //console.log('jwtToken is: ' + JSON.stringify(jwtToken));
     return fetch(uri, {
@@ -44,7 +44,7 @@ function getTotalTeachers() {
 
     console.log('called total teachers');
     //MODIFICARE PER AWS
-    var uri = "http://54.175.201.140:8080/users/teachers/";
+    var uri = "http://54.164.38.3:8080/users/teachers/";
 //    var uri = "http://localhost:8080/users/teachers/";
 
     //console.log('jwtToken is: ' + JSON.stringify(jwtToken));

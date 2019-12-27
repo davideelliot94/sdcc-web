@@ -67,7 +67,7 @@
                     <ul class="nav nav-second-level collapse">
                         <li><a href="mailbox.html">Inbox</a></li>
                         <li><a href="mail_compose.html">Compose email</a></li>
-                        <li><a href="list_join.html">Join mailing list</a></li>
+                        <li id="joinlist"><a href="list_join.html">Join mailing list</a></li>
                         <li id="createlist"><a href="new_list.html">Create mailing list</a></li>
 
                     </ul></li>
@@ -261,6 +261,10 @@
                         document.getElementById("createlist").style.display = "none";
 
                     }
+                    else{
+                        document.getElementById("joinlist").style.display = "none";
+
+                    }
                     var totalTeachers;
                     getTotalTeachers().then(function(res){
                         console.log('got res: ' + res);
@@ -279,53 +283,5 @@
                 }
             </script>
 
-
-
-            <script>
-                $(document).ready(function() {
-
-                    $("#actUserVal").html(activeUser);
-
-                    var head = ["Ora","Corso","Aula"];
-                    var hours = ["8.15-9.15","9.30-11.00","11.30-13.00","14.00-15.30","16.00-17.30","18.00-19.30"];
-                    var totalBooking = [[["sdcc "],["A1 "]],
-                        [[" "],[" "]],
-                        [[" Mobd"],["D1 "]],
-                        [[" "],[" "]],
-                        [[" "],[" "]],
-                        [[" "],[" "]]];
-
-                    var tableString = '';
-                    tableString += ('<thead><tr>');
-                    $.each(head, function(indexHead, headI) {
-                        tableString += ('<th>'+headI+'</th>')
-                    });
-                    tableString +=('</tr></thead>');
-                    tableString += ('<tbody>');
-
-                    $.each(hours, function(indexHour, hour) {
-                        tableString += ('<tr><td><i class="fa fa-clock-o"></i>'+' '+hour+'</td>');
-                        $.each(totalBooking[indexHour], function(indexDayBooking, bookingPerDay){ //totalBooking = [[pren.lun],[pren.mart],[pren.merc],...]
-                            tableString += ('<td>'+bookingPerDay+'</td>');
-                        });
-                        tableString += ('</tr>');
-                    });
-                    tableString += ('</tbody>');
-                    $("#todayHourTable").html(tableString);
-
-                    var notificationString = '';
-                    var totalNotification = [["5m ago","stefano","tanto va la gatta al lardo...","Yesterday 8:48 pm - 10.06.2014"]];
-
-                    $.each(totalNotification, function(indexNotification, notification) {
-                        notificationString += ('<div class="feed-element"><div>');
-                        notificationString += ('<small class="pull-right">'+notification[0]+'</small>');
-                        notificationString += ('<strong>'+notification[1]+'</strong>');
-                        notificationString += ('<div>'+notification[2]+'</div>');
-                        notificationString += ('<small class="text-muted">'+notification[3]+'</small></div>');
-                        notificationString += ('</div>');
-                    });
-                    $("#notificationList").html(notificationString);
-                });
-            </script>
 </body>
 </html>

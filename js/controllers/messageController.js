@@ -1,7 +1,4 @@
-//var uri = "http://54.175.201.140:8080/msgs/send";
-var uri = "http://54.226.244.88:8080/msgs/send/";
-//var uri = "http://ec2-54-175-201-140.compute-1.amazonaws.com:3000/msgs/send";
-
+var uri = "http://3.86.24.197:8080/msgs/send/";
 
 
 function sendToQueue(msgTxt,topicName,topicArn) {

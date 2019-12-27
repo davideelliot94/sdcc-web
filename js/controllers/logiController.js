@@ -4,7 +4,7 @@
 console.log('trying prova');
 
 //prova();
-var uri_userLogin = "http://3.94.62.61:8080/users/login";
+var uri_userLogin = "http://54.164.38.3:8080/users/login";
 //ivar uri_userLogin = "http://54.175.201.140:8080/users/login";
 
 
@@ -19,6 +19,7 @@ function nameFunc(val1,val2){
     var surname;
     var role;
     var jwtToken;
+    var qUrl;
 
 
     fetch(uri_userLogin, {
@@ -52,7 +53,7 @@ function nameFunc(val1,val2){
                     username = JSON.parse(nweText).username;
                     surname = JSON.parse(nweText).surname;
                     role = JSON.parse(nweText).role;
-                    jwtToken = JSON.parse(nweText).token;
+                    qUrl = JSON.parse(nweText).token;
 
                     console.log('got name: ' + name);
                     console.log('username: ' + username);
@@ -72,6 +73,7 @@ function nameFunc(val1,val2){
                     sessionStorage.setItem('surname',surname);
                     sessionStorage.setItem('role',role);
                     sessionStorage.setItem('token',jwtToken);
+                    sessionStorage.setItem('qUrl',qUrl);
                     /***********************************************************************/
 
                     //var start = new Date().getTime();

@@ -1,8 +1,8 @@
 console.log('trying prova');
 
 //prova();
-var uri = "http://54.237.250.151:8080/msgs/receive/";
-const uriDel = "http://54.237.250.151:8080/msgs/delete/";
+var uri = "http://3.86.24.197:8080/msgs/receive/";
+const uriDel = "http://3.86.24.197:8080/msgs/delete/";
 
 
 

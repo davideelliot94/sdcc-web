@@ -50,6 +50,8 @@
                     <ul class="nav nav-second-level collapse">
                         <li><a href="mailbox.html">Inbox</a></li>
                         <li><a href="mail_compose.html">Compose email</a></li>
+                        <li id="joinlist"><a href="list_join.html">Join mailing list</a></li>
+                        <li id="createlist"><a href="new_list.html">Create mailing list</a></li>
                     </ul>
                 </li>
                 <li>
@@ -209,6 +211,25 @@
 
 <script>
     function loadLists2(){
+
+        var role = sessionStorage.getItem('role');
+
+        var log = sessionStorage.getItem('logged');
+        if(log === null || log === undefined){
+            window.location='/login.html';
+            return false;
+        }
+
+        if(role == 0){
+            document.getElementById("booking").style.display = "none";
+            document.getElementById("createlist").style.display = "none";
+
+        }
+        else{
+            document.getElementById("joinlist").style.display = "none";
+
+        }
+
         loadAllLists2(sessionStorage.getItem('logged')).then(function(res){
             //r = JSON.stringify(res);
             //var r2 = r.text;

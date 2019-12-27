@@ -89,7 +89,7 @@
 					<ul class="nav nav-second-level collapse">
 						<li><a href="mailbox.html">Inbox</a></li>
 						<li><a href="mail_compose.html">Compose email</a></li>
-						<li><a href="list_join.html">Join mailing list</a></li>
+						<li id="joinlist"><a href="list_join.html">Join mailing list</a></li>
 						<li id="createlist"><a href="new_list.html">Create mailing list</a></li>
 					</ul></li>
 				<li><a href="new_reservation.html"><i class="fa fa-edit"></i>
@@ -360,7 +360,9 @@
 			document.getElementById("createlist").style.display = "none";
 
 		}
-
+		else {
+			document.getElementById("joinlist").style.display = "none";
+		}
 
 	}
 </script>

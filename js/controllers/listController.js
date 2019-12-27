@@ -1,7 +1,7 @@
 console.log('trying prova');
 
-var uri_creating = "http://35.175.233.102:8080/msgs/listcreate/";
-var uri = "http://35.175.233.102:8080/msgs/send/";
+var uri_creating = "http://3.86.24.197:8080/msgs/listcreate/";
+var uri = "http://3.86.24.197:8080/msgs/send/";
 
 
 function createTopic(topic) {
@@ -37,9 +37,10 @@ function createTopic(topic) {
 
 }
 
-var uri_lists = "http://3.94.62.61:8080/users/lists/";
 
 function loadAllLists(username){
+
+    var uri_lists = "http://54.164.38.3:8080/users/lists/";
 
     console.log('got username list: ' + username);
     uri_lists = uri_lists+username;
@@ -77,15 +78,17 @@ function loadAllLists(username){
 
 
 
-var uri_lists = "http://3.94.62.61:8080/users/lists2/";
 
 function loadAllLists2(username){
 
+    var uri_lists2 = "http://54.164.38.3:8080/users/lists2/";
+
+
     console.log('got username list: ' + username);
-    uri_lists = uri_lists+username;
+    uri_lists2 = uri_lists2+username;
     var series=[];
 
-    return fetch(uri_lists, {
+    return fetch(uri_lists2, {
         method: 'GET',
         headers: {
             'Access-Control-Allow-Origin': '*',
@@ -118,7 +121,7 @@ function loadAllLists2(username){
 
 
 
-var uri_associate = "http://3.94.62.61:8080/users/associate";
+var uri_associate = "http://54.164.38.3:8080/users/associate";
 
 
 function associateUser(topicName,topicArn){
@@ -163,7 +166,7 @@ function createAndAssociate(topicName){
 
 }
 
-var uri_subscribe = "http://35.175.233.102:8080/msgs/subscribe/";
+var uri_subscribe = "http://3.86.24.197:8080/msgs/subscribe/";
 
 function subscribeToTopic(topicN,username,topicA) {
 
