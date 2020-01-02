@@ -20,17 +20,21 @@
 
 <body onload="loadLists2();">
 
-    <div id="wrapper">
-          <nav class="navbar-default navbar-static-side" role="navigation">
+<div id="wrapper">
+    <nav class="navbar-default navbar-static-side" role="navigation">
         <div class="sidebar-collapse">
             <ul class="nav metismenu" id="side-menu">
                 <li class="nav-header">
                     <div class="dropdown profile-element"> <span>
-                            <img alt="image" class="img-circle" src="img/cesati.jpg" />
-                             </span>
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">Cesati</strong>
-                             </span> <span class="text-muted text-xs block">Prof <b class="caret"></b></span> </span> </a>
+							<span> <img alt="image" class="img-circle"
+                                        src="img/cesati.jpg" />
+							</span> <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+								<span class="clear"> <span class="block m-t-xs"> <strong  id='userN'
+                                                                                          class="font-bold"></strong>
+								</span> <span id='roleP' class="text-muted text-xs block"> <b
+                                        class="caret"></b></span>
+							</span>
+			 </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
                             <li><a href="profile.html">Profile</a></li>
                             <li><a href="mailbox.html">Notifiche</a></li>
@@ -54,7 +58,7 @@
                         <li id="createlist"><a href="new_list.html">Create mailing list</a></li>
                     </ul>
                 </li>
-                <li>
+                <li id='booking'>
                     <a href="new_reservation.html"><i class="fa fa-edit"></i> <span class="nav-label">Nuova prenotazione</span></a>
                 </li>
                 <li>
@@ -68,104 +72,104 @@
 
         </div>
     </nav>
-    
-	<div id="page-wrapper" class="gray-bg">
+
+    <div id="page-wrapper" class="gray-bg">
         <div class="row border-bottom">
-        <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
-            <ul class="nav navbar-top-links navbar-right">
+            <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
+                <ul class="nav navbar-top-links navbar-right">
 
-                <li>
-					<a  href="mailbox.html">
-						<i class="fa fa-envelope"></i>Mailbox
-					</a>
-                </li>
-                
-                <li>
-                    <a href="login.html">
-                        <i class="fa fa-sign-out"></i> Log out
-                    </a>
-                </li>
-            </ul>
+                    <li>
+                        <a  href="mailbox.html">
+                            <i class="fa fa-envelope"></i>Mailbox
+                        </a>
+                    </li>
 
-        </nav>
+                    <li>
+                        <a href="login.html">
+                            <i class="fa fa-sign-out"></i> Log out
+                        </a>
+                    </li>
+                </ul>
+
+            </nav>
         </div>
 
         <div class="wrapper wrapper-content">
-        <div class="row">
-            <div class="col-lg-3">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-content mailbox-content">
-                        <div class="file-manager">
-                            <a class="btn btn-block btn-primary compose-mail" href="mail_compose.html">Compose Mail</a>
-                            <div class="space-25"></div>
-                            <h5>Folders</h5>
-                            <ul class="folder-list m-b-md" style="padding: 0">
-                                <li><a href="mailbox.html"> <i class="fa fa-inbox "></i> Inbox <span class="label label-warning pull-right">16</span> </a></li>
-                                <li><a href="mailbox.html"> <i class="fa fa-envelope-o"></i> Send Mail</a></li>
-                                <li><a href="mailbox.html"> <i class="fa fa-trash-o"></i> Trash</a></li>
-                            </ul>
-                            <div class="clearfix"></div>
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-content mailbox-content">
+                            <div class="file-manager">
+                                <a class="btn btn-block btn-primary compose-mail" href="mail_compose.html">Compose Mail</a>
+                                <div class="space-25"></div>
+                                <h5>Folders</h5>
+                                <ul class="folder-list m-b-md" style="padding: 0">
+                                    <li><a href="mailbox.html"> <i class="fa fa-inbox "></i> Inbox <span class="label label-warning pull-right">16</span> </a></li>
+                                    <li><a href="mailbox.html"> <i class="fa fa-envelope-o"></i> Send Mail</a></li>
+                                    <li><a href="mailbox.html"> <i class="fa fa-trash-o"></i> Trash</a></li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-9 animated fadeInRight">
-            <div class="mail-box-header">
-                <div class="pull-right tooltip-demo">
-                    <a href="mailbox.html" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Move to draft folder"><i class="fa fa-pencil"></i> Draft</a>
-                    <a href="mailbox.html" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Discard email"><i class="fa fa-times"></i> Discard</a>
-                </div>
-                <h2>
-                    Compose mail
-                </h2>
-            </div>
-                <div class="mail-box">
-
-
-                <div class="mail-body">
-
-                    <form class="form-horizontal" method="get">
-                        <div class="form-group"><label class="col-sm-2 control-label">To:</label>
-
-                                        <select name="selectedList" id="selectedList">
-                                        </select>
+                <div class="col-lg-9 animated fadeInRight">
+                    <div class="mail-box-header">
+                        <div class="pull-right tooltip-demo">
+                            <a href="mailbox.html" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Move to draft folder"><i class="fa fa-pencil"></i> Draft</a>
+                            <a href="mailbox.html" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Discard email"><i class="fa fa-times"></i> Discard</a>
                         </div>
-                        <div class="form-group"><label class="col-sm-2 control-label">Subject:</label>
+                        <h2>
+                            Compose mail
+                        </h2>
+                    </div>
+                    <div class="mail-box">
 
-                            <div class="col-sm-10"><input type="text" class="form-control" value=""></div>
+
+                        <div class="mail-body">
+
+                            <form class="form-horizontal" method="get">
+                                <div class="form-group"><label class="col-sm-2 control-label">To:</label>
+
+                                    <select name="selectedList" id="selectedList">
+                                    </select>
+                                </div>
+                                <div class="form-group"><label class="col-sm-2 control-label">Subject:</label>
+
+                                    <div class="col-sm-10"><input type="text" class="form-control" value=""></div>
+                                </div>
+                            </form>
+
                         </div>
-                        </form>
 
-                </div>
-
-                    <div class="mail-text h-200">
+                        <div class="mail-text h-200">
 
                         <textarea id="msgTxt" class="summernote">
 
 
                         </textarea>
-<div class="clearfix"></div>
+                            <div class="clearfix"></div>
                         </div>
-                    <div class="mail-body text-right tooltip-demo">
-                        <form onsubmit="return submitMessage()">
-                            <button class="btn btn-sm btn-primary" type="submit" data-toggle="tooltip" data-placement="top" title="Send"><i class="fa fa-reply"></i> Send</button>
-                        </form>
+                        <div class="mail-body text-right tooltip-demo">
+                            <form onsubmit="return submitMessage()">
+                                <button class="btn btn-sm btn-primary" type="submit" data-toggle="tooltip" data-placement="top" title="Send"><i class="fa fa-reply"></i> Send</button>
+                            </form>
 
-                       <!-- <form method="post" class="form-horizontal" onsubmit="return deleteAccount();">
-                            <button class="btn btn-white" type="submit">Delete account</button>
-                        </form>-->
+                            <!-- <form method="post" class="form-horizontal" onsubmit="return deleteAccount();">
+                                 <button class="btn btn-white" type="submit">Delete account</button>
+                             </form>-->
 
 
-                        <a href="mailbox.html" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Discard email"><i class="fa fa-times"></i> Discard</a>
-                        <a href="mailbox.html" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Move to draft folder"><i class="fa fa-pencil"></i> Draft</a>
+                            <a href="mailbox.html" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Discard email"><i class="fa fa-times"></i> Discard</a>
+                            <a href="mailbox.html" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Move to draft folder"><i class="fa fa-pencil"></i> Draft</a>
+                        </div>
+                        <div class="clearfix"></div>
+
+
+
                     </div>
-                    <div class="clearfix"></div>
-
-
-
                 </div>
             </div>
-        </div>
         </div>
         <div class="footer">
             <div class="pull-right">
@@ -176,43 +180,44 @@
             </div>
         </div>
 
-        </div>
-        </div>
+    </div>
+</div>
 
-    <!-- Mainly scripts -->
-    <script src="js/jquery-3.1.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
-    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<!-- Mainly scripts -->
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
-    <!-- Custom and plugin javascript -->
-    <script src="js/inspinia.js"></script>
-    <script src="js/plugins/pace/pace.min.js"></script>
+<!-- Custom and plugin javascript -->
+<script src="js/inspinia.js"></script>
+<script src="js/plugins/pace/pace.min.js"></script>
 
-    <!-- iCheck -->
-    <script src="js/plugins/iCheck/icheck.min.js"></script>
+<!-- iCheck -->
+<script src="js/plugins/iCheck/icheck.min.js"></script>
 
-    <!-- SUMMERNOTE -->
-    <script src="js/plugins/summernote/summernote.min.js"></script>
+<!-- SUMMERNOTE -->
+<script src="js/plugins/summernote/summernote.min.js"></script>
 
-    <script type="text/javascript" src="/controllers/messageController.js"></script>
+<script type="text/javascript" src="/controllers/messageController.js"></script>
 
-    <script type="text/javascript" src="/controllers/logoutController.js"></script>
+<script type="text/javascript" src="/controllers/logoutController.js"></script>
 
-    <script type="text/javascript" src="/controllers/listController.js"></script>
+<script type="text/javascript" src="/controllers/listController.js"></script>
 
-    <script>
-        function doLogout(){
-            logoutUser();
+<script>
+    function doLogout(){
+        logoutUser();
 
-        }
-    </script>
+    }
+</script>
 
 
 <script>
     function loadLists2(){
 
-        var role = sessionStorage.getItem('role');
+        var role = parseInt(sessionStorage.getItem('role'));
+        document.getElementById("userN").innerHTML = sessionStorage.getItem('email');
 
         var log = sessionStorage.getItem('logged');
         if(log === null || log === undefined){
@@ -220,13 +225,15 @@
             return false;
         }
 
-        if(role == 0){
+        if(role === 1){
             document.getElementById("booking").style.display = "none";
             document.getElementById("createlist").style.display = "none";
+            document.getElementById("roleP").innerHTML = "Student";
 
         }
         else{
             document.getElementById("joinlist").style.display = "none";
+            document.getElementById("roleP").innerHTML = "Teacher";
 
         }
 
@@ -260,31 +267,31 @@
 
 
 
-    <script>
-        function submitMessage(){
-            console.log('submitting msg');
+<script>
+    function submitMessage(){
+        console.log('submitting msg');
 
-	
-            console.log('id: ' + document.getElementById("selectedList").value);		//arn
-            console.log('id2: ' + $( "#selectedList option:selected" ).text());		//name
 
-            var msgTxt = document.getElementById("msgTxt").value;
-            console.log('got text: ' + msgTxt);
-            var start = new Date().getTime();
-            while (new Date().getTime() < start + 3000);
-            sendToQueue(msgTxt,$( "#selectedList option:selected" ).text(),document.getElementById("selectedList").value);
-            return false;
-        }
-    </script>
+        console.log('id: ' + document.getElementById("selectedList").value);		//arn
+        console.log('id2: ' + $( "#selectedList option:selected" ).text());		//name
 
-    <script>
-        $(document).ready(function(){
+        var msgTxt = document.getElementById("msgTxt").value;
+        console.log('got text: ' + msgTxt);
+        var start = new Date().getTime();
+        while (new Date().getTime() < start + 3000);
+        sendToQueue(msgTxt,$( "#selectedList option:selected" ).text(),document.getElementById("selectedList").value);
+        return false;
+    }
+</script>
 
-            $('.summernote').summernote();
+<script>
+    $(document).ready(function(){
 
-        });
+        $('.summernote').summernote();
 
-    </script>
+    });
+
+</script>
 </body>
 
 </html>

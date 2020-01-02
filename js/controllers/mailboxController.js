@@ -1,8 +1,10 @@
 console.log('trying prova');
 
 //prova();
-var uri = "http://3.86.24.197:8080/msgs/receive/";
-const uriDel = "http://3.86.24.197:8080/msgs/delete/";
+var ip="http://52.91.194.123:8080";
+var uriRec = ip+"/msgs/receive/";
+const uriDel = ip+"/msgs/delete/";
+var uriRead = ip+"/msgs/read/";
 
 
 
@@ -10,10 +12,10 @@ function loadFromQueue(){
 
     var results= [];
 
-    uri = uri + sessionStorage.getItem('logged');
-    console.log('uri is: ' + uri);
+    uriRec = uriRec + sessionStorage.getItem('logged');
+    console.log('uri is: ' + uriRec);
 
-    return fetch(uri, {
+    return fetch(uriRec, {
         method: 'GET',
         headers: {
             'Access-Control-Allow-Origin': '*',
@@ -37,14 +39,36 @@ function loadFromQueue(){
             console.log('msg is: ' + msg);
             results.push(msg);
 
-            console.log('ayns results: ' + results);
-
         });
 
         return results;
     }));
 
 };
+
+
+function readFromQueue(){
+
+    var results= [];
+
+    uriRead = uriRead + sessionStorage.getItem('logged');
+    console.log('uri is: ' + uriRead);
+
+    return fetch(uriRead, {
+        method: 'POST',
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    }).then(res => res.text().then(function (text) {
+        console.log('text is: ' + text);
+        console.log('tyie is: ' + typeof text);
+    }));
+
+};
+
+
 
 
 function deleteFromQueue(idList) {

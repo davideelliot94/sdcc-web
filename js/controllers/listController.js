@@ -1,8 +1,13 @@
 console.log('trying prova');
 
-var uri_creating = "http://3.86.24.197:8080/msgs/listcreate/";
-var uri = "http://3.86.24.197:8080/msgs/send/";
+var ip="http://52.91.194.123:8080";
 
+var uri_creating = ip+"/msgs/listcreate/";
+var uri = ip+"/msgs/send/";
+var uri_lists = ip+"/users/lists/";
+var uri_lists2 = ip+"/users/lists2/";
+var uri_associate = ip+"/users/associate";
+var uri_subscribe = ip+"/msgs/subscribe/";
 
 function createTopic(topic) {
 
@@ -16,7 +21,8 @@ function createTopic(topic) {
         headers: {
             'Access-Control-Allow-Origin': '*',
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': sessionStorage.getItem('token')
         }
     }).then(function (response) {
         console.log("getting response:  " + response);
@@ -40,7 +46,7 @@ function createTopic(topic) {
 
 function loadAllLists(username){
 
-    var uri_lists = "http://54.164.38.3:8080/users/lists/";
+    var uri_lists = "http://54.146.131.119:8080/users/lists/";
 
     console.log('got username list: ' + username);
     uri_lists = uri_lists+username;
@@ -51,7 +57,9 @@ function loadAllLists(username){
         headers: {
             'Access-Control-Allow-Origin': '*',
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': sessionStorage.getItem('token')
+
         }
     }).then(res => res.text().then(function (text) {
 
@@ -81,7 +89,7 @@ function loadAllLists(username){
 
 function loadAllLists2(username){
 
-    var uri_lists2 = "http://54.164.38.3:8080/users/lists2/";
+    var uri_lists2 = "http://54.146.131.119:8080/users/lists2/";
 
 
     console.log('got username list: ' + username);
@@ -93,7 +101,9 @@ function loadAllLists2(username){
         headers: {
             'Access-Control-Allow-Origin': '*',
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': sessionStorage.getItem('token')
+
         }
     }).then(res => res.text().then(function (text) {
 
@@ -121,7 +131,7 @@ function loadAllLists2(username){
 
 
 
-var uri_associate = "http://54.164.38.3:8080/users/associate";
+var uri_associate = "http://54.146.131.119:8080/users/associate";
 
 
 function associateUser(topicName,topicArn){
@@ -135,7 +145,9 @@ function associateUser(topicName,topicArn){
         headers: {
             'Access-Control-Allow-Origin': '*',
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': sessionStorage.getItem('token')
+
         }
     }).then(
             function(response) {
@@ -166,7 +178,7 @@ function createAndAssociate(topicName){
 
 }
 
-var uri_subscribe = "http://3.86.24.197:8080/msgs/subscribe/";
+var uri_subscribe = "http://52.91.194.123:8080/msgs/subscribe/";
 
 function subscribeToTopic(topicN,username,topicA) {
 
@@ -183,7 +195,9 @@ function subscribeToTopic(topicN,username,topicA) {
         headers: {
             'Access-Control-Allow-Origin': '*',
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': sessionStorage.getItem('token')
+
         }
     }).then(function (response) {
         console.log("getting response:  " + response);

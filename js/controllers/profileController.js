@@ -1,20 +1,22 @@
 var username,name,surname,email;
+var ip="http://54.146.131.119:8080";
+
 
 function loadUser(emailVal,jwtToken) {
     console.log('called sign up user');
 
     //MODIFICARE PER AWS
-    var uri = "http://52.70.209.199:8080/users/profile/"+emailVal;
+    var uriLoad = ip+"/users/profile/"+emailVal;
     //var uri = "http://localhost:8080/users/profile/"+emailVal;
     var results;
 
-    return fetch(uri, {
+    return fetch(uriLoad, {
         method: 'GET',
         headers: {
             'Authorization': jwtToken,
             'Access-Control-Allow-Origin': '*',
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
         }
     }).then(res => res.text().then(function (response) {
         console.log('RES: ' + JSON.stringify(response));
@@ -60,11 +62,10 @@ function getEmail(){
 function submitData(email,newpsw,newname,newsurname){
 
     console.log('submitting');
-//    var uri = "http://54.175.201.140:8080/users/profile/save";
-    var uri = "http://52.70.209.199:8080/users/profile/save";
+    var uriSub = ip+"/users/profile/save";
 
 
-    fetch(uri, {
+    fetch(uriSub, {
         method: 'POST',
         body: JSON.stringify({
             email: email,
@@ -74,7 +75,9 @@ function submitData(email,newpsw,newname,newsurname){
         headers: {
             'Access-Control-Allow-Origin': '*',
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': sessionStorage.getItem('token')
+
         }
     }).then(function (response) {
         if(response.status == 200) {
@@ -88,9 +91,9 @@ function submitData(email,newpsw,newname,newsurname){
 
 
 function deleteUserAccount(email){
-    var uri = "http://52.70.209.199:8080/users/delete";
+    var uriDelete = ip+"/users/delete";
 
-    fetch(uri, {
+    fetch(uriDelete, {
         method: 'POST',
         body: JSON.stringify({
             email: email
@@ -98,7 +101,9 @@ function deleteUserAccount(email){
         headers: {
             'Access-Control-Allow-Origin': '*',
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': sessionStorage.getItem('token')
+
         }
     }).then(function (response) {
         if(response.status == 200) {

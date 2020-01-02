@@ -3,319 +3,328 @@
 
 <head>
 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>MAIL | Mailbox</title>
+	<title>MAIL | Mailbox</title>
 
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="font-awesome/css/font-awesome.css" rel="stylesheet">
-<link href="css/plugins/iCheck/custom.css" rel="stylesheet">
-<link href="css/animate.css" rel="stylesheet">
-<link href="css/style.css" rel="stylesheet">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+	<link href="css/plugins/iCheck/custom.css" rel="stylesheet">
+	<link href="css/animate.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
 
 </head>
 
 <body onload="getAllNotifications()">
 
-	<div id="wrapper">
+<div id="wrapper">
 
-		<nav class="navbar-default navbar-static-side" role="navigation">
-			<div class="sidebar-collapse">
-				<ul class="nav metismenu" id="side-menu">
-					<li class="nav-header">
-						<div class="dropdown profile-element">
+	<nav class="navbar-default navbar-static-side" role="navigation">
+		<div class="sidebar-collapse">
+			<ul class="nav metismenu" id="side-menu">
+				<li class="nav-header">
+					<div class="dropdown profile-element">
 							<span> <img alt="image" class="img-circle"
-								src="img/cesati.jpg" />
+										src="img/cesati.jpg" />
 							</span> <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-								<span class="clear"> <span class="block m-t-xs"> <strong
-										class="font-bold">Cesati</strong>
-								</span> <span class="text-muted text-xs block">Prof <b
+								<span class="clear"> <span class="block m-t-xs"> <strong  id='userN'
+																						  class="font-bold"></strong>
+								</span> <span id='roleP' class="text-muted text-xs block"> <b
 										class="caret"></b></span>
 							</span>
-							</a>
-							<ul class="dropdown-menu animated fadeInRight m-t-xs">
-								<li><a href="profile.html">Profile</a></li>
-								<li><a href="mailbox.html">Notifiche</a></li>
-								<li class="divider"></li>
-								<li><a href="login.html">Logout</a></li>
-							</ul>
-						</div>
-						<div class="logo-element">IN+</div>
-					</li>
-					<li><a href="dashboard_2.html"><i class="fa fa-th-large"></i>
-							<span class="nav-label">Home page</span></a></li>
-					<li><a href="mailbox.html"><i class="fa fa-envelope"></i>
-							<span class="nav-label">Mailbox </span><span class="fa arrow"></span></a>
-						<ul class="nav nav-second-level collapse">
-							<li><a href="mailbox.html">Inbox</a></li>
-							<li><a href="mail_compose.html">Compose email</a></li>
-                            <li id="joinlist"><a href="list_join.html">Join mailing list</a></li>
-                            <li id="createlist"><a href="new_list.html">Create mailing list</a></li>
-						</ul></li>
-					<li><a href="new_reservation.html"><i class="fa fa-edit"></i>
-							<span class="nav-label">Nuova prenotazione</span></a></li>
-					<li><a href="#"><i class="fa fa-table"></i> <span
-							class="nav-label">Orari</span><span class="fa arrow"></span></a>
-						<ul class="nav nav-second-level collapse">
-							<li><a href="personal_hours.html">Orario personale</a></li>
-							<li><a href="room_hours.html">Orario aula</a></li>
-						</ul></li>
+					</a>
+						<ul class="dropdown-menu animated fadeInRight m-t-xs">
+							<li><a href="profile.html">Profile</a></li>
+							<li><a href="mailbox.html">Notifiche</a></li>
+							<li class="divider"></li>
+							<li><a href="login.html">Logout</a></li>
+						</ul>
+					</div>
+					<div class="logo-element">IN+</div>
+				</li>
+				<li><a href="dashboard_2.html"><i class="fa fa-th-large"></i>
+					<span class="nav-label">Home page</span></a></li>
+				<li><a href="mailbox.html"><i class="fa fa-envelope"></i>
+					<span class="nav-label">Mailbox </span><span class="fa arrow"></span></a>
+					<ul class="nav nav-second-level collapse">
+						<li><a href="mailbox.html">Inbox</a></li>
+						<li><a href="mail_compose.html">Compose email</a></li>
+						<li id="joinlist"><a href="list_join.html">Join mailing list</a></li>
+						<li id="createlist"><a href="new_list.html">Create mailing list</a></li>
+					</ul></li>
+				<li id="booking"><a href="new_reservation.html"><i class="fa fa-edit"></i>
+					<span class="nav-label">Nuova prenotazione</span></a></li>
+				<li><a href="#"><i class="fa fa-table"></i> <span
+						class="nav-label">Orari</span><span class="fa arrow"></span></a>
+					<ul class="nav nav-second-level collapse">
+						<li><a href="personal_hours.html">Orario personale</a></li>
+						<li><a href="room_hours.html">Orario aula</a></li>
+					</ul></li>
+			</ul>
+
+		</div>
+	</nav>
+
+	<div id="page-wrapper" class="gray-bg">
+		<div class="row border-bottom">
+			<nav class="navbar navbar-static-top white-bg" role="navigation"
+				 style="margin-bottom: 0">
+				<ul class="nav navbar-top-links navbar-right">
+
+					<li><a href="mailbox.html"> <i class="fa fa-envelope"></i>Mailbox
+					</a></li>
+
+					<li><a href="login.html"> <i class="fa fa-sign-out"></i>
+						Log out
+					</a></li>
 				</ul>
 
-			</div>
-		</nav>
+			</nav>
+		</div>
 
-		<div id="page-wrapper" class="gray-bg">
-			<div class="row border-bottom">
-				<nav class="navbar navbar-static-top white-bg" role="navigation"
-					style="margin-bottom: 0">
-					<ul class="nav navbar-top-links navbar-right">
-
-						<li><a href="mailbox.html"> <i class="fa fa-envelope"></i>Mailbox
-						</a></li>
-
-						<li><a href="login.html"> <i class="fa fa-sign-out"></i>
-								Log out
-						</a></li>
-					</ul>
-
-				</nav>
-			</div>
-
-			<div class="wrapper wrapper-content">
-				<div class="row">
-					<div class="col-lg-3">
-						<div class="ibox float-e-margins">
-							<div class="ibox-content mailbox-content">
-								<div class="file-manager">
-									<a class="btn btn-block btn-primary compose-mail"
-										href="mail_compose.html">Compose Mail</a>
-									<div class="space-25"></div>
-									<h5>Folders</h5>
-									<ul class="folder-list m-b-md" style="padding: 0">
-										<li><a href="mailbox.html"> <i class="fa fa-inbox "></i>
-												Inbox
-										</a></li>
-										<li><a href="trashbox.html"> <i class="fa fa-trash-o"></i>
-												Trash
-										</a></li>
-									</ul>
-									<div class="clearfix"></div>
-								</div>
+		<div class="wrapper wrapper-content">
+			<div class="row">
+				<div class="col-lg-3">
+					<div class="ibox float-e-margins">
+						<div class="ibox-content mailbox-content">
+							<div class="file-manager">
+								<a class="btn btn-block btn-primary compose-mail"
+								   href="mail_compose.html">Compose Mail</a>
+								<div class="space-25"></div>
+								<h5>Folders</h5>
+								<ul class="folder-list m-b-md" style="padding: 0">
+									<li><a href="mailbox.html"> <i class="fa fa-inbox "></i>
+										Inbox
+									</a></li>
+									<li><a href="trashbox.html"> <i class="fa fa-trash-o"></i>
+										Trash
+									</a></li>
+								</ul>
+								<div class="clearfix"></div>
 							</div>
-						</div>
-					</div>
-					<div class="col-lg-9 animated fadeInRight">
-						<div class="mail-box-header">
-
-							<form method="get" action="index.html"
-								class="pull-right mail-search">
-								<div class="input-group">
-									<input type="text" class="form-control input-sm" name="search"
-										placeholder="Search email">
-									<div class="input-group-btn">
-										<button onclick="searchMessage()" type="submit"
-											class="btn btn-sm btn-primary">Search</button>
-									</div>
-								</div>
-							</form>
-							<h2>Inbox</h2>
-							<div class="mail-tools tooltip-demo m-t-md">
-								<button class="btn btn-white btn-sm" data-toggle="tooltip"
-									data-placement="left" title="Refresh inbox">
-									<i class="fa fa-refresh"></i> Refresh
-								</button>
-        							<form onsubmit="return deleteMessage()">
-									<button type="submit" class="btn btn-white btn-sm" data-toggle="tooltip"
-										data-placement="top" title="Move to trash">
-										<i class="fa fa-trash-o"></i>
-									</button>
-								</form>
-							</div>
-						</div>
-						<div class="mail-box">
-<!-- 							id="notificationList" -->
-							<table class="table table-hover table-mail">
-<!-- 								<tr class="unread"> -->
-<!-- 									<td class="check-mail"><input type="checkbox" -->
-<!-- 										class="i-checks" checked></td> -->
-<!-- 									<td class="mail-ontact"><a href="mail_detail.html">Jack -->
-<!-- 											Nowak</a></td> -->
-<!-- 									<td class="mail-subject"><a href="mail_detail.html">Aldus -->
-<!-- 											PageMaker including versions of Lorem Ipsum.</a></td> -->
-<!-- 									<td class=""></td> -->
-<!-- 									<td class="text-right mail-date">8.22 PM</td> -->
-<!-- 								</tr> -->
-							</table>
 						</div>
 					</div>
 				</div>
+				<div class="col-lg-9 animated fadeInRight">
+					<div class="mail-box-header">
+
+						<form method="get" action="index.html"
+							  class="pull-right mail-search">
+							<div class="input-group">
+								<input type="text" class="form-control input-sm" name="search"
+									   placeholder="Search email">
+								<div class="input-group-btn">
+									<button onclick="searchMessage()" type="submit"
+											class="btn btn-sm btn-primary">Search</button>
+								</div>
+							</div>
+						</form>
+						<h2>Inbox</h2>
+						<div class="mail-tools tooltip-demo m-t-md">
+							<button class="btn btn-white btn-sm" data-toggle="tooltip"
+									data-placement="left" title="Refresh inbox">
+								<i class="fa fa-refresh"></i> Refresh
+							</button>
+							<form onsubmit="return deleteMessage()">
+								<button type="submit" class="btn btn-white btn-sm" data-toggle="tooltip"
+										data-placement="top" title="Move to trash">
+									<i class="fa fa-trash-o"></i>
+								</button>
+							</form>
+						</div>
+					</div>
+					<div class="mail-box">
+						<!-- 							id="notificationList" -->
+						<table class="table table-hover table-mail">
+							<!-- 								<tr class="unread"> -->
+							<!-- 									<td class="check-mail"><input type="checkbox" -->
+							<!-- 										class="i-checks" checked></td> -->
+							<!-- 									<td class="mail-ontact"><a href="mail_detail.html">Jack -->
+							<!-- 											Nowak</a></td> -->
+							<!-- 									<td class="mail-subject"><a href="mail_detail.html">Aldus -->
+							<!-- 											PageMaker including versions of Lorem Ipsum.</a></td> -->
+							<!-- 									<td class=""></td> -->
+							<!-- 									<td class="text-right mail-date">8.22 PM</td> -->
+							<!-- 								</tr> -->
+						</table>
+					</div>
+				</div>
 			</div>
-
 		</div>
+
 	</div>
+</div>
 
-	<!-- Mainly scripts -->
-	<script src="js/jquery-3.1.1.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
-	<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<!-- Mainly scripts -->
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
-	<!-- Custom and plugin javascript -->
-	<script src="js/inspinia.js"></script>
-	<script src="js/plugins/pace/pace.min.js"></script>
+<!-- Custom and plugin javascript -->
+<script src="js/inspinia.js"></script>
+<script src="js/plugins/pace/pace.min.js"></script>
 
-	<!-- iCheck -->
-	<script src="js/plugins/iCheck/icheck.min.js"></script>
+<!-- iCheck -->
+<script src="js/plugins/iCheck/icheck.min.js"></script>
 
-	<script src="/controllers/mailboxController.js"></script>
-	<script type="text/javascript" src="/controllers/logoutController.js"></script>
-
-
-
-	<script>
-		function doLogout(){
-			logoutUser();
-
-		}
-	</script>
-
-	<script>
-		function deleteMessage(){
-
-			var sList = "";
-			$('input[type=checkbox]').each(function () {
-				var sThisVal = (this.checked ? "1" : "0");
-				sList += (sList=="" ? sThisVal : "," + sThisVal);
-			});
-			console.log ('slist is: ' + sList);
-			console.log('length is: ' + sList.length);
-
-			var x;
-			var trashMsgs = [];
-			var parseNot = JSON.parse(sessionStorage.getItem('notifications'));
-			console.log('parseNot is: ' + JSON.stringify(parseNot));
-			console.log('parseNot length is: ' + JSON.stringify(parseNot.length));
+<script src="/controllers/mailboxController.js"></script>
+<script type="text/javascript" src="/controllers/logoutController.js"></script>
 
 
 
-			for(x = 0; x < sList.length; x++){
-				if(parseNot[x] === undefined)
-					break;
-				console.log('x is: ' + x);
-				if(sList[x] == 1){
-					var lMsg = [parseNot[x][4].S,parseNot[x][1]];
-					console.log('lMsg is: ' + JSON.stringify(lMsg));
-					trashMsgs.push(lMsg);
-				}
+<script>
+	function doLogout(){
+		logoutUser();
+
+	}
+</script>
+
+<script>
+	function deleteMessage(){
+
+		var sList = "";
+		$('input[type=checkbox]').each(function () {
+			var sThisVal = (this.checked ? "1" : "0");
+			sList += (sList=="" ? sThisVal : "," + sThisVal);
+		});
+		console.log ('slist is: ' + sList);
+		console.log('length is: ' + sList.length);
+
+		var x;
+		var trashMsgs = [];
+		var parseNot = JSON.parse(sessionStorage.getItem('notifications'));
+		console.log('parseNot is: ' + JSON.stringify(parseNot));
+		console.log('parseNot length is: ' + JSON.stringify(parseNot.length));
+
+
+
+		for(x = 0; x < sList.length; x++){
+			if(parseNot[x] === undefined)
+				break;
+			console.log('x is: ' + x);
+			if(sList[x] == 1){
+				var lMsg = [parseNot[x][4].S,parseNot[x][1]];
+				console.log('lMsg is: ' + JSON.stringify(lMsg));
+				trashMsgs.push(lMsg);
 			}
-			console.log('trash: ' + JSON.stringify(trashMsgs));
-			deleteFromQueue(trashMsgs);
-			return false;
 		}
-	</script>
+		console.log('trash: ' + JSON.stringify(trashMsgs));
+		deleteFromQueue(trashMsgs);
+		return false;
+	}
+</script>
 
 
 
-    <script type="text/javascript">
+<script type="text/javascript">
 
-        function showContent(indexNotification){
-            console.log('index Not is: ' + indexNotification);
-            var parseNot = JSON.parse(sessionStorage.getItem('notifications'));
-            console.log('parsENot: ' + JSON.stringify(parseNot));
-            var parseMsg = parseNot[indexNotification][2];
-            sessionStorage.setItem('parseMsg',parseMsg);
-            window.location='mail_detail.html';
-        };
+	function showContent(indexNotification){
+		console.log('index Not is: ' + indexNotification);
+		var parseNot = JSON.parse(sessionStorage.getItem('notifications'));
+		console.log('parsENot: ' + JSON.stringify(parseNot));
+		var parseMsg = parseNot[indexNotification][2];
+		var parseSnd = parseNot[indexNotification][1];
+		var parseTime = parseNot[indexNotification][3];
+		sessionStorage.setItem('parseMsg',parseMsg);
+		sessionStorage.setItem('parseSnd',parseSnd);
+		sessionStorage.setItem('parseTimestamp',parseTime);
+		window.location='mail_detail.html';
+	};
 
-    </script>
+</script>
 
-   <script>
-        function getAllNotifications(){
-        	var r;
-            console.log('executed');
-            //window.totN = await loadFromQueue();
-
-            var role = sessionStorage.getItem('role');
-            console.log('role is: ' + role);
-
-            if(role === 0){
-                document.getElementById("booking").style.display = "none";
-                document.getElementById("createlist").style.display = "none";
-
-            }
-            else{
-                document.getElementById("joinlist").style.display = "none";
-
-            }
-
-            loadFromQueue().then(function(res){
-
-				//r = JSON.stringify(res);
-				//var r2 = r.text;
-				console.log("Loaded Notifications : " + res[0]);
-				console.log('type is: ' + typeof res);
-
-				$(document).ready(function(){
-					$('.i-checks').iCheck({
-						checkboxClass: 'icheckbox_square-green',
-						radioClass: 'iradio_square-green',
-					});
-
-					var listNotString = '';
-
-					var totalNotification2 = res;//loadFromQueue();
-                    sessionStorage.setItem('notifications',JSON.stringify(totalNotification2));
-					console.log('totN2 = ' + totalNotification2);
-					console.log('typeof2: ' + typeof totalNotification2);
+<script>
+	function getAllNotifications(){
+		var r;
+		console.log('executed');
+		//window.totN = await loadFromQueue();
+		document.getElementById("userN").innerHTML = sessionStorage.getItem('email');
+		var role = JSON.parse(sessionStorage.getItem('role'));
+		console.log('role is: ' + role);
+		sessionStorage.setItem('a',1);
+		console.log('a is: ' + JSON.parse(sessionStorage.getItem('a')));
 
 
-                    listNotString += ('<tbody>');
-						listNotString += ('<tr class="read">');
-						listNotString += ('<td class="check-mail"></td>');
-						listNotString += ('<td class="mail-ontact">FROM:</a></td>');
-						listNotString += ('<td class="mail-subject">TO: </a></td><td class=""></td>');
-						listNotString += ('<td Class="text-right mail-date">MESSAGE:</td>');
-						listNotString += ('<td class="text-right mail-date">DATE:</td></tr>');
-					$.each(totalNotification2, function(indexNotification, notification) {
-					    console.log('index: ' + indexNotification);
+		if(role === 1){
+			document.getElementById("booking").style.display = "none";
+			document.getElementById("createlist").style.display = "none";
+			document.getElementById("roleP").innerHTML = "Student";
 
-						listNotString += ('<tr class="read">');
-						listNotString += ('<td class="check-mail"><input type="checkbox" class="i-checks" checked></td>');
-						listNotString += ('<td class="mail-ontact">'+ notification[0]+ '</a></td>');
-						listNotString += ('<td class="mail-subject">'+notification[1]+ '</a></td><td class=""></td>');
-						listNotString += ('<td onclick=showContent('+indexNotification+'); class="text-right mail-date">'+notification[2].substr(0,100)+'...'+'</td>');
-                        listNotString += ('<td class="text-right mail-date">'+notification[3]+'</td></tr>');
+		}
+		else{
+			document.getElementById("joinlist").style.display = "none";
+			document.getElementById("roleP").innerHTML = "Teacher";
+		}
 
-                       // document.getElementById("code")
+		loadFromQueue().then(function(res){
 
+			//r = JSON.stringify(res);
+			//var r2 = r.text;
+			console.log("Loaded Notifications : " + res[0]);
+			console.log('type is: ' + typeof res);
 
-                        //var newStr = myStr.substr(myStr.indexOf('love'), myStr.lastIndexOf('love'));
-
-
-
-                    });
-					listNotString += ('</tbody>');
-
-
-
-					//console.log(listNotString);
-					$(".table").html(listNotString);
-
+			$(document).ready(function(){
+				$('.i-checks').iCheck({
+					checkboxClass: 'icheckbox_square-green',
+					radioClass: 'iradio_square-green',
 				});
 
+				var listNotString = '';
+
+				var totalNotification2 = res;//loadFromQueue();
+				sessionStorage.setItem('notifications',JSON.stringify(totalNotification2));
+				console.log('totN2 = ' + totalNotification2);
+				console.log('typeof2: ' + typeof totalNotification2);
+
+
+				listNotString += ('<tbody>');
+				listNotString += ('<tr class="read">');
+				listNotString += ('<td class="check-mail"><input type="checkbox" class="i-checks" checked></td>');
+				listNotString += ('<td class="mail-ontact"> MAILING LIST </a></td>');			//TOPIC
+				listNotString += ('<td class="mail-subject">SENDER</a></td><td class=""></td>');		//SENDER
+				listNotString += ('<td class="text-right mail-date">MESSAGE</td>');				//MESSAGE CONTENT
+				listNotString += ('<td class="text-right mail-date">DATE</td></tr>');
+
+				$.each(totalNotification2, function(indexNotification, notification) {
+					console.log('index: ' + indexNotification);
+
+
+					listNotString += ('<td class="check-mail"><input type="checkbox" class="i-checks" checked></td>');
+					listNotString += ('<td class="mail-ontact">'+ notification[0]+ '</a></td>');	//
+					listNotString += ('<td class="mail-subject">'+notification[1]+ '</a></td><td class=""></td>');
+					listNotString += ('<td onclick=showContent('+indexNotification+'); class="text-right mail-date">'+notification[2].substr(0,100)+'...'+'</td>');
+					listNotString += ('<td class="text-right mail-date">'+notification[3]+'</td></tr>');
+
+					// document.getElementById("code")
+
+
+					//var newStr = myStr.substr(myStr.indexOf('love'), myStr.lastIndexOf('love'));
 
 
 
+				});
+				listNotString += ('</tbody>');
 
 
+
+				//console.log(listNotString);
+				$(".table").html(listNotString);
 
 			});
-            console.log("loaded totalNotifications: " + window.totN);
-            return r; //console.log('type: ' + typeof totN);
-        }
-    </script>
+
+
+
+
+
+
+
+		});
+		console.log("loaded totalNotifications: " + window.totN);
+		return r; //console.log('type: ' + typeof totN);
+	}
+</script>
 
 
 

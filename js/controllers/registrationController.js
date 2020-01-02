@@ -1,9 +1,13 @@
+var ip="http://54.146.131.119:8080";
+
+
+
 function signUpUser(userVal,emailVal,pswVal,nameVal,surnameVal,roleVal) {
 
     console.log('called sign up user');
 
     //MODIFICARE PER AWS
-    var uri = "http://54.164.38.3:8080/users/registration";
+    var uriSignUp = ip+"/users/registration";
     //var uri = "http://54.175.201.140:8080/users/registration";
 
 
@@ -11,7 +15,7 @@ function signUpUser(userVal,emailVal,pswVal,nameVal,surnameVal,roleVal) {
     //console.log("makePostNameFunc; uri: " + JSON.stringify(uri));
     console.log("params: " + JSON.stringify(userVal)+ "  " + JSON.stringify(emailVal) + "   " + JSON.stringify(pswVal)+
         "   " + JSON.stringify(nameVal) + "   " + JSON.stringify(surnameVal)+ "   " + JSON.stringify(roleVal));
-    fetch(uri, {
+    fetch(uriSignUp, {
         method: 'POST',
         body: JSON.stringify({
             username: userVal,

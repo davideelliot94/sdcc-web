@@ -18,18 +18,22 @@
 
 <body onload="getMessageContent()">
 
-    <div id="wrapper">
+<div id="wrapper">
 
     <nav class="navbar-default navbar-static-side" role="navigation">
         <div class="sidebar-collapse">
             <ul class="nav metismenu" id="side-menu">
                 <li class="nav-header">
                     <div class="dropdown profile-element"> <span>
-                            <img alt="image" class="img-circle" src="img/cesati.jpg" />
-                             </span>
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">Cesati</strong>
-                             </span> <span class="text-muted text-xs block">Prof <b class="caret"></b></span> </span> </a>
+							<span> <img alt="image" class="img-circle"
+                                        src="img/cesati.jpg" />
+							</span> <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+								<span class="clear"> <span class="block m-t-xs"> <strong  id='userN'
+                                                                                          class="font-bold"></strong>
+								</span> <span id='roleP' class="text-muted text-xs block"> <b
+                                        class="caret"></b></span>
+							</span>
+                        </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
                             <li><a href="profile.html">Profile</a></li>
                             <li><a href="mailbox.html">Notifiche</a></li>
@@ -49,9 +53,11 @@
                     <ul class="nav nav-second-level collapse">
                         <li><a href="mailbox.html">Inbox</a></li>
                         <li><a href="mail_compose.html">Compose email</a></li>
+                        <li id="joinlist"><a href="list_join.html">Join mailing list</a></li>
+                        <li id="createlist"><a href="new_list.html">Create mailing list</a></li>
                     </ul>
                 </li>
-                <li>
+                <li id='booking'>
                     <a href="new_reservation.html"><i class="fa fa-edit"></i> <span class="nav-label">Nuova prenotazione</span></a>
                 </li>
                 <li>
@@ -68,72 +74,73 @@
 
     <div id="page-wrapper" class="gray-bg">
         <div class="row border-bottom">
-        <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
-            <ul class="nav navbar-top-links navbar-right">
+            <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
+                <ul class="nav navbar-top-links navbar-right">
 
-                <li>
-					<a  href="mailbox.html">
-						<i class="fa fa-envelope"></i>Mailbox
-					</a>
-                </li>
-                
-                <li>
-                    <a href="login.html">
-                        <i class="fa fa-sign-out"></i> Log out
-                    </a>
-                </li>
-            </ul>
+                    <li>
+                        <a  href="mailbox.html">
+                            <i class="fa fa-envelope"></i>Mailbox
+                        </a>
+                    </li>
 
-        </nav>
+                    <li>
+                        <a href="login.html">
+                            <i class="fa fa-sign-out"></i> Log out
+                        </a>
+                    </li>
+                </ul>
+
+            </nav>
         </div>
 
         <div class="wrapper wrapper-content">
-        <div class="row">
-            <div class="col-lg-3">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-content mailbox-content">
-                        <div class="file-manager">
-                            <a class="btn btn-block btn-primary compose-mail" href="mail_compose.html">Compose Mail</a>
-                            <div class="space-25"></div>
-                            <h5>Folders</h5>
-                            <ul class="folder-list m-b-md" style="padding: 0">
-                                <li><a href="mailbox.html"> <i class="fa fa-inbox "></i> Inbox <span class="label label-warning pull-right">16</span> </a></li>
-                                <li><a href="trashbox.html"> <i class="fa fa-trash-o"></i> Trash</a></li>
-                            </ul>
-                            <div class="clearfix"></div>
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-content mailbox-content">
+                            <div class="file-manager">
+                                <a class="btn btn-block btn-primary compose-mail" href="mail_compose.html">Compose Mail</a>
+                                <div class="space-25"></div>
+                                <h5>Folders</h5>
+                                <ul class="folder-list m-b-md" style="padding: 0">
+                                    <li><a href="mailbox.html"> <i class="fa fa-inbox "></i> Inbox <span class="label label-warning pull-right">16</span> </a></li>
+                                    <li><a href="trashbox.html"> <i class="fa fa-trash-o"></i> Trash</a></li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9 animated fadeInRight">
+                    <div class="mail-box-header">
+                        <div class="pull-right tooltip-demo">
+                            <a href="mail_compose.html" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Reply"><i class="fa fa-reply"></i> Reply</a>
+                            <a href="#" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Print email"><i class="fa fa-print"></i> </a>
+                            <a href="mailbox.html" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Move to trash"><i class="fa fa-trash-o"></i> </a>
+                        </div>
+                        <h2>
+                            View Message
+                        </h2>
+                        <div class="mail-tools tooltip-demo m-t-md">
+
+                            <h3>
+                                <span class="font-normal">Subject: </span>
+                            </h3>
+                            <h5>
+                                <span id='timestamp' class="pull-right font-normal">10:15AM 02 FEB 2014</span>
+                                <span id='sender' class="font-normal"> </span>
+                            </h5>
+                        </div>
+                    </div>
+                    <div class="mail-box">
+
+
+                        <div class="mail-body">
+                            <p id="msgTxt"></p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-9 animated fadeInRight">
-            <div class="mail-box-header">
-                <div class="pull-right tooltip-demo">
-                    <a href="mail_compose.html" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Reply"><i class="fa fa-reply"></i> Reply</a>
-                    <a href="#" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Print email"><i class="fa fa-print"></i> </a>
-                    <a href="mailbox.html" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Move to trash"><i class="fa fa-trash-o"></i> </a>
-                </div>
-                <h2>
-                    View Message
-                </h2>
-                <div class="mail-tools tooltip-demo m-t-md">
-
-                    <h3>
-                        <span class="font-normal">Subject: </span>
-                    </h3>
-                    <h5>
-                        <span class="pull-right font-normal">10:15AM 02 FEB 2014</span>
-                        <span class="font-normal" id="sender"></span>
-                    </h5>
-                </div>
-            </div>
-                <div class="mail-box">
-
-
-                <div class="mail-body">
-                <p id="msgTxt"></p>
-
-            </div>
-        </div>
         </div>
         <div class="footer">
             <div class="pull-right">
@@ -144,51 +151,76 @@
             </div>
         </div>
 
-        </div>
-        </div>
+    </div>
+</div>
 
-    <!-- Mainly scripts -->
-    <script src="js/jquery-3.1.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
-    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<!-- Mainly scripts -->
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
-    <!-- Custom and plugin javascript -->
-    <script src="js/inspinia.js"></script>
-    <script src="js/plugins/pace/pace.min.js"></script>
+<!-- Custom and plugin javascript -->
+<script src="js/inspinia.js"></script>
+<script src="js/plugins/pace/pace.min.js"></script>
 
-    <!-- iCheck -->
-    <script type="text/javascript" src="/controllers/logoutController.js"></script>
+<!-- iCheck -->
+<script type="text/javascript" src="/controllers/logoutController.js"></script>
 
 
 
-    <script>
-        function doLogout(){
-            logoutUser();
+<script>
+    function doLogout(){
+        logoutUser();
+
+    }
+</script>
+
+<script src="js/plugins/iCheck/icheck.min.js"></script>
+
+<script type="text/javascript">
+
+    function getMessageContent(){
+
+
+        var role = parseInt(sessionStorage.getItem('role'));
+        document.getElementById("userN").innerHTML = sessionStorage.getItem('email');
+
+        var log = sessionStorage.getItem('logged');
+        if(log === null || log === undefined){
+            window.location='/login.html';
+            return false;
+        }
+
+        if(role === 1){
+            document.getElementById("booking").style.display = "none";
+            document.getElementById("createlist").style.display = "none";
+            document.getElementById("roleP").innerHTML = "Student";
 
         }
-    </script>
+        else{
+            document.getElementById("joinlist").style.display = "none";
+            document.getElementById("roleP").innerHTML = "Teacher";
 
-    <script src="js/plugins/iCheck/icheck.min.js"></script>
-
-    <script type="text/javascript">
-
-        function getMessageContent(){
-            document.getElementById("msgTxt").innerHTML = sessionStorage.getItem('parseMsg');
-            document.getElementById("sender").innerHTML = 'From ' + sessionStorage.getItem('sender');
-        };
-
-    </script>
+        }
 
 
-    <script>
-        $(document).ready(function(){
-            $('.i-checks').iCheck({
-                checkboxClass: 'icheckbox_square-green',
-                radioClass: 'iradio_square-green',
-            });
+        document.getElementById("msgTxt").innerHTML = sessionStorage.getItem('parseMsg');
+        document.getElementById("sender").innerHTML ='From ' + sessionStorage.getItem('parseSnd');
+        document.getElementById("timestamp").innerHTML = sessionStorage.getItem('parseTimestamp');
+    };
+
+</script>
+
+
+<script>
+    $(document).ready(function(){
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square-green',
         });
-    </script>
+    });
+</script>
 </body>
 
 </html>

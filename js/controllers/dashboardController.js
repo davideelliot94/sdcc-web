@@ -1,3 +1,8 @@
+var ip="http://3.85.47.88:8080";
+var numberUri=ip+"/users/all/";
+var teachersUri = ip+"/users/teachers/";
+
+
 function getAllData(){
     var data = [];
     data.push(getNumberUsers());
@@ -11,17 +16,16 @@ function getNumberUsers(/*jwtToken*/) {
     console.log('called number users');
 
     //MODIFICARE PER AWS
-    //var uri = "http://54.175.201.140:8080/users/all/";
-    var uri = "http://54.164.38.3:8080/users/all/";
-
     //console.log('jwtToken is: ' + JSON.stringify(jwtToken));
-    return fetch(uri, {
+    return fetch(numberUri, {
         method: 'GET',
         headers: {
             //'Authorization': jwtToken,
             'Access-Control-Allow-Origin': '*',
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': sessionStorage.getItem('token')
+
         }
     }).then(res => res.text().then(function (text) {
         console.log('text is: ' + text);
@@ -44,17 +48,19 @@ function getTotalTeachers() {
 
     console.log('called total teachers');
     //MODIFICARE PER AWS
-    var uri = "http://54.164.38.3:8080/users/teachers/";
+    var uri = "http://18.212.71.167:8080/users/teachers/";
 //    var uri = "http://localhost:8080/users/teachers/";
 
     //console.log('jwtToken is: ' + JSON.stringify(jwtToken));
-    return fetch(uri, {
+    return fetch(teachersUri, {
         method: 'GET',
         headers: {
             //'Authorization': jwtToken,
             'Access-Control-Allow-Origin': '*',
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': sessionStorage.getItem('token')
+
         }
     }).then(res => res.text().then(function (text) {
         console.log('text is: ' + text);

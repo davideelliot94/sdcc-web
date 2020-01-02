@@ -1,4 +1,5 @@
-var uri = "http://3.86.24.197:8080/msgs/send/";
+var uri = "http://52.91.194.123:8080/msgs/send/";
+
 
 
 function sendToQueue(msgTxt,topicName,topicArn) {

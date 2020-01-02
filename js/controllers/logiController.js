@@ -4,7 +4,7 @@
 console.log('trying prova');
 
 //prova();
-var uri_userLogin = "http://54.164.38.3:8080/users/login";
+var uri_userLogin = "http://54.146.131.119:8080/users/login";
 //ivar uri_userLogin = "http://54.175.201.140:8080/users/login";
 
 
@@ -68,7 +68,6 @@ function nameFunc(val1,val2){
                     sessionStorage.setItem('logged', username);
                     sessionStorage.setItem(username, jwtToken);
                     sessionStorage.setItem('email',email);
-                    console.log('setted email: ' + sessionStorage.getItem('email'));
                     sessionStorage.setItem('name',name);
                     sessionStorage.setItem('surname',surname);
                     sessionStorage.setItem('role',role);
@@ -76,8 +75,8 @@ function nameFunc(val1,val2){
                     sessionStorage.setItem('qUrl',qUrl);
                     /***********************************************************************/
 
-                    //var start = new Date().getTime();
-                    //while (new Date().getTime() < start + 3000);
+                    var start = new Date().getTime();
+                    while (new Date().getTime() < start + 3000);
 
 
                     window.location='/dashboard_2.html?email='+email;
