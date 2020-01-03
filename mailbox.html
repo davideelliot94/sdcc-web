@@ -224,9 +224,9 @@
 		console.log('index Not is: ' + indexNotification);
 		var parseNot = JSON.parse(sessionStorage.getItem('notifications'));
 		console.log('parsENot: ' + JSON.stringify(parseNot));
-		var parseMsg = parseNot[indexNotification][2];
+		var parseMsg = parseNot[indexNotification][3];
 		var parseSnd = parseNot[indexNotification][1];
-		var parseTime = parseNot[indexNotification][3];
+		var parseTime = parseNot[indexNotification][4];
 		sessionStorage.setItem('parseMsg',parseMsg);
 		sessionStorage.setItem('parseSnd',parseSnd);
 		sessionStorage.setItem('parseTimestamp',parseTime);
@@ -294,8 +294,8 @@
 					listNotString += ('<td class="check-mail"><input type="checkbox" class="i-checks" checked></td>');
 					listNotString += ('<td class="mail-ontact">'+ notification[2]+ '</a></td>');	//
 					listNotString += ('<td class="mail-subject">'+notification[1]+ '</a></td><td class=""></td>');
-					listNotString += ('<td onclick=showContent('+indexNotification+'); class="text-right mail-date">'+notification[2].substr(0,100)+'...'+'</td>');
-					listNotString += ('<td class="text-right mail-date">'+notification[3]+'</td></tr>');
+					listNotString += ('<td onclick=showContent('+indexNotification+'); class="text-right mail-date">'+notification[3].substr(0,100)+'...'+'</td>');
+					listNotString += ('<td class="text-right mail-date">'+notification[4]+'</td></tr>');
 
 					// document.getElementById("code")
 
