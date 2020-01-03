@@ -1,4 +1,4 @@
-var ip="http://3.85.47.88:8080";
+var ip="http://52.91.213.6:8080";
 var numberUri=ip+"/users/all/";
 var teachersUri = ip+"/users/teachers/";
 
@@ -28,6 +28,15 @@ function getNumberUsers(/*jwtToken*/) {
 
         }
     }).then(res => res.text().then(function (text) {
+
+        if (res.status !== 200) {
+            console.log('Looks like there was a problem. Status Code: ' + response.status);
+            if(res.status === 401)
+                window.location='/login.html';
+
+            return;
+        }
+
         console.log('text is: ' + text);
         console.log('tyie is: ' + typeof text);
         var nweText = text;
@@ -63,6 +72,13 @@ function getTotalTeachers() {
 
         }
     }).then(res => res.text().then(function (text) {
+        if (res.status !== 200) {
+            console.log('Looks like there was a problem. Status Code: ' + response.status);
+            if(res.status === 401)
+                window.location='/login.html';
+
+            return;
+        }
         console.log('text is: ' + text);
         console.log('tyie is: ' + typeof text);
         var nweText = text;

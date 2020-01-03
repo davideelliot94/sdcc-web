@@ -1,4 +1,4 @@
-var uri = "http://52.91.194.123:8080/msgs/send/";
+var uri = "http://35.173.243.105:8080/msgs/send/";
 
 
 
@@ -18,18 +18,29 @@ function sendToQueue(msgTxt,topicName,topicArn) {
         headers: {
             'Access-Control-Allow-Origin': '*',
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': sessionStorage.getItem('token')
+
         }
     }).then(function (response) {
+
+
         console.log("getting response :  " +JSON.stringify(response));
         console.log('RES status: ' + JSON.stringify(response.status));
         console.log('status:' + response.status);
 
-//            if(response.status === 200)
+        if (response.status !== 200) {
+            console.log('Looks like there was a problem. Status Code: ' + response.status);
+            if(response.status === 401)
+                window.location='/login.html';
 
-            window.location='/dashboard_2.html?email=';
+            return;
+        }
+
+
+            window.location='/mail_compose.html';
     }).catch(function (e) {
-        window.location='/dashboard_2.html?email=';
+        window.location='/dashboard_2.html?email='+sessionStorage.getItem('email');
 
         console.log('There was an error');
     });

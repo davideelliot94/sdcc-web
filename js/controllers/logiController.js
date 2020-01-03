@@ -4,7 +4,7 @@
 console.log('trying prova');
 
 //prova();
-var uri_userLogin = "http://54.146.131.119:8080/users/login";
+var uri_userLogin = "http://52.91.213.6:8080/users/login";
 //ivar uri_userLogin = "http://54.175.201.140:8080/users/login";
 
 
@@ -74,10 +74,6 @@ function nameFunc(val1,val2){
                     sessionStorage.setItem('token',jwtToken);
                     sessionStorage.setItem('qUrl',qUrl);
                     /***********************************************************************/
-
-                    var start = new Date().getTime();
-                    while (new Date().getTime() < start + 3000);
-
 
                     window.location='/dashboard_2.html?email='+email;
 

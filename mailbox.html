@@ -281,7 +281,7 @@
 
 				listNotString += ('<tbody>');
 				listNotString += ('<tr class="read">');
-				listNotString += ('<td class="check-mail"><input type="checkbox" class="i-checks" checked></td>');
+				listNotString += ('<td class="check-mail"></td>');
 				listNotString += ('<td class="mail-ontact"> MAILING LIST </a></td>');			//TOPIC
 				listNotString += ('<td class="mail-subject">SENDER</a></td><td class=""></td>');		//SENDER
 				listNotString += ('<td class="text-right mail-date">MESSAGE</td>');				//MESSAGE CONTENT
@@ -292,7 +292,7 @@
 
 
 					listNotString += ('<td class="check-mail"><input type="checkbox" class="i-checks" checked></td>');
-					listNotString += ('<td class="mail-ontact">'+ notification[0]+ '</a></td>');	//
+					listNotString += ('<td class="mail-ontact">'+ notification[2]+ '</a></td>');	//
 					listNotString += ('<td class="mail-subject">'+notification[1]+ '</a></td><td class=""></td>');
 					listNotString += ('<td onclick=showContent('+indexNotification+'); class="text-right mail-date">'+notification[2].substr(0,100)+'...'+'</td>');
 					listNotString += ('<td class="text-right mail-date">'+notification[3]+'</td></tr>');

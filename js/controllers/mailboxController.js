@@ -1,7 +1,7 @@
 console.log('trying prova');
 
 //prova();
-var ip="http://52.91.194.123:8080";
+var ip="http://35.173.243.105:8080";
 var uriRec = ip+"/msgs/receive/";
 const uriDel = ip+"/msgs/delete/";
 var uriRead = ip+"/msgs/read/";
@@ -33,6 +33,7 @@ function loadFromQueue(){
 
             msg.push(element.RECEIVER_NAME.S);
             msg.push(element.SENDER_NAME.S);
+            msg.push(element.TOPIC_NAME.S);
             msg.push(element.MSGTEXT.S);
             msg.push(element.MSG_TIMESTAMP.S);
             msg.push(element.MESSAGE_ID);
@@ -59,11 +60,23 @@ function readFromQueue(){
         headers: {
             'Access-Control-Allow-Origin': '*',
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': sessionStorage.getItem('token')
+
         }
     }).then(res => res.text().then(function (text) {
         console.log('text is: ' + text);
         console.log('tyie is: ' + typeof text);
+
+        if (res.status !== 200) {
+            console.log('Looks like there was a problem. Status Code: ' + res.status);
+            if(res.status === 401)
+                window.location='/login.html';
+
+            return;
+        }
+
+
     }));
 
 };

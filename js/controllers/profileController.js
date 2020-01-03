@@ -1,5 +1,5 @@
 var username,name,surname,email;
-var ip="http://54.146.131.119:8080";
+var ip="http://52.91.213.6:8080";
 
 
 function loadUser(emailVal,jwtToken) {
@@ -106,10 +106,16 @@ function deleteUserAccount(email){
 
         }
     }).then(function (response) {
-        if(response.status == 200) {
-            console.log('RES: ' + JSON.stringify(response));
-            window.location = '/login.html';
+        if (res.status !== 200) {
+            console.log('Looks like there was a problem. Status Code: ' + response.status);
+            if(res.status === 401)
+                window.location='/login.html';
+
+            return;
         }
+        console.log('RES: ' + JSON.stringify(response));
+        window.location = '/profile.html';
+
     });
 
 }

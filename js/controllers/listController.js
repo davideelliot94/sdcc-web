@@ -1,13 +1,14 @@
 console.log('trying prova');
 
-var ip="http://52.91.194.123:8080";
+var msg_ip="http://35.173.243.105:8080";
+var users_ip="http://52.91.213.6:8080";
 
-var uri_creating = ip+"/msgs/listcreate/";
-var uri = ip+"/msgs/send/";
-var uri_lists = ip+"/users/lists/";
-var uri_lists2 = ip+"/users/lists2/";
-var uri_associate = ip+"/users/associate";
-var uri_subscribe = ip+"/msgs/subscribe/";
+var uri_creating = msg_ip+"/msgs/listcreate/";
+var uri_send = msg_ip+"/msgs/send/";
+var uri_lists = users_ip+"/users/lists/";
+var uri_lists2 = users_ip+"/users/lists2/";
+var uri_associate = users_ip+"/users/associate";
+var uri_subscribe = msg_ip+"/msgs/subscribe/";
 
 function createTopic(topic) {
 
@@ -26,11 +27,6 @@ function createTopic(topic) {
         }
     }).then(function (response) {
         console.log("getting response:  " + response);
-    	var start = new Date().getTime();
-    	while (new Date().getTime() < start + delay);
-
-//            if(response.status === 200)
-
            // window.location='/dashboard_2.html?email=';
     }).catch(function (e) {
 //        window.location='/dashboard_2.html?email=';
@@ -46,7 +42,6 @@ function createTopic(topic) {
 
 function loadAllLists(username){
 
-    var uri_lists = "http://54.146.131.119:8080/users/lists/";
 
     console.log('got username list: ' + username);
     uri_lists = uri_lists+username;
@@ -89,8 +84,6 @@ function loadAllLists(username){
 
 function loadAllLists2(username){
 
-    var uri_lists2 = "http://54.146.131.119:8080/users/lists2/";
-
 
     console.log('got username list: ' + username);
     uri_lists2 = uri_lists2+username;
@@ -128,10 +121,6 @@ function loadAllLists2(username){
 }
 
 
-
-
-
-var uri_associate = "http://54.146.131.119:8080/users/associate";
 
 
 function associateUser(topicName,topicArn){
@@ -178,7 +167,6 @@ function createAndAssociate(topicName){
 
 }
 
-var uri_subscribe = "http://52.91.194.123:8080/msgs/subscribe/";
 
 function subscribeToTopic(topicN,username,topicA) {
 
@@ -201,10 +189,12 @@ function subscribeToTopic(topicN,username,topicA) {
         }
     }).then(function (response) {
         console.log("getting response:  " + response);
-        var start = new Date().getTime();
-        while (new Date().getTime() < start + delay);
 
-//            if(response.status === 200)
+        if (response.status !== 200) {
+            console.log('Looks like there was a problem. Status Code: ' + response.status);
+            if(response.status === 401)
+                window.location='/login.html';
+        }
 
         // window.location='/dashboard_2.html?email=';
     }).catch(function (e) {
