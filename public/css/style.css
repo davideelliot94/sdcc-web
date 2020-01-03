@@ -1678,6 +1678,10 @@ div.dt-button-info {
 /* CIRCLE */
 .img-circle {
   border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  overflow: hidden;
+  position: relative;
 }
 .btn-circle {
   width: 30px;
