@@ -1,6 +1,7 @@
 var username,name,surname,email;
 var ip="http://52.91.213.6:8080";
-
+var imgUpUri = "http://ec2-54-208-13-189.compute-1.amazonaws.com:8181/api/v1/uploadImg";
+var imgDownUri = "http://ec2-54-208-13-189.compute-1.amazonaws.com:8181/api/v1/getImg";
 
 function loadUser(emailVal,jwtToken) {
     console.log('called sign up user');
@@ -118,4 +119,39 @@ function deleteUserAccount(email){
 
     });
 
+}
+
+
+function uploadUserImg(userId, img){
+   
+    const formData = new FormData();
+    formData.append("image", img, userId);
+    console.log(img);
+    fetch(imgUpUri, {
+        body: formData,
+        headers: {
+            'Access-Control-Allow-Origin': '*'
+        },
+        method: 'POST',// or 'PUT',
+      }).then(function (response) {
+          if(response.status == 200) {
+              console.log("Upload Succesfull");
+          }
+      });
+    
+}
+    
+
+function getUserImg(userId){
+    
+        fetch(imgDownUri, {
+            body: { user: userId},
+            method: 'POST',// or 'PUT',
+            }).then(function (response) {
+                if(response.status == 200) {
+                    console.log("Download Succesfull");
+                    return response;
+                }
+            });
+    
 }
