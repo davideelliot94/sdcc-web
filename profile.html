@@ -31,7 +31,11 @@
 				<li class="nav-header">
 					<div class="dropdown profile-element">
 							<span> <img alt="image" class="img-circle"
-										src="img/cesati.jpg" />
+										src="img/cesati.jpg" id="profile_img" />
+							<div class="upload-btn-wrapper">
+								<button class="btn2" >Upload a file</button>
+								<input type="file" onchange='uploadFile()' name="myfile" id="new_profile_img"/>
+							</div>
 							</span> <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 								<span class="clear"> <span class="block m-t-xs"> <strong  id='userN'
 																						  class="font-bold"></strong>
@@ -215,6 +219,19 @@
 	}
 </script>
 
+<script>
+
+	window.onload = function getUserImage(){
+		//get userId
+		getUserImg("Davide").then(function(err,result){
+			document.getElementById("profile_img").src = result;
+
+		});
+
+
+	}
+
+</script>
 
 <script>
 	function profileUser() {
@@ -287,6 +304,14 @@
 	}
 </script>
 
+<script>
+	function uploadFile( ) {
+		const selectedFile = document.getElementById('new_profile_img').files[0];
+		//uploadUserImg(sessionStorage.getItem('???'),selectedFile);
+		uploadUserImg("Davide",selectedFile);
+	}
+
+</script>
 
 <script>
 	$(document).ready(function() {
