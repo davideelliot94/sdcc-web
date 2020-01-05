@@ -8564,3 +8564,21 @@ body.md-skin {
     margin: 0;
   }
 }
+
+.btn2 {
+  border: 2px solid gray;
+  color: gray;
+  background-color: #293846;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.upload-btn-wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
