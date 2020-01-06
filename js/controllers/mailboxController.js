@@ -1,7 +1,7 @@
 console.log('trying prova');
 
 //prova();
-var ip="http://35.173.243.105:8080";
+var ip="http://52.91.86.127:8080";
 var uriRec = ip+"/msgs/receive/";
 const uriDel = ip+"/msgs/delete/";
 var uriRead = ip+"/msgs/read/";

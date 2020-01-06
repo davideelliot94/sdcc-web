@@ -1,7 +1,7 @@
 console.log('trying prova');
 
-var msg_ip="http://35.173.243.105:8080";
-var users_ip="http://52.91.213.6:8080";
+var msg_ip="http://52.91.86.127:8080";
+var users_ip="http://52.91.211.138:8080";
 
 var uri_creating = msg_ip+"/msgs/listcreate/";
 var uri_send = msg_ip+"/msgs/send/";
@@ -46,6 +46,7 @@ function loadAllLists(username){
     console.log('got username list: ' + username);
     uri_lists = uri_lists+username;
     var series=[];
+    console.log('got username list: ' + sessionStorage.getItem('token'));
 
     return fetch(uri_lists, {
         method: 'GET',
@@ -54,28 +55,17 @@ function loadAllLists(username){
             'Accept': 'application/json',
             'Content-Type': 'application/json',
             'Authorization': sessionStorage.getItem('token')
-
         }
     }).then(res => res.text().then(function (text) {
 
-
+        uri_lists = users_ip+"/users/lists/";
         console.log('text1 is: ' + text);
         var nweText = JSON.parse(text);
         console.log('text is: ' + nweText);
 
-       /* nweText.forEach(function (element, index, array) {
-            //console.log(element.Title.S + " (" + element.Subtitle.S + ")");
-            var lists = [];
-
-            lists.push(element);
-            series.push(lists);
-            console.log('lists is: ' + lists);
-            console.log('series is: ' + series);
-
-
-        });*/
         return nweText;
-    }))
+    })
+);
 
 }
 

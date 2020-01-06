@@ -1,7 +1,8 @@
 var username,name,surname,email;
-var ip="http://52.91.213.6:8080";
 var imgUpUri = "http://ec2-54-208-13-189.compute-1.amazonaws.com:8181/api/v1/uploadImg";
 var imgDownUri = "http://ec2-54-208-13-189.compute-1.amazonaws.com:8181/api/v1/getImg";
+var ip="http://52.91.211.138:8080";
+
 
 function loadUser(emailVal,jwtToken) {
     console.log('called sign up user');
@@ -62,7 +63,7 @@ function getEmail(){
 
 function submitData(email,newpsw,newname,newsurname){
 
-    console.log('submitting');
+    console.log('submitting email: ' + email);
     var uriSub = ip+"/users/profile/save";
 
 
@@ -81,13 +82,13 @@ function submitData(email,newpsw,newname,newsurname){
 
         }
     }).then(function (response) {
-        if(response.status == 200) {
+        //if(response.status == 200) {
             console.log('RES: ' + JSON.stringify(response));
             window.location = '/dashboard_2.html?email=' + email;
-        }
+        //}
     });
-    
-    nameFunc(email,func);
+
+    //nameFunc(email,func);
 }
 
 
@@ -123,7 +124,7 @@ function deleteUserAccount(email){
 
 
 function uploadUserImg(userId, img){
-   
+
     const formData = new FormData();
     formData.append("image", img, userId);
     console.log(img);
@@ -138,12 +139,12 @@ function uploadUserImg(userId, img){
               console.log("Upload Succesfull");
           }
       });
-    
+
 }
-    
+
 
 function getUserImg(userId){
-    
+
         fetch(imgDownUri, {
             body: { user: userId},
             method: 'POST',// or 'PUT',
@@ -153,5 +154,5 @@ function getUserImg(userId){
                     return response;
                 }
             });
-    
+
 }

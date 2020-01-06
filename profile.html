@@ -114,10 +114,22 @@
 							<div>
 								<h2 id="role">Fondatore</h2>
 							</div>
-							<h3>Name:</h3><h3 id="name"></h3>
-							<h3>Surname:   </h3><h3 id="surname"></h3>
-							<h3>Username:   </h3><h3 id="username"></h3>
-							<h3>Email:   </h3><h3 id="email"></h3>
+
+							<table>
+							<tr class="read">
+							<td class="check-mail"><strong>Name:     </strong></td><td id="name"></td>
+							</tr>
+							<tr class="read">
+							<td class="check-mail"><strong>Surname:     </strong></td><td id="surname"></td>
+							</tr>
+							<tr class="read">
+							<td class="check-mail"><strong>Username:     </strong></td><td id="username"></td>
+							</tr>
+							<tr class="read">
+							<td class="check-mail"><strong>Email:     </strong></td><td id="email"></td>
+							</tr>
+							</table>
+
 						</div>
 					</div>
 				</div>
@@ -135,7 +147,7 @@
 						</div>
 					</div>
 					<div class="ibox-content">
-						<form method="post" class="form-horizontal"
+						<form class="form-horizontal"
 							  onsubmit="return submitNewData();">
 							<div class="form-group">
 								<input id="newpsw" type="password" class="form-control"
@@ -283,7 +295,7 @@
 
 <script>
 	function submitNewData() {
-		var email = sessionStorage.getItem('logged');
+		var email = sessionStorage.getItem('email');
 		var newPsw = document.getElementById('newpsw').value;
 		var newName = document.getElementById('newname').value;
 		if (newName === null || newName === undefined)
@@ -291,9 +303,18 @@
 		var newSurname = document.getElementById('newsurname').value;
 		if (newSurname === null || newSurname === undefined)
 			newSurname = document.getElementById("surname").value;
-		submitData(email, newPsw, newName, newSurname);
+		//submitData(email, newPsw, newName, newSurname);
+		submitData(email,newPsw,newName,newSurname);
+		return false;
+		/*.then(function(res){
+			console.log('got data: ' + res);
+			document.getElementById("name").innerHTML = res[0];
+			document.getElementById("surname").innerHTML = res[1];
+			document.getElementById("username").innerHTML = res[2];
+			document.getElementById("email").innerHTML = res[3];
+		});
 		//document.getElementById("surname").value = myArray[1];
-		//document.getElementById("email").value = myArray[2];
+		//document.getElementById("email").value = myArray[2];*/
 	}
 </script>
 

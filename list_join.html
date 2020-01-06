@@ -67,15 +67,17 @@
 							<span> <img alt="image" class="img-circle"
                                         src="img/cesati.jpg" />
 							</span> <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-								<span class="clear"> <span class="block m-t-xs"> <strong
-                                        class="font-bold">Cesati</strong>
-								</span> <span class="text-muted text-xs block">Prof <b
+								<span class="clear"> <span class="block m-t-xs"> <strong  id='userN'
+                                                                                          class="font-bold"></strong>
+								</span> <span id='roleP' class="text-muted text-xs block"> <b
                                         class="caret"></b></span>
 							</span>
                     </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
                             <li><a href="profile.html">Profile</a></li>
                             <li><a href="mailbox.html">Notifiche</a></li>
+                            <li id="joinlist"><a href="list_join.html">Join mailing list</a></li>
+                            <li id="createlist"><a href="new_list.html">Create mailing list</a></li>
                             <li class="divider"></li>
                             <li><a href="login.html">Logout</a></li>
                         </ul>
@@ -90,7 +92,7 @@
                         <li><a href="mailbox.html">Inbox</a></li>
                         <li><a href="mail_compose.html">Compose email</a></li>
                     </ul></li>
-                <li><a href="new_reservation.html"><i class="fa fa-edit"></i>
+                <li id="booking"><a href="new_reservation.html"><i class="fa fa-edit"></i>
                     <span class="nav-label">Nuova prenotazione</span></a></li>
                 <li><a href="#"><i class="fa fa-table"></i> <span
                         class="nav-label">Orari</span><span class="fa arrow"></span></a>
@@ -249,6 +251,22 @@
 
 <script>
     function loadLists(){
+
+        document.getElementById("userN").innerHTML = sessionStorage.getItem('email');
+        var role = JSON.parse(sessionStorage.getItem('role'));
+
+
+        if(role === 1){
+            document.getElementById("booking").style.display = "none";
+            document.getElementById("createlist").style.display = "none";
+            document.getElementById("roleP").innerHTML = "Student";
+
+        }
+        else{
+            document.getElementById("joinlist").style.display = "none";
+            document.getElementById("roleP").innerHTML = "Teacher";
+        }
+
         loadAllLists(sessionStorage.getItem('logged')).then(function(res){
             //r = JSON.stringify(res);
             //var r2 = r.text;
