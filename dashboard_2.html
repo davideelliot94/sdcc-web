@@ -33,7 +33,7 @@
 
 </head>
 
-<body onload="checkPermissions();">
+<body >
 <div id="wrapper">
     <nav class="navbar-default navbar-static-side" role="navigation">
         <div class="sidebar-collapse">
@@ -41,7 +41,7 @@
                 <li class="nav-header">
                     <div class="dropdown profile-element">
 							<span> <img alt="image" class="img-circle"
-                                        src="img/cesati.jpg" />
+                                        src="" id="profile_img2" />
 							</span> <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 								<span class="clear"> <span class="block m-t-xs"> <strong  id='userN' class="font-bold">						</span> <span id='roleP' class="text-muted text-xs block"> <b
                                         class="caret"></b></span>
@@ -239,6 +239,21 @@
             logoutUser();
 
         }
+    </script>
+
+    <script>
+
+        window.onload = function loadUserData(){
+
+            checkPermissions();
+
+            var email = sessionStorage.getItem("email");
+            var result = await getUserImg(email);
+            console.log(result);
+            document.getElementById("profile_img2").src = result;
+
+        }
+
     </script>
 
 

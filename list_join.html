@@ -55,7 +55,7 @@
 
 </head>
 
-<body onload="loadLists()">
+<body>
 
 <div id="wrapper">
 
@@ -65,7 +65,7 @@
                 <li class="nav-header">
                     <div class="dropdown profile-element">
 							<span> <img alt="image" class="img-circle"
-                                        src="img/cesati.jpg" />
+                                        src=""id="profile_img" />
 							</span> <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 								<span class="clear"> <span class="block m-t-xs"> <strong  id='userN'
                                                                                           class="font-bold"></strong>
@@ -247,6 +247,19 @@
     }
 </script>
 
+<script>
+
+    window.onload = function loadData(){
+
+        loadLists();
+
+        var email = sessionStorage.getItem("email");
+		var result = await getUserImg(email);
+		console.log(result);
+		document.getElementById("profile_img").src = result;
+    }
+
+</script>
 
 <script>
     function loadLists(){

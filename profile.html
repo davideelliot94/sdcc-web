@@ -21,7 +21,7 @@
 </head>
 
 
-<body onload="profileUser();">
+<body >
 
 <div id="wrapper">
 
@@ -31,7 +31,7 @@
 				<li class="nav-header">
 					<div class="dropdown profile-element">
 							<span> <img alt="image" class="img-circle"
-										src="img/cesati.jpg" id="profile_img" />
+										src="" id="profile_img" />
 							<div class="upload-btn-wrapper">
 								<button class="btn2" >Upload a file</button>
 								<input type="file" onchange='uploadFile()' name="myfile" id="new_profile_img"/>
@@ -106,7 +106,7 @@
 			<div class="row m-b-lg m-t-lg">
 				<div class="col-md-6">
 					<div class="profile-image">
-						<img src="img/cesati.jpg" class="img-circle circle-border m-b-md"
+						<img src="" id="profile_img2" class="img-circle circle-border m-b-md"
 							 alt="profile">
 					</div>
 					<div class="profile-info">
@@ -233,12 +233,15 @@
 
 <script>
 
-	window.onload = function getUserImage(){
-		//get userId
-		getUserImg("Davide").then(function(err,result){
-			document.getElementById("profile_img").src = result;
+	window.onload = function loadUserData(){
+		
+		var email = sessionStorage.getItem("email");
+		var result = await getUserImg(email);
+		console.log(result);
+		document.getElementById("profile_img").src = result;
+		document.getElementById("profile_img2").src = result;
 
-		});
+		profileUser();
 
 
 	}
@@ -326,10 +329,11 @@
 </script>
 
 <script>
-	function uploadFile( ) {
+	function uploadFile() {
 		const selectedFile = document.getElementById('new_profile_img').files[0];
 		//uploadUserImg(sessionStorage.getItem('???'),selectedFile);
-		uploadUserImg("Davide",selectedFile);
+		var email = sessionStorage.getItem("email");
+		uploadUserImg(email,selectedFile);
 	}
 
 </script>

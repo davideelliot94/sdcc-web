@@ -25,7 +25,7 @@
             <ul class="nav metismenu" id="side-menu">
                 <li class="nav-header">
                     <div class="dropdown profile-element"> <span>
-                            <img alt="image" class="img-circle" src="img/cesati.jpg" />
+                            <img alt="image" class="img-circle" src="" id="profile_img" />
                              </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">Cesati</strong>
@@ -310,6 +310,17 @@
                 radioClass: 'iradio_square-green',
             });
         });
+    </script>
+
+    <script>
+    
+        window.onload = function loadData(){
+            var email = sessionStorage.getItem("email");
+            var result = await getUserImg(email);
+            console.log(result);
+            document.getElementById("profile_img").src = result;
+        }
+    
     </script>
 
 </body>
