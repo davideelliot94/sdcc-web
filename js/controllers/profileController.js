@@ -1,7 +1,7 @@
 var username,name,surname,email;
 var imgUpUri = "http://ec2-54-208-13-189.compute-1.amazonaws.com:8181/api/v1/uploadImg";
 var imgDownUri = "http://ec2-54-208-13-189.compute-1.amazonaws.com:8181/api/v1/getImg";
-var ip="http://52.91.211.138:8080";
+var ip="http://3.84.149.26:8080";
 
 
 function loadUser(emailVal,jwtToken) {

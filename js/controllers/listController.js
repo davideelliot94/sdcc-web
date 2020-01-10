@@ -1,7 +1,7 @@
 console.log('trying prova');
 
-var msg_ip="http://52.91.86.127:8080";
-var users_ip="http://52.91.211.138:8080";
+var msg_ip="http://52.90.14.133:8080";
+var users_ip="http://18.233.159.214:8080";
 
 var uri_creating = msg_ip+"/msgs/listcreate/";
 var uri_send = msg_ip+"/msgs/send/";

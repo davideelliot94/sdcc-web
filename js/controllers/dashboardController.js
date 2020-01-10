@@ -1,6 +1,6 @@
-var ip="http://52.91.213.6:8080";
-var numberUri=ip+"/users/all/";
-var teachersUri = ip+"/users/teachers/";
+var users_ip="http://18.233.159.214:8080";
+var numberUri=users_ip+"/users/all/";
+var teachersUri = users_ip+"/users/teachers/";
 
 
 function getAllData(){
