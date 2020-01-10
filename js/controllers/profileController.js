@@ -142,17 +142,17 @@ function uploadUserImg(userId, img){
 
 }
 
-
 function getUserImg(userId){
 
-        fetch(imgDownUri, {
-            body: { user: userId},
-            method: 'POST',// or 'PUT',
-            }).then(function (response) {
-                if(response.status == 200) {
-                    console.log("Download Succesfull");
-                    return response;
-                }
-            });
+    const r = fetch(imgDownUri, {
+        body: { user: userId },
+        method: 'POST',
+        headers: {
+            'Access-Control-Allow-Origin': '*'
+            },
+        });
+    const results = await Promise.resolve(r);
+    const res = await results.json();
+    return res.image;
 
 }
