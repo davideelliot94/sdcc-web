@@ -65,10 +65,10 @@
 				<li class="nav-header">
 					<div class="dropdown profile-element">
 							<span> <img alt="image" class="img-circle"
-										src="" id="profile_img"/>
+										src="img/default.png" id="profile_img"/>
 							</span> <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 								<span class="clear"> <span class="block m-t-xs"> <strong
-										class="font-bold">Cesati</strong>
+										class="font-bold"><script>sessionStorage.getItem('logged');</script></strong>
 								</span> <span class="text-muted text-xs block">Prof <b
 										class="caret"></b></span>
 							</span>
@@ -370,8 +370,6 @@
 </script>
 
 
-
-
 <script>
 	function setEndClock() {
 		var myInput = $('#clockpickerStart').clockpicker();
@@ -387,36 +385,31 @@
 <script>
 	
 	window.onload = async function loadRoomsandTeachings(){
+		
+		console.log("Load Called");
 
-		checkPermissions();
+		var arr = await loadFunc();
+		console.log(arr);
+	
+		var select = document.getElementById("selectRoom");
+		for(index in arr.rooms) {
+			
+			select.options[select.options.length] = new Option(arr.rooms[index].name, index);
+		};
+		
+		var select = document.getElementById("selectCourse");
+		for(index in arr.teaching) {
+			
+			select.options[select.options.length] = new Option(arr.teaching[index].name, index);
+		};
 
-		var email = sessionStorage.getItem("email");
+		var email = sessionStorage.getItem("userId");
 		var result = await getUserImg(email);
 		console.log(result);
 		document.getElementById("profile_img").src = result;
 		
-		console.log("Load Called");
 
-		var rooms = await loadRoomsFunc();
-		console.log(rooms);
-	
-		var select = document.getElementById("selectRoom");
-		for(index in rooms) {
-			console.log("rooms " + rooms[index].name);
-			select.options[select.options.length] = new Option(rooms[index].name, index);
-		};
-		
-
-		var teachings = await loadTeachingsFunc();
-		console.log(teachings);
-
-		var select = document.getElementById("selectCourse");
-		for(index in teachings) {
-			console.log("teachings " + teachings[index].name);
-			select.options[select.options.length] = new Option(teachings[index].name, index);
-		};
-
-		
+		checkPermissions();
 		
 	};	
 </script>

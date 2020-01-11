@@ -65,7 +65,7 @@
                 <li class="nav-header">
                     <div class="dropdown profile-element">
 							<span> <img alt="image" class="img-circle"
-                                        src=""id="profile_img" />
+                                        src="img/default.png"id="profile_img" />
 							</span> <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 								<span class="clear"> <span class="block m-t-xs"> <strong  id='userN'
                                                                                           class="font-bold"></strong>
@@ -249,11 +249,11 @@
 
 <script>
 
-    window.onload = function loadData(){
+    window.onload = async function loadData(){
 
         loadLists();
 
-        var email = sessionStorage.getItem("email");
+        var email = sessionStorage.getItem("userId");
 		var result = await getUserImg(email);
 		console.log(result);
 		document.getElementById("profile_img").src = result;
@@ -264,7 +264,7 @@
 <script>
     function loadLists(){
 
-        document.getElementById("userN").innerHTML = sessionStorage.getItem('email');
+        document.getElementById("userN").innerHTML = sessionStorage.getItem('logged');
         var role = JSON.parse(sessionStorage.getItem('role'));
 
 

@@ -41,7 +41,7 @@
                 <li class="nav-header">
                     <div class="dropdown profile-element">
 							<span> <img alt="image" class="img-circle"
-                                        src="" id="profile_img2" />
+                                        src="img/default.png" id="profile_img2" />
 							</span> <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 								<span class="clear"> <span class="block m-t-xs"> <strong  id='userN' class="font-bold">						</span> <span id='roleP' class="text-muted text-xs block"> <b
                                         class="caret"></b></span>
@@ -243,11 +243,11 @@
 
     <script>
 
-        window.onload = function loadUserData(){
+        window.onload = async function loadUserData(){
 
             checkPermissions();
 
-            var email = sessionStorage.getItem("email");
+            var email = sessionStorage.getItem("userId");
             var result = await getUserImg(email);
             console.log(result);
             document.getElementById("profile_img2").src = result;
@@ -271,7 +271,7 @@
 
             console.log('jwt token is:' + sessionStorage.getItem('token'))
 
-            document.getElementById("userN").innerHTML = sessionStorage.getItem('email');
+            document.getElementById("userN").innerHTML = sessionStorage.getItem('logged');
             if(role === 1){
                 document.getElementById("booking").style.display = "none";
                 document.getElementById("createlist").style.display = "none";
