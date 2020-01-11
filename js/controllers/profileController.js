@@ -1,7 +1,7 @@
 var username,name,surname,email;
-var imgUpUri = "http://ec2-54-208-13-189.compute-1.amazonaws.com:8181/api/v1/uploadImg";
-var imgDownUri = "http://ec2-54-208-13-189.compute-1.amazonaws.com:8181/api/v1/getImg";
-var ip="http://3.84.149.26:8080";
+var imgUpUri = "http://52.23.158.252:8181/api/v1/uploadImg";
+var imgDownUri = "http://52.23.158.252:8181/api/v1/getImg";
+var ip="http://107.23.104.59:8080";
 
 
 function loadUser(emailVal,jwtToken) {
@@ -131,6 +131,7 @@ function uploadUserImg(userId, img){
     fetch(imgUpUri, {
         body: formData,
         headers: {
+            'Authorization': sessionStorage.getItem('token'),
             'Access-Control-Allow-Origin': '*'
         },
         method: 'POST',// or 'PUT',
@@ -142,17 +143,36 @@ function uploadUserImg(userId, img){
 
 }
 
-function getUserImg(userId){
-
-    const r = fetch(imgDownUri, {
-        body: { user: userId },
-        method: 'POST',
-        headers: {
-            'Access-Control-Allow-Origin': '*'
-            },
-        });
-    const results = await Promise.resolve(r);
-    const res = await results.json();
-    return res.image;
+async function getUserImg(userId){
+    if(sessionStorage.getItem("img") === null){
+        console.log("SESSION STORAGE VUOTO");
+        const r = fetch(imgDownUri, {
+            body: JSON.stringify({ user: userId }),
+            method: 'POST',
+            headers: {
+                'Authorization': sessionStorage.getItem('token'),
+                'Access-Control-Allow-Origin': '*',
+                'Accept':'application/json',
+                'Content-Type':'application/json'
+                
+                },
+            });
+        const results = await Promise.resolve(r);
+        const res = await results.json();
+        
+        if(res.image == "NOTLOADED"){
+            
+            return "https://images-bucket-sdcc.s3.amazonaws.com/default.png";
+        }  
+        else{
+            sessionStorage.setItem("img",res.image);
+            return res.image;
+        }
+            
+    }
+    else{
+        
+        return sessionStorage.getItem("img");
+    }
 
 }
