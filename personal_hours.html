@@ -13,6 +13,7 @@
     <link href="css/plugins/iCheck/custom.css" rel="stylesheet">
     <link href="css/animate.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    
 
 </head>
 
@@ -65,7 +66,8 @@
 
         </div>
     </nav>
-        <div id="page-wrapper" class="gray-bg">
+    
+    <div id="page-wrapper" class="gray-bg">
         <div class="row border-bottom">
         <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
             <ul class="nav navbar-top-links navbar-right">
@@ -107,82 +109,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <h5>Orario personale </h5>
-                            <div class="ibox-tools">
-                                <a class="collapse-link">
-                                    <i class="fa fa-chevron-up"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="ibox-content">
-                            <table id="first" class="table table-bordered">
-                                <thead>
-                                <tr>
-                                    <th>Ora</th>
-                                    <th>Lunedi</th>
-                                    <th>Martedi</th>
-                                    <th>Mercoledi</th>
-                                    <th>Giovedi</th>
-                                    <th>Venerdi</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <th>8.15-9.15</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                </tr>
-                                <tr>
-                                    <th>9.30-11</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                </tr>
-                                <tr>
-                                    <th>11-12.30</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                </tr>                                
-                                <tr>
-                                    <th>14-15.30</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                </tr>                                
-                                <tr>
-                                    <th>16-17.30</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                </tr>                                
-                                <tr>
-                                    <th>18-19.30</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                </tr>
-                                </tbody>
-                            </table>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div class="form-group">
             <div class="row">
 				<div class="col-lg-12">
                     <div class="ibox float-e-margins">
@@ -195,9 +122,22 @@
                             </div>
                         </div>
                         <div class="ibox-content">
-                            <table  id="second" class="table table-bordered">
-
+                            <table class="table table-bordered" id="bookingTable">
+                                
+                                <thead>
+                                    <tr>
+                                        <th>Data</th>
+                                        <th>Orario</th>
+                                        <th>Aula</th>
+                                        <th>Corso</th>
+                                        <th>Proiettore</th>
+                                        <th>Microfono</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
                             </table>
+
                         </div>
                     </div>
                 </div>
@@ -216,7 +156,7 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
     <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-    <script type="text/javascript" src="/controllers/profileController.js"></script>
+
     <!-- Peity -->
     <script src="js/plugins/peity/jquery.peity.min.js"></script>
 
@@ -229,128 +169,121 @@
 
     <!-- Peity -->
     <script src="js/demo/peity-demo.js"></script>
-    
+
+    <script type="text/javascript" src="/controllers/logoutController.js"></script>
+    <script type="text/javascript" src="/controllers/profileController.js"></script>
+    <script type="text/javascript" src="/controllers/reservationController.js"></script>
+
     <script>
-    const API = (() => {
-    	var uri_BookingByUser = "";        //MODIFICARE PER AWS
-    	
-    	
-        const getBooking = (id_student, postNameFunc) => () => {
-            try {
-	            const val1 = document.querySelector(id_student).value; //da vedere!
-	            console.log("form values: " + JSON.stringify(val1));
-	            postNameFunc(val1);
-	        } catch (e) {
-	            console.log(e);
-	            console.log('--------------------------');
-            }
-            return false;
-        };
+        function doLogout(){
+            logoutUser();
 
-        
-        const makePostNameFunc = uri => (val1) => {
-            console.log("makeGetBookingFunc; uri: " + JSON.stringify(uri));
-            fetch(uri, {
-                method: 'POST',
-                body: JSON.stringify({
-                    value: val1,
-                }),
-                headers: {
-                    'Access-Control-Allow-Origin': '*',
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                }
-            }).then(function (response) {
-                console.log('RES: ' + JSON.stringify(response));
-            });
-        };
-
-        const get_totalBookingByUserFunc = makePostNameFunc(uri_BookingByUser);
-        
-        return {
-            get_totalBookingByUserId: getBooking("#id_student", get_totalBookingByUserFunc)
-            }
-        })();
-    
+        }
     </script>
-	
+
+
     <script>
         $(document).ready(function(){
             $('.i-checks').iCheck({
                 checkboxClass: 'icheckbox_square-green',
                 radioClass: 'iradio_square-green',
             });
-            
-            var uri_bookingService = ""; //modificare con AWS
-            
-            var days = ["Ora","Lunedi","Martedi","Mercoledi","Gioevdi","Venerdi"];
-            var hours = ["8.15-9.15","9.30-11.00","11.30-13.00","14.00-15.30","16.00-17.30","18.00-19.30"];
-            var totalBooking = [[[" "],[" "],[" "],[" "],[" "],[" "]],
-            					[[" "],[" "],[" "],[" "],[" "],[" "]],
-            					[[" "],[" "],[" "],[" "],[" "],[" "]],
-            					[[" "],[" "],[" "],[" "],[" "],[" "]],
-            					[[" "],[" "],[" "],[" "],[" "],[" "]],
-            					[[" "],[" "],[" "],[" "],[" "],[" "]]];
-            
-
-            var totalBooking = API.get_totalBookingByUserID();            
-       
-            try{
-            	console.log('Res:' + totalBooking)
-            } catch(e){
-	            console.log(e);
-	            console.log('--------------------------');
-            }
-            
-//             var bookInd;
-//             var dayInd;
-//             var hourInd;
-            
-//             for(bookInd = 0;  bookInd < totalBooking.length; bookInd++){
-//                 for(dayInd = 0;  dayInd < days.length; dayInd++){
-//                     for(hourInd = 0;  hourInd < hours.length; hourInd++){
-//                     	var book = totalBooking[bookInd];
-//                     	var day = days[dayInd];
-//                     	var hour = hours[hourInd];
-//                     	if(bookCheckTable(book,day,hour)){
-//                     		totalBooking[hourInd][dayInd] += book.teaching
-//                     		continue;
-//                     	}
-                    	
-//                     }
-//                 }
-//             }            
-            
-            var tableString = '';
-            tableString += ('<thead>');
-            $.each(days, function(indexDay, day) {
-            	tableString += ('<th>'+day+'</th>')
-            });
-            tableString +=('</thead>');
-            tableString += ('<tbody>');
-            $.each(hours, function(indexHour, hour) {
-            	tableString += ('<tr><th>'+hour+'</th>');
-                $.each(totalBooking[indexHour], function(indexDayBooking, bookingPerDay){ //totalBooking = [[pren.leundi],[pren.mart],[pren.merc],...]
-                	tableString += ('<td>'+bookingPerDay+'</td>');
-                });
-                tableString += ('</tr>');
-            });
-            tableString += ('</tbody>');
-            $("#first").html(tableString);
-            $("#second").html(tableString);
         });
+    </script>
+    
     </script>
 
     <script>
+    
         window.onload = async function loadData(){
 
+            eraseOld();
+
+            if(sessionStorage.getItem('role')==0){
+                var table = document.getElementById("bookingTable");
+                
+                var arr = await getBookingsByUser(sessionStorage.getItem("userId"));
+            
+                /*
+                let tableRef = document.getElementById('bookingTable');
+                let tbody = tableRef.querySelector("tbody");
+
+                let checkedInputs = document.querySelectorAll("tr");
+                Array.prototype.slice.call(checkedInputs)
+                .forEach( input => tbody.removeChild(input.parentNode.parentNode))
+                    */
+                
+                /**
+                    AGGIUNGI ROUTINE PER ELIMINARE LE CELLE
+                */
+
+
+
+                function addCell(tr, text) {
+                    var td = tr.insertCell();
+                    td.textContent = text;
+                    return td;
+                } 
+
+                // insert data
+                
+                arr.forEach(function (item) {
+                    table.insert
+                    var row = table.insertRow();
+                    addCell(row, item.date.split("T")[0]);
+                    addCell(row, item.slot);
+                    addCell(row,item.room);
+                    addCell(row,item.teaching);
+                    addCell(row,item.projector ? "Si":"No");
+                    addCell(row,item.microphone ? "Si":"No");
+                });
+
+                
+            }
+            else{
+
+                var table = document.getElementById("bookingTable");
+                
+                var arr = await getBookingsByUserTeachings(sessionStorage.getItem("userId"));
+            
+                /*
+                let tableRef = document.getElementById('bookingTable');
+                let tbody = tableRef.querySelector("tbody");
+
+                let checkedInputs = document.querySelectorAll("tr");
+                Array.prototype.slice.call(checkedInputs)
+                .forEach( input => tbody.removeChild(input.parentNode.parentNode))
+                    */
+                
+                function addCell(tr, text) {
+                    var td = tr.insertCell();
+                    td.textContent = text;
+                    return td;
+                }
+
+                // insert data
+                
+                arr.forEach(function (item) {
+                    var row = table.insertRow();
+                    addCell(row, item.date.split("T")[0]);
+                    addCell(row, item.slot);
+                    addCell(row,item.teaching);
+                    addCell(row,item.projector ? "Si":"No");
+                    addCell(row,item.microphone ? "Si":"No");
+                });
+
+
+
+            }
+          
+            console.log("called");
             var email = sessionStorage.getItem("userId");
             var result = await getUserImg(email);
             console.log(result);
             document.getElementById("profile_img").src = result;
 
-
         }
+    
     </script>
 
 </body>

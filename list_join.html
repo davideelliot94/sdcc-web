@@ -121,12 +121,13 @@
 
             </nav>
         </div>
+        <div class="ibox-content">
         <div class="row wrapper border-bottom white-bg page-heading">
             <div class="col-lg-10">
-                <h2>Iscrizione mailing list</h2>
+                <h2>Mailing list e Corsi</h2>
                 <ol class="breadcrumb">
                     <li><a href="index.html">Home</a></li>
-                    <li class="active"><a href="new_reservation.html"><strong>Iscrizione mailing list</strong></a></li>
+                    <li class="active"><a href="new_reservation.html"><strong>Mailing list e Corsi</strong></a></li>
                 </ol>
             </div>
             <div class="col-lg-2"></div>
@@ -137,41 +138,45 @@
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
                         <h5>
-                            Iscrizione mailing list
+                            Iscriviti alle Mailing list e ai Corsi 
                         </h5>
                         <div class="ibox-tools">
-                            <a class="close-link"> <i class="fa fa-times"></i>
+                            <a class="close-link"> 
                             </a>
                         </div>
                     </div>
-
                     <div class="ibox-content">
-                            <!--<div class="form-group">
-                                <div class="col-sm-10">
-                                    <p>Scegliere la facoltà:</p>
-                                    <select id="selectCollege" class="select2_demo_1 form-control">
-                                        <option value="1">Ingegneria</option>
-                                        <option value="2">Medicina</option>
-                                        <option value="3">Casa mia</option>
+                        <div class="form-group">
+                            <div class="col-sm-10">
+                                <p>Selezionare la mailing list</p>
+                                <form class="form-horizontal" onsubmit="submitNewList()">
+                                    <select name="selectedList" id="selectedList" class="select2_demo_2 form-control">
                                     </select>
-                                </div>
-                            </div>-->
-                            <div class="hr-line-dashed"></div>
-                            <div class="form-group">
-                                <div class="col-sm-10">
-                                    <p>Inserire il nome della mailing list scelto</p>
-                                    <form class="form-horizontal" onsubmit="submitNewList()">
-                                        <select name="selectedList" id="selectedList">
-                                        </select>
-                                        <input class="btn btn-primary" type="submit" value="Submit">
-                                    </form>
-                                </div>
+                                    <br>
+                                    <input class="btn btn-primary" type="submit" value="Submit">
+                                </form>
                             </div>
+                        </div>
                     </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="ibox-content">
+                        <div class="form-group">
+                            <div class="col-sm-10">
+                                <p>Seleziona il corso</p>
+                                <form class="form-horizontal" >
+                                    <select id="selectTeaching" class="select2_demo_2 form-control">
+                                    </select>
+                                    <br>
+                                    <input class="btn btn-primary" type="submit" onclick="subscribeToTeaching()" value="Submit">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
                 </div>
             </div>
         </div>
-
+    </div>
     </div>
 </div>
 
@@ -233,7 +238,14 @@
     }
 </script>
 
+<script>
 
+
+
+
+
+
+</script>
 <script>
     function  submitNewList() {
 
@@ -252,6 +264,17 @@
     window.onload = async function loadData(){
 
         loadLists();
+
+        var teach = await loadTeachigs();
+        console.log(teach);
+
+        var select = document.getElementById("selectTeaching");
+        for(index in teach) {
+            
+            select.options[select.options.length] = new Option(teach[index].name, index);
+        };
+
+
 
         var email = sessionStorage.getItem("userId");
 		var result = await getUserImg(email);
@@ -304,7 +327,15 @@
 
     }
 </script>
+<script>
+    function subscribeToTeaching(){
 
+
+
+        
+    }
+
+</script>
 
 
 

@@ -52,7 +52,6 @@
 	<link href="css/animate.css" rel="stylesheet">
 	<link href="css/style.css" rel="stylesheet">
 
-
 </head>
 
 <body>
@@ -148,16 +147,6 @@
 
 					<div class="ibox-content">
 						<form method="get" class="form-horizontal" onsubmit="submitNewReservtion()" >
-							<!--<div class="form-group">
-								<div class="col-sm-10">
-									<p>Scegliere la facoltà:</p>
-									<select id="selectCollege" class="select2_demo_1 form-control">
-										<option value="1">Ingegneria</option>
-										<option value="2">Medicina</option>
-										<option value="3">Casa mia</option>
-									</select>
-								</div>
-							</div>-->
 							<div class="hr-line-dashed"></div>
 							<div class="form-group">
 								<div class="col-sm-10">
@@ -166,34 +155,7 @@
 									<select id="selectRoom" class="select2_demo_2 form-control"
 											multiple="multiple">
 
-										<!--
-										<option value="A1">A1</option>
-										<option value="A2">A2</option>
-										<option value="A3">A3</option>
-										<option value="A4">A4</option>
-										<option value="A5">A5</option>
-										<option value="A6">A6</option>
-										<option value="A7">A7</option>
-										<option value="A8">A8</option>
-										<option value="A9">A9</option>
-										<option value="A10">A10</option>
-										<option value="A11">A11</option>
-										<option value="A12">A12</option>
-										<option value="A13">A13</option>
-										<option value="B1">B1</option>
-										<option value="B2">B2</option>
-										<option value="B3">B3</option>
-										<option value="B4">B4</option>
-										<option value="B5">B5</option>
-										<option value="B6">B6</option>
-										<option value="B7">B7</option>
-										<option value="B8">B8</option>
-										<option value="B9">B9</option>
-										<option value="B10">B10</option>
-										<option value="B11">B11</option>
-										<option value="B12">B12</option>
-										<option value="B13">B13</option>
-										-->
+										
 									</select>
 								</div>
 							</div>
@@ -201,14 +163,30 @@
 							<div class="form-group">
 								<div class="col-sm-10">
 									<p>Scegliere la data</p>
-									<div class="input-group date" id="datetimepicker">
+									<div class="input-group date" id="datepicker" data-provide="datepicker" >
 											<span class="input-group-addon"><i
-													class="fa fa-calendar"></i></span><input type="text"
-																							 class="form-control" value="03/04/2014">
+													class="fa fa-calendar"></i></span>
+													<input type="text" class="form-control" value="">	
 									</div>
 								</div>
 							</div>
 							<div class="hr-line-dashed"></div>
+							<div class="form-group">
+								<div class="col-sm-10">
+									<p>
+										Orario <small>Seleziona orario di inizio</small>
+									</p>
+									<select id="selectInterval" class="select2_demo_2 form-control">
+										<option value="8:00-9:30">8:00-9:30</option>
+										<option value="9:30-11:00">9:30-11:00</option>
+										<option value="11:00-12:30">11:00-12:30</option>
+										<option value="14:00-15:30">14:00-15:30</option>
+										<option value="16:00-17:30">16:00-17:30</option>
+										<option value="18:00-19:30">18:00-19:30</option>
+									</select>
+								</div>
+							</div>
+							<!--
 							<div class="form-group">
 								<div class="col-sm-10">
 									<p>
@@ -235,6 +213,7 @@
 
 								</div>
 							</div>
+						-->
 							<div class="hr-line-dashed"></div>
 							<div class="form-group">
 								<div class="col-sm-10">
@@ -256,10 +235,10 @@
 										Strumenti richiesti <small>Strumentazione richiesta</small>
 									</p>
 									<h3>Proiettore</h3>
-									<input type="checkbox" class="js-switch" checked />
+									<input type="checkbox" id="checkProj" class="js-switch" checked />
 
 									<h3>Microfono</h3>
-									<input type="checkbox" class="js-switch_2" checked />
+									<input type="checkbox" id="checkMic" class="js-switch_2" checked />
 
 									<!--<h3>Piú di 200 persone</h3>
 									<input type="checkbox" class="js-switch_3" checked />-->
@@ -270,9 +249,9 @@
 							<div class="row">
 								<div class="form-group">
 									<div class="col-sm-10 col-sm-offset-2">
-										<button class="btn btn-white" type="submit">Cancel</button>
-										<button class="btn btn-primary" type="submit">Save
-											changes</button>
+										<button class="btn btn-white" type="submit">Annulla</button>
+										<button class="btn btn-primary" type="submit">Prenota
+											</button>
 									</div>
 								</div>
 							</div>
@@ -288,7 +267,7 @@
 <!-- Mainly scripts -->
 <script src="js/jquery-3.1.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-
+<script src="js/bootstrap.js"></script>
 <!-- Custom and plugin javascript -->
 <script src="js/inspinia.js"></script>
 <script src="js/plugins/pace/pace.min.js"></script>
@@ -342,7 +321,16 @@
 
 	}
 </script>
+<script>
+		$("#datepicker").datepicker({ 
+			daysOfWeekDisabled: '0,6',
+			format: 'dd-mm-yyyy',
+			startDate: '0',
+			autoclose:true,
+			locale: 'it-IT'
+		 }) 
 
+</script>
 
 <script>
 	function checkPermissions(){
@@ -369,7 +357,7 @@
 	}
 </script>
 
-
+<!--
 <script>
 	function setEndClock() {
 		var myInput = $('#clockpickerStart').clockpicker();
@@ -381,12 +369,14 @@
 		});
 	};
 </script>
-
+-->
 <script>
 	
 	window.onload = async function loadRoomsandTeachings(){
 		
 		console.log("Load Called");
+
+		
 
 		var arr = await loadFunc();
 		console.log(arr);
@@ -414,6 +404,20 @@
 	};	
 </script>
 	
+<script>
+	function showDatePicker(){
+
+
+		$('datepicker').datepicker({
+			format: 'mm/dd/yyyy',
+			startDate: '-3d'
+		});
+
+
+	}
+	
+
+</script>
 
 
 <script>
@@ -462,11 +466,18 @@
 <script>
 	function  submitNewReservtion() {
 
+		
+		
 		var roomSelector = document.getElementById("selectRoom");
 		var courseSelector = document.getElementById("selectCourse");
+		var int = document.getElementById("selectInterval").value;
+		var checkMic = document.getElementById("checkMic");
+		var checkProj = document.getElementById("checkProj");
+		
 
-		var date = $("#datetimepicker").datepicker('getDate');
-		var clockTimeStart = $("#clockpickerStart").clockpicker();
+		var date = $("#datepicker").datepicker('getDate');
+		console.log(date);
+		/*var clockTimeStart = $("#clockpickerStart").clockpicker();
 		var cstart = clockTimeStart.data();
 		var shour = cstart.clockpicker.hours;
 		var sminutes = cstart.clockpicker.minutes;
@@ -476,19 +487,20 @@
 		var ehour = cend.clockpicker.hours;
 		var eminutes = cend.clockpicker.minutes;
 		var endTime = [ehour,eminutes];
+		*/
 		
-
+		
 		var room = roomSelector.options[roomSelector.selectedIndex].text;
 		var course = courseSelector.options[courseSelector.selectedIndex].text;
 
 		console.log(" room :"+room+",date :"+date+",course :"+course);
-		console.log("time :"+shour + ":" +sminutes + " end: " + ehour + ":" + eminutes);
+		
 //         window.location.pathname = '/dashboard_2.html';
 
 		var name = sessionStorage.getItem('logged');
 		var jwtToken = sessionStorage.getItem(name);
 		
-		submitReservation(jwtToken,date,startTime,endTime,room,course);
+		submitReservation(jwtToken,date,int,room,course,checkMic.checked,checkProj.checked);
 
 		alert("Form submitted Successfully");
 	}
@@ -515,7 +527,8 @@
 			keyboardNavigation: false,
 			forceParse: false,
 			autoclose: true,
-			format: "dd/mm/yyyy"
+			format: "dd/mm/yyyy",
+			
 		});
 
 		$('#data_3 .input-group.date').datepicker({

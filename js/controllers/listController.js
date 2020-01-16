@@ -1,7 +1,8 @@
 console.log('trying prova');
 
-var msg_ip="http://52.90.14.133:8080";
-var users_ip="http://18.233.159.214:8080";
+var msg_ip="http://34.226.82.190:8080";
+var users_ip="http://107.23.104.59:8080";
+var turi = "http://34.197.9.50:3002/api/v1/teachings"
 
 var uri_creating = msg_ip+"/msgs/listcreate/";
 var uri_send = msg_ip+"/msgs/send/";
@@ -194,6 +195,34 @@ function subscribeToTopic(topicN,username,topicA) {
     });
 
 
+
+
+}
+
+async function loadTeachigs(){
+
+    const f = fetch(turi,{
+        method: 'GET',
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    
+    });
+
+    const results = await Promise.resolve(f);
+    console.log(results);
+    const res = await results.json();
+    var arr = [];
+    res.array.forEach(r => {
+        if(!r.id_student.includes(sessionStorage.getItem("userId"))){
+            arr.push(r.name);
+
+        }
+    });
+
+    return arr;
 
 
 }

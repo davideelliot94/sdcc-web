@@ -4,7 +4,7 @@
 console.log('trying prova');
 
 //prova();
-var uri_userLogin = "http://18.233.159.214:8080/users/login";
+var uri_userLogin = "http://107.23.104.59:8080/users/login";
 //ivar uri_userLogin = "http://54.175.201.140:8080/users/login";
 
 
@@ -54,6 +54,7 @@ function nameFunc(val1,val2){
                     surname = JSON.parse(nweText).surname;
                     role = JSON.parse(nweText).role;
                     qUrl = JSON.parse(nweText).token;
+                    userId = JSON.parse(nweText).userId;
 
                     console.log('got name: ' + name);
                     console.log('username: ' + username);
@@ -61,6 +62,7 @@ function nameFunc(val1,val2){
                     console.log('surname: ' + surname);
                     console.log('role: ' + role);
                     console.log('token: ' + jwtToken);
+                    console.log('token: ' + userId);
 
 
                     //SETTING AUTHINFO
@@ -73,6 +75,8 @@ function nameFunc(val1,val2){
                     sessionStorage.setItem('role',role);
                     sessionStorage.setItem('token',jwtToken);
                     sessionStorage.setItem('qUrl',qUrl);
+                    sessionStorage.setItem('userId',userId);
+                    
                     /***********************************************************************/
 
                     window.location='/dashboard_2.html?email='+email;

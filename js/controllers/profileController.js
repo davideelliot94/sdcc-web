@@ -1,6 +1,6 @@
 var username,name,surname,email;
-var imgUpUri = "http://52.23.158.252:8181/api/v1/uploadImg";
-var imgDownUri = "http://52.23.158.252:8181/api/v1/getImg";
+var imgUpUri = "http://34.195.247.230:8181/api/v1/uploadImg";
+var imgDownUri = "http://34.195.247.230:8181/api/v1/getImg";
 var ip="http://107.23.104.59:8080";
 
 

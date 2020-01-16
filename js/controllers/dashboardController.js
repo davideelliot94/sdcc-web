@@ -1,4 +1,4 @@
-var users_ip="http://18.233.159.214:8080";
+var users_ip="http://107.23.104.59:8080";
 var numberUri=users_ip+"/users/all/";
 var teachersUri = users_ip+"/users/teachers/";
 

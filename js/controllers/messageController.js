@@ -1,4 +1,4 @@
-var uri = "http://52.90.14.133:8080/msgs/send/";
+var uri = "http://34.226.82.190:8080/msgs/send/";
 
 
 
